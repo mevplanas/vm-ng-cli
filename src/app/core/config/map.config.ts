@@ -378,7 +378,7 @@ export const CONFIG = {
       }
     },
     propertyUnits: {
-      production: environment.production, // if theme is ready for production
+      production: !environment.production, // if theme is ready for production
       name: 'Savivaldybės turtas', // theme name
       // id: "civ-sauga", //theme id class and theme URL query name
       description: 'Savivaldybės turtas',
@@ -482,7 +482,7 @@ export const CONFIG = {
       }
     },
     waist: {
-      production: environment.production, // if theme is ready for production
+      production: !environment.production, // if theme is ready for production
       custom: true, // true if theme funcionality is custom
       name: 'Atliekų tvarkymas', // theme name
       // id: "theme-buildings", //theme id class and theme URL query name

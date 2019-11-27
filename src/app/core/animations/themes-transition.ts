@@ -5,7 +5,7 @@ export const themesTransition = trigger('themesTransition', [
   transition('* <=> *', [
     // set elements
     query('.line-animation', style({ transform: 'translateX(-100%)' }), { optional: true }),
-    query('.col-xs-6', style({ opacity: 0 }), { optional: true }),
+    query('.col-sm-3', style({ opacity: 0 }), { optional: true }),
     query('.themes-page-logo', style({ opacity: 0, transform: 'translateY(-100%)' }), { optional: true }),
     query('.anim-trigger', style({ opacity: 0 }), { optional: true }),
     // animate wieth group
@@ -18,7 +18,7 @@ export const themesTransition = trigger('themesTransition', [
         animate('300ms ease-in',
           style({ transform: 'translateY(0px)', opacity: 1 })),
       ]), { optional: true }),
-      query(':enter .col-xs-6', stagger(60, [
+      query('.col-sm-3', stagger(60, [
         style({ transform: 'translateY(20px)' }),
         animate('400ms ease-in',
           style({ transform: 'translateY(0px)', opacity: 1 })),
