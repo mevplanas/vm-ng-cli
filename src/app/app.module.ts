@@ -1,18 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MapViewComponent } from './core/components/map-view/map-view.component';
+import { MAP_CONFIG, CONFIG } from './core/config/map.config';
+import { HomeComponent } from './core/components/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapViewComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAP_CONFIG, useValue: CONFIG }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

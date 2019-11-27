@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~arcgis-js-api/themes/light/main.css';
+@import '~arcgis-js-api/themes/light/view.css';
+
+// Bootstrap
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Bootstrap Optional
+// @import "~bootstrap/scss/reboot";
+// @import "~bootstrap/scss/type";
+// @import "~bootstrap/scss/images";
+// @import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+
+@import '~src/styles/fonts';
+
+@import '~src/styles/page';
+@import '~src/styles/main';

@@ -1,0 +1,76 @@
+h2 {
+  width: 100%;
+  display: inline-block;
+  padding: 40px 30px 40px;
+  margin-bottom: 0;
+  font-size: 28px;
+  line-height: 1.6;
+}
+.col-2, .col-sm-3 {
+  position: relative;
+  width: 50%;
+}
+.border-line {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.row.themes-component {
+  margin: 0;
+  text-align: center;
+  color: #dadada;
+}
+.row.themes-component h1 {
+  display: none;
+  float: left;
+  width: 180px;
+  padding: 8px 10px 0;
+  margin-top: 0;
+  margin-left: 0;
+  font-size: 14px;
+  letter-spacing: -0.4px;
+  text-align: left;
+  font-weight: 600;
+  color: #dadada;
+  line-height: 1.4;
+}
+.themes-page-logo {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #464646;
+  margin-bottom: 0;
+  width: 100%;
+}
+.themes-page-logo span {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  word-spacing: 6px;
+  font-size: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  position: relative;
+  top: 5px;
+  color: #fff;
+}
+.row.themes-component .themes-page-logo img  {
+  margin: 0 auto;
+  width: 90px;
+}
+.row.themes-component {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  background-color: #3a3a3a;
+}
+@media only screen and (min-width: 480px) {
+  .row.themes-component h1 {
+    display: none;
+  }
+  .row.themes-component .themes-page-logo img  {
+    float: left;
+    margin-left: 20px;
+    width: 90px;
+  }
+  .themes-page-logo span {
+    top: 25px;
+  }
+}

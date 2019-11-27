@@ -1,0 +1,45 @@
+<div class="row themes-component" id="themes-container" @themesTransition>
+  <div class="themes-page-logo">
+    <img src="assets/img/vilnius_logo.png" alt="Vilniaus miesto interaktyvūs žemėlapiai" class="anim-trigger" border="0">
+    <h1>Vilniaus miesto interaktyvūs žemėlapiai</h1>
+    <span class="anim-trigger">Pasirinkite temą</span>
+  </div>
+  <h2 class="anim-trigger">Pagrindinės temos</h2>
+  <div class="border-line line-animation"></div>
+  <ng-container *ngFor="let theme of themes; let i=index; let odd=odd">
+    <div *ngIf="theme.production && !theme.hide  && !theme.external && !theme.custom" class=".col-2 col-sm-3 animate themes-row">
+      <a *ngIf="!theme.url && !theme.custom" [routerLink]="[theme.id]">
+        <img [src]="theme.imgUrl" [alt]="theme.imgAlt"/>
+        <p>{{theme.name}}</p>
+      </a>
+    </div>
+  </ng-container>
+  <h2>Papildomo funkcionalumo temos</h2>
+  <div class="border-line"></div>
+  <ng-container *ngFor="let theme of themes; let i=index; let odd=odd">
+    <div *ngIf="theme.production && !theme.hide && !theme.external && theme.custom" class=".col-2 col-sm-3 animate themes-row">
+      <a *ngIf="!theme.url && !theme.custom" routerLink="/{{theme.id}}">
+        <img [src]="theme.imgUrl" [alt]="theme.imgAlt"/>
+        <p>{{theme.name}}</p>
+      </a>
+      <a *ngIf="theme.url" [href]="theme.url">
+        <img [src]="theme.imgUrl" [alt]="theme.imgAlt"/>
+        <p>{{theme.name}}</p>
+      </a>
+      <a *ngIf="!theme.url && theme.custom" routerLink="/{{theme.id}}">
+        <img [src]="theme.imgUrl" [alt]="theme.imgAlt"/>
+        <p>{{theme.name}}</p>
+      </a>
+    </div>
+  </ng-container>
+  <h2>Kiti žemėlapiai</h2>
+  <div class="border-line"></div>
+  <ng-container *ngFor="let theme of themes; let i=index; let odd=odd">
+    <div *ngIf="theme.production && !theme.hide && theme.external" class=".col-2 col-sm-3 animate themes-row">
+      <a *ngIf="theme.url" rel="noopener noreferrer" target="_blank" [href]="theme.url">
+        <img [src]="theme.imgUrl" [alt]="theme.imgAlt"/>
+        <p>{{theme.name}}</p>
+      </a>
+    </div>
+  </ng-container>
+</div>
