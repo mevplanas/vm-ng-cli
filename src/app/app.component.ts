@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Map from 'arcgis-js-api/Map';
+import { RoutingService } from './core/services/routing.service';
 
 @Component({
   selector: 'maps-v-root',
@@ -9,7 +9,9 @@ import Map from 'arcgis-js-api/Map';
 export class AppComponent implements OnInit {
   title = 'vm-ng-cli';
 
+  constructor(private routingService: RoutingService) {}
+
   ngOnInit() {
-    console.log(new Map());
+    this.routingService.addDefaultRoutes();
   }
 }

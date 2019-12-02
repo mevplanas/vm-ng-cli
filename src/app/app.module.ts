@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { MapViewComponent } from './core/components/map-view/map-view.component';
 import { MAP_CONFIG, CONFIG } from './core/config/map.config';
 import { HomeComponent } from './core/components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MapWidgetsModule } from './map-widgets/map-widgets.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HomeComponent } from './core/components/home/home.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    MapWidgetsModule
   ],
   providers: [
     { provide: MAP_CONFIG, useValue: CONFIG }

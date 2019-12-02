@@ -1,5 +1,10 @@
 @import '~src/styles/themes/base/fonts/avenir-next/avenir-next';
 
+// overwrite default variables, for icons using esri icons set instead of font awsesome
+$icomoon-font-path: "styles/themes/base/icons/fonts" !default;
+
+@import '~src/styles/themes/base/icons/style';
+
 body {
   font-family: "Avenir Next W00";
 }

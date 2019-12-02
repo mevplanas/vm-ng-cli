@@ -7,14 +7,15 @@ export const MAP_CONFIG = new InjectionToken('map.config');
 export const CONFIG = {
   defaultTitle: 'Vilniaus miesto interaktyvūs žemėlapiai',
   mapOptions: {
-    basemap: 'dark-gray',
-    extent: {
-      xmin: 555444.210800001,
-      ymin: 6051736.22,
-      xmax: 606967.016199999,
-      ymax: 6076388.28,
-      spatialReference: {
-        wkid: 3346
+    options: {
+      extent: {
+        xmin: 555444.210800001,
+        ymin: 6051736.22,
+        xmax: 606967.016199999,
+        ymax: 6076388.28,
+        spatialReference: {
+          wkid: 3346
+        }
       }
     },
     staticServices: {

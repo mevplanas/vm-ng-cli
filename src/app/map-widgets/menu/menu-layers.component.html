@@ -1,0 +1,14 @@
+<div class="menu-header">
+  <p>Temos sluoksniai:</p>
+<a (click)="closeToggle()" class="button close animate" title="Uždaryti">✕</a>
+</div>
+<perfect-scrollbar>
+ <div class="layers-wrapper">
+   <div id="layer-list" #list class="inner menu-nav-content" [ngClass]="{'hide-first-layer': hideFirstLayer}">
+   </div>
+   <div id="sub-layers-list">
+     <maps-v-menu-sub-layers (hideFirstLayer)="onHideFirstLayer($event)">
+     </maps-v-menu-sub-layers>
+   </div>
+ </div>
+</perfect-scrollbar>

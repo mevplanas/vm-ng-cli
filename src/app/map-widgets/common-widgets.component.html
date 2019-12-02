@@ -1,0 +1,9 @@
+<div id="widgets" *ngIf="view">
+    <ng-content></ng-content>
+    <maps-v-menu [view]="view"></maps-v-menu>
+    <!-- <scale-map [view]="view"></scale-map>
+    <compass-map [view]="view"></compass-map>
+    <credits-map></credits-map>
+    <locate-center-map></locate-center-map> -->
+    <maps-v-basemap-toggle [view]="view"></maps-v-basemap-toggle>
+  </div>

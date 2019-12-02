@@ -1,0 +1,19 @@
+<div>
+  <p>Pasirinkite įrankį:</p>
+  <a (click)="closeToggle()" class="button close animate" title="Uždaryti">✕</a>
+
+	<div id="tools-container">
+		<!-- temporarily removing print component due to Gp performance issues -->
+    <!-- <print-map></print-map> -->
+		<!-- <measure-map></measure-map>
+		<extract-3d></extract-3d> -->
+		<maps-v-profile-tool></maps-v-profile-tool>
+		<maps-v-swipe-tool *ngIf="currentTheme === 'projektai'"></maps-v-swipe-tool>
+		<!-- <extract-dwg [tool]="toolList.dwg" [title]="'Topografijos'" *ngIf="1"></extract-dwg>
+		<extract-dwg [tool]="toolList.dwgTech"  [title]="'Techninių pr.'" *ngIf="1"></extract-dwg> -->
+		<button class="tool-button">
+			<span class="esri-icon-link" aria-label="link icon"></span>
+			<a href="http://zemelapiai.vplanas.lt/Suliniu_korteles" target="blank" rel="noopener, noreferrer"> Įrenginių kortelės</a>
+		</button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div id="basemap-button" class="box-shadow">
+    <form>
+    <mat-select placeholder="Pagrindas" [(ngModel)]="selectedValue" name="basemap" (ngModelChange)="toggleBasemap(selectedValue)">
+      <mat-option *ngFor="let base of basemaps" [value]="base.id">
+        {{base.name}}
+      </mat-option>
+    </mat-select>
+    </form>
+</div>
