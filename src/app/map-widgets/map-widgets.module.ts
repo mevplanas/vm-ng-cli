@@ -22,6 +22,10 @@ import { SwipeToolContainerComponent } from './menu/tools/swipe/swipe-tool-conta
 import { SwipeContainerComponent } from './menu/tools/swipe/swipe-container.component';
 import { DwgContainerComponent } from './menu/tools/dwg/dwg-container.component';
 import { DwgComponent } from './menu/tools/dwg/dwg.component';
+import { MeasureContainerComponent } from './menu/tools/measure/measure-container.component';
+import { MeasureMapComponent } from './menu/tools/measure/measure-map.component';
+import { ExtractContainerComponent } from './menu/tools/threed-extract/extract-container.component';
+import { ExtractComponent } from './menu/tools/threed-extract/extract.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { DwgComponent } from './menu/tools/dwg/dwg.component';
     SwipeToolContainerComponent,
     SwipeContainerComponent,
     DwgContainerComponent,
-    DwgComponent
+    DwgComponent,
+    MeasureContainerComponent,
+    MeasureMapComponent,
+    ExtractContainerComponent,
+    ExtractComponent
   ],
   exports: [CommonWidgetsComponent],
   imports: [

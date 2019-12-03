@@ -5,8 +5,8 @@
 	<div id="tools-container">
 		<!-- temporarily removing print component due to Gp performance issues -->
     <!-- <print-map></print-map> -->
-		<!-- <measure-map></measure-map>
-		<extract-3d></extract-3d> -->
+		<maps-v-measure-map></maps-v-measure-map>
+		<maps-v-extract></maps-v-extract>
 		<maps-v-profile-tool></maps-v-profile-tool>
 		<maps-v-swipe-tool *ngIf="currentTheme === 'projektai'"></maps-v-swipe-tool>
 		<maps-v-dwg [tool]="toolList.dwg" [title]="'Topografijos'" *ngIf="1"></maps-v-dwg>

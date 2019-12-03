@@ -1,6 +1,6 @@
 <button id="measure-button" class="tool-button" (click)="toggleExtract()" [class.active]="toolActive">
-	<span [ngClass]="['svg-measure', icon]"></span>
-	{{ title }} traukimas
+	<span class="svg-measure esri-icon-feature-layer"></span>
+	3D traukimas
 </button>
 
 <div *ngIf="toolActive" id="extract-container" class="measure-tool buffer-tool">
@@ -18,7 +18,7 @@
 		<span title="Keiskite padėti pelės pagalba">- keiskite padėti</span>
 		</span>
 
-		<maps-v-dwg-container></maps-v-dwg-container>
+		<maps-v-extract-container></maps-v-extract-container>
 
 	</div>
 </div>
