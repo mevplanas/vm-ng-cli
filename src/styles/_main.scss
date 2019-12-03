@@ -3117,6 +3117,7 @@ ul>li .esri-layer-list__item-title {
     top: 10px;
     right: 10px;
     font-size: 20px;
+    position: absolute;
   }
 
   .button.close {
@@ -3171,6 +3172,7 @@ ul>li .esri-layer-list__item-title {
   .top-nav #menu-theme, .top-nav .cell {
     padding: 20px 20px;
     font-size: 18px;
+    box-sizing: border-box;
   }
 
   ul>li .esri-layer-list__item-title {

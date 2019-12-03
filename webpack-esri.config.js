@@ -21,6 +21,9 @@ module.exports = {
         "arcgis-js-api/layers/WebTileLayer"
       ]
   })],
+  externals: {
+    moment: 'moment'
+  },
   node: {
     process: false,
     global: false,

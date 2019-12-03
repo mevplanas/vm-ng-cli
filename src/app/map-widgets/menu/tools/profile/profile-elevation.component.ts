@@ -1,5 +1,5 @@
 // tslint:disable-next-line: max-line-length
-import { Component, ChangeDetectionStrategy, Input, ViewChild, ElementRef, ChangeDetectorRef, SimpleChanges, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ViewChild, ElementRef, ChangeDetectorRef, SimpleChanges, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
 import Graphic from 'arcgis-js-api/Graphic';
 import { MapService } from '../../../../core/services/map.service';
 import Chart from 'chart.js';
@@ -56,7 +56,7 @@ Chart.controllers.customChart = customChart;
   styleUrls: ['./profile-elevation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileElevationComponent implements AfterViewInit {
+export class ProfileElevationComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() data;
   @Input() fullscreen;
   @ViewChild('elevationChart', { static: false }) elevationChart: ElementRef;
