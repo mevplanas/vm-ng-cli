@@ -237,6 +237,7 @@ export class ProfileElevationComponent implements OnChanges, AfterViewInit, OnDe
 
     // do not init chart if fullscreen value has change,
     // run init only on first time
+    // tslint:disable-next-line: no-unused-expression
     this.data && !changes.fullscreen && this.initProfileElevationChart(this.data);
     this.cdr.detectChanges();
 

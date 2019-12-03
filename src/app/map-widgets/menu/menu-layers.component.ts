@@ -33,7 +33,7 @@ export class MenuLayersComponent implements OnInit, OnDestroy {
   toggleLayerVisibility(event) {
     this.isChecked = event;
     // tslint:disable-next-line: max-line-length
-    this.isChecked ? this.mapService.returnFeatureLayers().map(feature => { feature.visible = true }) : this.mapService.returnFeatureLayers().map(feature => { feature.visible = false; });
+    this.isChecked ? this.mapService.returnFeatureLayers().map(feature => { feature.visible = true; }) : this.mapService.returnFeatureLayers().map(feature => { feature.visible = false; });
   }
 
   closeToggle() {

@@ -37,11 +37,11 @@ export class MenuSubLayersComponent implements OnInit {
         const layer = map.findLayerById('allLayers');
         if (isActivated) {
           layer.listMode = 'show';
-          this.hideFirstLayer.emit(true)
+          this.hideFirstLayer.emit(true);
 
         } else {
           layer.listMode = 'hide';
-          this.hideFirstLayer.emit(false)
+          this.hideFirstLayer.emit(false);
         }
 
 
@@ -65,7 +65,7 @@ export class MenuSubLayersComponent implements OnInit {
       layer.sublayers.addMany(allLayerGroup);
 
     } else {
-      this.hideFirstLayer.emit(false)
+      this.hideFirstLayer.emit(false);
     }
 
     this.menuService.toggleSubListState();

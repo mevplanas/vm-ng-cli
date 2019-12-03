@@ -1982,6 +1982,7 @@ menu-map {
   width: 100%;
   max-width: 100%;
   font-size: 24px;
+  box-sizing: border-box;
 }
 
 .top-nav.mobile-active #menu-theme,
@@ -3172,7 +3173,6 @@ ul>li .esri-layer-list__item-title {
   .top-nav #menu-theme, .top-nav .cell {
     padding: 20px 20px;
     font-size: 18px;
-    box-sizing: border-box;
   }
 
   ul>li .esri-layer-list__item-title {

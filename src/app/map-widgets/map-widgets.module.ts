@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CommonWidgetsComponent } from './common-widgets.component';
 import { BasemapToggleComponent } from './widgets/basemap-toggle.component';
 import { CompassComponent } from './widgets/compass.component';
@@ -7,8 +6,6 @@ import { CreditsComponent } from './widgets/credits.component';
 import { LocateCenterComponent } from './widgets/locate-center.component';
 import { MaintenanceComponent } from './widgets/maintenance.component';
 import { ScaleLogoComponent } from './widgets/scale-logo.component';
-import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
 import { MenuLayersComponent } from './menu/menu-layers.component';
 import { MenuLegendComponent } from './menu/menu-legend.component';
@@ -23,6 +20,8 @@ import { ProfileToolComponent } from './menu/tools/profile/profile-tool.componen
 import { SwipeToolComponent } from './menu/tools/swipe/swipe-tool.component';
 import { SwipeToolContainerComponent } from './menu/tools/swipe/swipe-tool-container.component';
 import { SwipeContainerComponent } from './menu/tools/swipe/swipe-container.component';
+import { DwgContainerComponent } from './menu/tools/dwg/dwg-container.component';
+import { DwgComponent } from './menu/tools/dwg/dwg.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,9 @@ import { SwipeContainerComponent } from './menu/tools/swipe/swipe-container.comp
     ProfileToolComponent,
     SwipeToolComponent,
     SwipeToolContainerComponent,
-    SwipeContainerComponent
+    SwipeContainerComponent,
+    DwgContainerComponent,
+    DwgComponent
   ],
   exports: [CommonWidgetsComponent],
   imports: [
