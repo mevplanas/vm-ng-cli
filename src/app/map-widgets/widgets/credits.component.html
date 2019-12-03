@@ -1,1 +1,12 @@
-<p>credits works!</p>
+<div id="credits">
+  {{year | date: "y"}} m.
+  <span class="credits-content name">
+    | VMS interaktyvūs žemėlapiai </span> |
+  <a id='copyright'
+    [popper]="'© SĮ Vilniaus planas <br>© Vilniaus miesto savivaldybė<br>ORT5LT © Nacionalinė žemės tarnyba prie ŽŪM<br>© Valstybinė saugomų teritorijų tarnyba prie Aplinkos ministerijos<br>© Policijos departamentas prie Vidaus reikalų ministerijos'"
+    [popperTrigger]="'hover'" [popperPlacement]="'top'">
+    Autorinės teisės
+  </a>
+  <span class="credits-content company">|
+    <a href='http://www.vilniausplanas.lt/' target='_blank'>SĮ „Vilniaus planas“</a>
+  </span>

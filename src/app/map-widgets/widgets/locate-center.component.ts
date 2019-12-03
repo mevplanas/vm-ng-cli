@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MapService } from 'src/app/core/services/map.service';
 
 @Component({
   selector: 'maps-v-locate-center',
   templateUrl: './locate-center.component.html',
   styleUrls: ['./locate-center.component.scss']
 })
-export class LocateCenterComponent implements OnInit {
+export class LocateCenterComponent {
 
-  constructor() { }
+  constructor(private mapService: MapService) { };
 
-  ngOnInit() {
+  centerMap() {
+    this.mapService.centerMapWithCompass();
   }
 
 }

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./credits.component.scss']
 })
 export class CreditsComponent implements OnInit {
+  year = new Date();
 
   constructor() { }
 

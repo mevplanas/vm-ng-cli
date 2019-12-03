@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import ScaleBar from 'arcgis-js-api/widgets/ScaleBar';
+import MapView from 'arcgis-js-api/views/MapView';
 
 @Component({
   selector: 'maps-v-scale-logo',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scale-logo.component.scss']
 })
 export class ScaleLogoComponent implements OnInit {
-
-  constructor() { }
+  @Input() view: MapView;
 
   ngOnInit() {
+    const scaleBar = new ScaleBar({
+      view: this.view,
+      unit: 'dual'
+    });
+
+    this.view.ui.add(scaleBar, {
+      position: 'bottom-left'
+    });
   }
 
 }

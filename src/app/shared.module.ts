@@ -20,14 +20,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommonModule,
     FormsModule,
     RouterModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    NgxPopperModule.forRoot({})
   ],
   exports: [
     MaterialModule,
     CommonModule,
     FormsModule,
     RouterModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    NgxPopperModule
   ]
 })
 export class SharedModule {

@@ -1,0 +1,36 @@
+.center-map-icon {
+  position: absolute;
+  right: 132px;
+  top: 100px;
+  background: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 0;
+}
+
+.center-map-icon:hover {
+  cursor: pointer;
+}
+
+.esri-icon-locate {
+  position: relative;
+  top: 1px;
+}
+
+@media only screen and (min-width: 740px) {
+  .center-map-icon {
+    right: 186px;
+    top: 95px;
+  }
+
+}
+
+@media only screen and (min-width: 840px) {
+  .center-map-icon {
+    right: 168px;
+  }
+
+}
