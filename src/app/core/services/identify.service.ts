@@ -3,17 +3,19 @@ import { MapService } from './map.service';
 import { ShareButtonService } from './share-button.service';
 import IdentifyTask from 'arcgis-js-api/tasks/IdentifyTask';
 import IdentifyParameters from 'arcgis-js-api/tasks/support/IdentifyParameters';
-import LayerOptions from 'arcgis-js-api/popup/LayerOptions';
+// import LayerOptions from 'arcgis-js-api/popup/LayerOptions';
 import { DefaultService } from '../../themes/default/default.service';
 
 import all from 'dojo/promise/all';
+import { EsriEvent } from '../models/esri-event';
+type LayerOptions = 'top'|'visible'|'all';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IdentifyService {
   // dojo events
-  mapClickEvent: any;
+  mapClickEvent: EsriEvent;
 
   constructor(
     private mapService: MapService,

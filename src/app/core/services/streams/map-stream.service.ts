@@ -1,10 +1,15 @@
-import { Injectable, Renderer } from '@angular/core';
-import { StreamConfig } from 'src/app/core/models/stream-config.model';
-import { MapService } from 'src/app/core/services/map.service';
-import { StreamLayer } from 'arcgis-js-api/layers/StreamLayer';
-import { StreamLayerView } from 'arcgis-js-api/views/layers/StreamLayerView';
-import { LabelClass } from 'arcgis-js-api/layers/support/LabelClass';
+import { Injectable } from '@angular/core';
+import { StreamConfig } from '../../../core/models/stream-config.model';
+import { MapService } from '../../../core/services/map.service';
 import Map from 'arcgis-js-api/Map';
+import StreamLayer from 'arcgis-js-api/layers/StreamLayer';
+import StreamLayerView from 'arcgis-js-api/views/layers/StreamLayerView';
+import LabelClass from 'arcgis-js-api/layers/support/LabelClass';
+import Renderer from 'arcgis-js-api/renderers/Renderer';
+
+// Config for workers
+// Needs be set as stream services using webworkers
+import './esri-config';
 
 @Injectable({
   providedIn: 'root'

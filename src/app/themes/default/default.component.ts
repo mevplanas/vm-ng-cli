@@ -10,6 +10,7 @@ import { ShareButtonService } from '../../core/services/share-button.service';
 import { MetaService } from '../../core/services/meta.service';
 import { SearchService } from '../../core/services/search.service';
 import { IdentifyService } from '../../core/services/identify.service';
+import { EsriEvent } from 'src/app/core/models/esri-event';
 
 @Component({
   selector: 'maps-v-default',
@@ -21,7 +22,7 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
   queryUrlSubscription: Subscription;
 
   // dojo on map click event handler
-  identifyEvent: any;
+  identifyEvent: EsriEvent;
 
   queryParams: any;
   maintenanceOn = false;
@@ -107,6 +108,7 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
 
       // add default search widget
       this.search = this.searchService.defaultSearchWidget(view);
+      console.log('Searchwidget', this.search);
       view.ui.add(this.search, {
         position: 'top-left',
         index: 2
@@ -117,6 +119,7 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
 
       // init identification of default or sub layers on MapView
       this.identifyEvent = this.identify.identifyLayers(view);
+      console.log('this.identifyEvent', this.identifyEvent);
     }, err => { console.error('VP error: view loading issues ', err); });
   }
 

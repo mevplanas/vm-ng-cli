@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 
-import Search from 'arcgis-js-api/webdoc/applicationProperties/Search';
+import Search from 'arcgis-js-api/widgets/Search';
 import Locator from 'arcgis-js-api/tasks/Locator';
 import PictureMarkerSymbol from 'arcgis-js-api/symbols/PictureMarkerSymbol';
 import Collection from 'arcgis-js-api/core/Collection';
@@ -46,7 +46,7 @@ export class SearchService {
         placeholder: 'Vietos paieška',
         zoomScale: 6,
         resultSymbol: new PictureMarkerSymbol({
-          url: window.location.origin + '/app/img/map_marker.png',
+          url: window.location.origin + '/assets/img/map_marker.png',
           width: 28,
           height: 28,
           xoffset: 0,
@@ -83,7 +83,7 @@ export class SearchService {
         placeholder,
         zoomScale: 6,
         resultSymbol: new PictureMarkerSymbol({
-          url: window.location.origin + '/app/img/map_marker.png',
+          url: window.location.origin + '/assets/img/map_marker.png',
           width: 28,
           height: 28,
           xoffset: 0,
