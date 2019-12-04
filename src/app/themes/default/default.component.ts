@@ -99,7 +99,6 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
     if (snapshotUrl) {
       this.viewService.createThemeLayers(snapshotUrl, this.queryParams);
     };
-    console.log('D VIEW', this.view)
     this.view.when((view) => {
       this.viewService.createSubLayers(this.queryParams, this.map);
 
@@ -108,7 +107,6 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
 
       // add default search widget
       this.search = this.searchService.defaultSearchWidget(view);
-      console.log('Searchwidget', this.search);
       view.ui.add(this.search, {
         position: 'top-left',
         index: 2
@@ -119,7 +117,6 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
 
       // init identification of default or sub layers on MapView
       this.identifyEvent = this.identify.identifyLayers(view);
-      console.log('this.identifyEvent', this.identifyEvent);
     }, err => { console.error('VP error: view loading issues ', err); });
   }
 

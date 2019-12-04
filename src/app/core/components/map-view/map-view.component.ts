@@ -70,9 +70,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    {// create the map
+    // create the map
     const map = this.mapService.initMap();
-    console.log('MAIN MAP', map);
     // create view
     this.view = this.mapService.viewMap(map);
 
@@ -80,7 +79,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     this.initBasemaps(map);
 
     // set map ref
-    this.viewService.setmapElementRef(this.mainContainer);}
+    this.viewService.setmapElementRef(this.mainContainer);
   }
 
   ngAfterViewInit() {

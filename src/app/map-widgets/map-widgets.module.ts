@@ -26,7 +26,6 @@ import { MeasureContainerComponent } from './menu/tools/measure/measure-containe
 import { MeasureMapComponent } from './menu/tools/measure/measure-map.component';
 import { ExtractContainerComponent } from './menu/tools/threed-extract/extract-container.component';
 import { ExtractComponent } from './menu/tools/threed-extract/extract.component';
-import { SidebarBuildingsComponent } from './widgets/themes/buildings/sidebar-buildings.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +54,7 @@ import { SidebarBuildingsComponent } from './widgets/themes/buildings/sidebar-bu
     MeasureContainerComponent,
     MeasureMapComponent,
     ExtractContainerComponent,
-    ExtractComponent,
-    // SidebarBuildingsComponent
+    ExtractComponent
   ],
   exports: [CommonWidgetsComponent],
   imports: [

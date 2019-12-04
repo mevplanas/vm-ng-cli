@@ -19,13 +19,12 @@ export class RoutingService {
       if (!layer.custom && layer.production ) {
         const id = layer.id;
         this.router.config[1].children.push({ path: id, loadChildren: () => import('../../themes/default/default.module').then(m => {
-          console.log('Module', m);
+          // console.log('Module', m);
           return m.DefaultModule;
         })
         });
       }
     });
-    console.log('Router', this.router.config);
   }
 
 }

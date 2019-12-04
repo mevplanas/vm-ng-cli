@@ -85,7 +85,6 @@ export class MapService {
 
   initMap(options = {}): Map {
     this.map = new Map(options);
-    console.log('Map', this.map);
     return this.map;
   }
 
@@ -117,12 +116,9 @@ export class MapService {
     });
     this.watchLayers(view);
     this.view = view;
-    console.log('MapView', this.view, map, '---');
-    view.when(function(e){
-      console.log('The view loaded: ', e);
-
+    view.when((e) => {
       // All the resources in the MapView and the map have loaded. Now execute additional processes
-     }, function(error){
+     }, (error) => {
       // Use the errback function to handle when the view doesn't load properly
       console.log('The view\'s resources failed to load: ', error);
      });

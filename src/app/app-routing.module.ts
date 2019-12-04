@@ -6,7 +6,10 @@ import { MapViewComponent } from './core/components/map-view/map-view.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: '', component: MapViewComponent, children: [] }
+  // See RoutingService where we push all default childres routes from config file
+  { path: '', component: MapViewComponent, children: [
+    { path: 'pastatai', loadChildren: () => import('./themes/buildings/buildings.module').then(m => m.BuildingsModule ) }
+  ] }
 ];
 
 @NgModule({

@@ -1,0 +1,7 @@
+<maps-v-sidebar-buildings *ngIf="sidebarState" class="sidebar-common" [@sidebarState]="sidebarState"
+  [sidebarHeatContent]="heatContent" [mainSidebarState]="sidebarState">
+  <div class="sidebar-header">
+    <a href="javascript:void(0)" (click)="toggleSidebar()" class="button close animate build-close">✕</a>
+    <p class="build-p title">{{sidebarTitle}}</p>
+  </div>
+</maps-v-sidebar-buildings>
