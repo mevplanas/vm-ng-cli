@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Renderer2, Inject, OnDestroy } from '@angular/core';
+import {
+   Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Renderer2, Inject, OnDestroy, AfterViewInit
+  } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MapService } from 'src/app/core/services/map.service';
 import { MenuService } from 'src/app/core/services/menu/menu.service';
@@ -12,14 +14,37 @@ import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service'
 import { ViewService } from 'src/app/core/services/view.service';
 import { ShareButtonService } from 'src/app/core/services/share-button.service';
 import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'maps-v-buildings',
   templateUrl: './buildings.component.html',
   styleUrls: ['./buildings.component.scss'],
+  animations: [
+    trigger('sidebarState', [
+      state('s-close', style({
+        transform: 'translateX(326px)'
+      })),
+      state('s-open', style({
+        transform: 'translateX(0px)'
+      })),
+      transition('s-open => s-close', animate('100ms ease-in')),
+      transition('s-close => s-open', animate('100ms ease-out'))
+    ]),
+    trigger('mapState', [
+      state('s-close', style({
+        width: '100%'
+      })),
+      state('s-open', style({
+        width: 'calc(100% - 326px)'
+      })),
+      transition('s-open => s-close', animate('100ms ease-in')),
+      transition('s-close => s-open', animate('100ms ease-out'))
+    ])
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BuildingsComponent implements OnInit, OnDestroy {
+export class BuildingsComponent implements AfterViewInit, OnDestroy {
  @ViewChild('heatContent', { static: false }) heatContent;
 
  // execution of an Observable,
@@ -115,7 +140,7 @@ export class BuildingsComponent implements OnInit, OnDestroy {
    const rend = this.renderer2;
    this.buildingsTooltipService.addTooltip(view, this.view, mainContainerDom, rend);
 
-   this.cdr.detectChanges();
+  //  this.cdr.detectChanges();
 
    this.clickEvent = view.on('click', (event) => {
      // remove existing graphic
@@ -185,7 +210,7 @@ export class BuildingsComponent implements OnInit, OnDestroy {
    this.map.add(groupFeatureSelectionLayer);
  }
 
- ngOnInit() {
+ ngAfterViewInit() {
    // add basic meta data
    this.metaService.setMetaData();
 

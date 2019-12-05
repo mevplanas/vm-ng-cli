@@ -8,13 +8,16 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { RouterModule } from '@angular/router';
+import { RgbaColorDirective } from './map-widgets/widgets/themes/buildings/rgba-color.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RgbaColorDirective
+  ],
   imports: [
     MaterialModule,
     CommonModule,
@@ -29,7 +32,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     RouterModule,
     PerfectScrollbarModule,
-    NgxPopperModule
+    NgxPopperModule,
+    RgbaColorDirective
   ]
 })
 export class SharedModule {

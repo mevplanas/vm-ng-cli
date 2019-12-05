@@ -2,17 +2,30 @@ import { Component, OnChanges, Input, ViewChild, ElementRef, ChangeDetectorRef, 
 import { QuartersLegend } from './QuartersLegend';
 import { MapWidgetsService } from '../../map-widgets.service';
 import Chart from 'chart.js';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'maps-v-sidebar-buildings',
   templateUrl: './sidebar-buildings.component.html',
-  styleUrls: ['./sidebar-buildings.component.scss']
+  styleUrls: ['./sidebar-buildings.component.scss'],
+  animations: [
+    trigger('sidebarToggle', [
+      state('s-close', style({
+        transform: 'translate3d(326px,0,0)'
+      })),
+      state('s-open', style({
+        transform: 'translate3d(0,0,0)'
+      })),
+      transition('s-open => s-close', animate('100ms ease-in')),
+      transition('s-close => s-open', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class SidebarBuildingsComponent implements OnChanges {
   @Input() mainSidebarState;
   @Input() sidebarHeatContent;
-  @ViewChild('mChart', { static: true }) heatMonthsChart: ElementRef;
-  @ViewChild('cChart', { static: true }) heatClassesChart: ElementRef;
+  @ViewChild('mChart', { static: false }) heatMonthsChart: ElementRef;
+  @ViewChild('cChart', { static: false }) heatClassesChart: ElementRef;
 
   showCharts: boolean;
 
@@ -229,6 +242,7 @@ export class SidebarBuildingsComponent implements OnChanges {
         borderWidth: 2
       }]
     };
+    this.chartLabels = [];
     const dataset = data.datasets[0];
     this.heatingClassesData.classes.forEach((name) => {
       this.chartLabels.push(this.heatingClassesData.dataByClasses[name].label + ', viso pastatų: ');

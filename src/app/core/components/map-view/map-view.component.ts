@@ -78,11 +78,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     // initiate basemaps
     this.initBasemaps(map);
 
-    // set map ref
-    this.viewService.setmapElementRef(this.mainContainer);
+
   }
 
   ngAfterViewInit() {
+    // set map ref
+    this.viewService.setmapElementRef(this.mainContainer);
+
     this.mapService.setProgressBar(this.bar);
 
     this.view.when((view) => {
