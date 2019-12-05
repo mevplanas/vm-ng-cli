@@ -24,6 +24,7 @@
     "@esri/calcite-ui-icons": "^2.7.1",
     "angular-draggable": "^1.0.1",
     "baguettebox.js": "^1.11.0",
+    "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "countup.js-angular2": "^7.3.0",
     "lodash-es": "^4.17.15",

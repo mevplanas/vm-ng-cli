@@ -723,6 +723,8 @@ export class MapService {
 
   initLayerListWidget(view, container: HTMLElement) {
     const listWidget = new LayerList({
+      selectionEnabled: true,
+      statusIndicatorsVisible: true,
       // container: "layer-list",
       container,
       view,
