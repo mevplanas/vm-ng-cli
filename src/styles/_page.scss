@@ -66,11 +66,13 @@
 }
 
 .fa {
-  color: #fff;
-  color: rgba(154, 8, 8, 0.82);
+  position: relative;
+  top: 2px;
   padding: 2px;
   width: 11px;
   height: 20px;
+  color: #fff;
+  color: rgba(154, 8, 8, 0.82);
 }
 
 .button.close .fa {
@@ -677,7 +679,7 @@ label:hover:before {
 }
 
 .top-nav .fa {
-  font-size: 12px !important;
+  font-size: 14px !important;
   height: auto;
   margin-right: 4px;
 }

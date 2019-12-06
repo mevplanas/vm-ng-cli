@@ -5,6 +5,6 @@ $icomoon-font-path: "styles/themes/base/icons/fonts" !default;
 
 @import '~src/styles/themes/base/icons/style';
 
-body {
+body, button {
   font-family: "Avenir Next W00";
 }

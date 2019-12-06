@@ -723,8 +723,8 @@ export class MapService {
 
   initLayerListWidget(view, container: HTMLElement) {
     const listWidget = new LayerList({
-      selectionEnabled: true,
-      statusIndicatorsVisible: true,
+      // selectionEnabled: true,
+      // statusIndicatorsVisible: true,
       // container: "layer-list",
       container,
       view,
@@ -743,11 +743,11 @@ export class MapService {
         [],
         [{
           title: 'Padidinti nepermatomumą',
-          className: 'arcgis-js-api-icon-up',
+          className: 'esri-icon-up',
           id: 'increase-opacity'
         }, {
           title: 'Sumažinti nepermatomumą',
-          className: 'arcgis-js-api-icon-down',
+          className: 'esri-icon-down',
           id: 'decrease-opacity'
         }]
       ];
