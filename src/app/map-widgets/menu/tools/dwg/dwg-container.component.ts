@@ -6,9 +6,11 @@ import { MapService } from '../../../../core/services/map.service';
 import { DwgService } from './dwg.service';
 import PolygonDrawAction from 'arcgis-js-api/views/draw/PolygonDrawAction';
 import isEmpty from 'lodash-es/isempty';
+import { leaveEnterTransition } from 'src/app/core/animations/leaveEnter-transition';
 
 @Component({
   selector: 'maps-v-dwg-container',
+  animations: [leaveEnterTransition],
   templateUrl: './dwg-container.component.html',
   styleUrls: ['./dwg-container.component.scss']
 })

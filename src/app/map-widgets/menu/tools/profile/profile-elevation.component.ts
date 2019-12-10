@@ -233,6 +233,7 @@ export class ProfileElevationComponent implements OnChanges, AfterViewInit, OnDe
 
   ngOnChanges(changes: SimpleChanges) {
     this.removePointGraphic();
+    // tslint:disable-next-line: no-unused-expression
     this.profileChart && this.profileChart.clear();
 
     // do not init chart if fullscreen value has change,

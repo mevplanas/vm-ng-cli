@@ -58,6 +58,7 @@ a {
 
 button {
   border: none;
+  cursor: pointer;
 }
 
 button:focus {
@@ -219,7 +220,7 @@ a:focus, a:hover {
 }
 
 .esri-icon-dial:before {
-  content: "";
+  content: ""!important;
 }
 
 .esri-popup--is-docked-top-left.esri-popup__position-container .esri-popup__main-container, .esri-popup--is-docked-bottom-left.esri-popup__position-container .esri-popup__main-container {
@@ -661,7 +662,8 @@ li.list-active {
 }
 
 .esri-popup__button:hover {
-  background-color: rgba(154, 8, 8, 0.82) !important;
+  background-color: rgb(230, 28, 36) !important;
+  color: #fff !important;
 }
 
 .esri-widget,
@@ -820,8 +822,8 @@ li.list-active {
 
 .esri-ui-corner .esri-compass.esri-widget {
   position: relative;
-  top: 89px;
-  right: 83px;
+  top: 0;
+  right: 86px;
   width: 30px;
   height: 30px;
   font-size: 13px;
@@ -1068,7 +1070,8 @@ label {
   font-size: 16px;
 }
 
-.filter-detail svg, menu-map svg {
+.filter-detail svg,
+.map-tool svg {
   width: 18px;
   height: 18px;
   fill: red;
@@ -1519,15 +1522,16 @@ measure-map {
 }
 
 .esri-component.esri-zoom.esri-widget {
-  top: 55px;
-  right: 10px;
+  position: relative;
+  top: 44px;
+  right: 0;
 }
 
 #share-btn {
   z-index: 0;
   display: block;
   left: auto;
-  right: 52px;
+  right: 64px;
   top: 96px;
   padding: 5px;
   height: 20px;
@@ -1970,7 +1974,7 @@ menu-legend div {
   -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-menu-map {
+maps-v-measure-map {
   z-index: 12;
 }
 
@@ -2565,10 +2569,6 @@ body .dijitAlignClient {
   padding: 7px 7px;
 }
 
-.esri-popup [role="button"] .esri-popup__pagination-next-icon, .esri-popup [role="button"] .esri-popup__pagination-previous-icon {
-  color: #4c4c4c;
-}
-
 /*Layer List Widget*/
 .esri-layer-list__item--invisible-at-scale>.esri-layer-list__item-container .esri-layer-list__item-title {
   color: rgba(110, 110, 110, 0.4);
@@ -2942,7 +2942,7 @@ ul>li .esri-layer-list__item-title {
   }
 
   .esri-ui-corner .esri-compass.esri-widget {
-    top: 84px;
+    top: 0;
     right: 135px;
   }
 
@@ -2998,7 +2998,7 @@ ul>li .esri-layer-list__item-title {
   }
 
   #layers.sub-menu p, #legend.sub-menu p, #tools.sub-menu p, #open-data.sub-menu p {
-    padding: 10px 20px;
+    padding: 8px 20px;
   }
 
   #theme.sub-menu .menu-header p {

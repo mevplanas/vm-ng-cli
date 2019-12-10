@@ -6,9 +6,11 @@ import { MapService } from '../../../../core/services/map.service';
 import PolygonDrawAction from 'arcgis-js-api/views/draw/PolygonDrawAction';
 import { ExtractService } from './extract.service';
 import isEmpty from 'lodash-es/isempty';
+import { leaveEnterTransition } from 'src/app/core/animations/leaveEnter-transition';
 
 @Component({
   selector: 'maps-v-extract-container',
+  animations: [leaveEnterTransition],
   templateUrl: './extract-container.component.html',
   styleUrls: ['./extract-container.component.scss']
 })

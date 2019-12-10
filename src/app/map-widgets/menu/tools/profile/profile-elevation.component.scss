@@ -1,0 +1,29 @@
+.canvas-wrapper {
+  position: relative;
+  height:260px;
+  width: calc(100vw - 80px)
+}
+.canvas-wrapper.canvas-full {
+  height: calc(100vh - 150px);
+}
+:host-context(.map-projects) .canvas-wrapper {
+  width: calc(100vw - 385px)
+}
+p {
+ text-align: right;
+ position: relative;
+ bottom: 2px;
+ font-size: 12px;
+ padding-right: 20px;
+ overflow: hidden;
+}
+@media only screen and (max-width: 1382px) {
+  .canvas-wrapper {
+     position: relative;
+     height: 160px;
+     width: calc(100vw - 60px);
+   }
+   .canvas-wrapper.canvas-full {
+     height: calc(100vh - 110px);
+   }
+}
