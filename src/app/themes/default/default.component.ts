@@ -108,7 +108,7 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
       // add default search widget
       this.search = this.searchService.defaultSearchWidget(view);
       view.ui.add(this.search, {
-        position: 'top-left',
+        position: 'top-right',
         index: 2
       });
 

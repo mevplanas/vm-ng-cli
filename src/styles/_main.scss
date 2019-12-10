@@ -274,12 +274,6 @@ esri-map esri-search .arcgisSearch {
   padding: 1em;
 }
 
-.esri-ui-top-left {
-  top: 0;
-  right: 0;
-  left: auto;
-}
-
 .esri-popup-renderer span {
   font-size: 14px;
   font-weight: bold;
@@ -819,7 +813,13 @@ li.list-active {
   position: relative;
 }
 
+.esri-ui-top-right {
+  top: 20px ;
+  right: 20px;
+}
+
 .esri-ui-corner .esri-compass.esri-widget {
+  position: relative;
   top: 89px;
   right: 83px;
   width: 30px;
@@ -940,7 +940,6 @@ label.label-style.active:after {
 
 .esri-search .esri-search__form {
   margin-top: 0;
-  padding-left: 4px;
 }
 
 .form-control {
@@ -963,7 +962,7 @@ label.label-style.active:after {
   border-left: none;
 }
 
-.esri-ui-top-left .esri-search {
+.esri-ui-top-right .esri-search {
   position: absolute;
   right: 0;
   /* left: 64px; */
@@ -1000,12 +999,12 @@ label.label-style.active:after {
   box-sizing: content-box;
 }
 
-.esri-ui-top-left {
-  top: 10px;
-  right: 10px;
-  left: auto;
-  width: 100%;
-}
+// .esri-ui-top-left {
+//   top: 10px;
+//   right: 10px;
+//   left: auto;
+//   width: 100%;
+// }
 
 .esri-search {
   width: 240px;
@@ -1015,13 +1014,13 @@ label.label-style.active:after {
   align-items: center;
 }
 
-.esri-ui-corner .esri-widget {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  right: 20px;
-  float: right;
-  position: relative;
-  z-index: 1;
-}
+// .esri-ui-corner .esri-widget {
+//   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+//   right: 20px;
+//   float: right;
+//   position: relative;
+//   z-index: 1;
+// }
 
 .esri-zoom .esri-widget-button:first-child {
   margin-bottom: 0;
@@ -1370,28 +1369,54 @@ measure-map {
   color: #fff;
 }
 
-.esri-scale-bar__line {
-  height: 1px;
+.esri-scale-bar__line--bottom {
+  border-top: 1px solid #323232 !important;
 }
 
 .esri-scale-bar__line--top:before, .esri-scale-bar__line--top:after, .esri-scale-bar__line--bottom:before, .esri-scale-bar__line--bottom:after {
-  width: 1px;
+  width: 1px !important;
+  border-right: 1px solid #323232 !important;
+}
+
+.esri-scale-bar__line--top {
+  bottom: 0 !important;
+  border-bottom: 1px solid #323232 !important;
 }
 
 .esri-scale-bar__line--bottom:after {
-  height: 7px;
-  top: 1px;
-  right: 0;
+  top: -1px !important;
 }
 
-.esri-scale-bar__line--bottom {
-  top: -1px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+.esri-scale-bar__line--top:after {
+  bottom: -1px !important;
 }
 
-.esri-scale-bar {
-  width: 0;
-  left: 45px;
+// .esri-scale-bar__line {
+//   height: 1px;
+// }
+
+// .esri-scale-bar__line--top:before, .esri-scale-bar__line--top:after, .esri-scale-bar__line--bottom:before, .esri-scale-bar__line--bottom:after {
+//   width: 1px;
+// }
+
+// .esri-scale-bar__line--bottom:after {
+//   height: 7px;
+//   top: 1px;
+//   right: 0;
+// }
+
+// .esri-scale-bar__line--bottom {
+//   top: -1px;
+//   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+// }
+
+// .esri-scale-bar {
+//   width: 0;
+//   left: 45px;
+// }
+
+.esri-ui-corner .esri-scale-bar.esri-widget {
+  box-shadow: none !important;
 }
 
 .esri-ui-bottom-left {
@@ -1404,12 +1429,12 @@ measure-map {
   right: 0;
 }
 
-.esri-ui-corner {
-  display: flex;
-  display: -webkit-flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
+// .esri-ui-corner {
+//   display: flex;
+//   display: -webkit-flex;
+//   -webkit-flex-wrap: wrap;
+//   flex-wrap: wrap;
+// }
 
 /*show default attribution*/
 .esri-ui-manual-container>.esri-component {
@@ -1495,7 +1520,7 @@ measure-map {
 
 .esri-component.esri-zoom.esri-widget {
   top: 55px;
-  right: -20px;
+  right: 10px;
 }
 
 #share-btn {
@@ -1592,6 +1617,7 @@ measure-map {
 }
 
 #url-link {
+  width: 100%;
   border-bottom: 1px solid #e61c24;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2837,10 +2863,6 @@ ul>li .esri-layer-list__item-title {
   z-index: 0;
 }
 
-.esri-ui-top-left .esri-search {
-  height: 42px;
-}
-
 .esri-ui-corner .esri-search.esri-widget {
   z-index: 1;
 }
@@ -3124,7 +3146,7 @@ ul>li .esri-layer-list__item-title {
   }
 
   .esri-ui-bottom-left {
-    bottom: 70px;
+    bottom: 30px;
     left: 30px;
   }
 
@@ -3265,7 +3287,7 @@ ul>li .esri-layer-list__item-title {
     width: inherit;
   }
 
-  .esri-ui-top-left .esri-search {
+  .esri-ui-top-right .esri-search {
     position: absolute;
     right: 48px;
     top: 0;
@@ -3494,10 +3516,6 @@ ul>li .esri-layer-list__item-title {
 }
 
 @media only screen and (min-width: 1024px) {
-  .esri-ui-bottom-left {
-    bottom: 70px;
-  }
-
   #vilnius-logo {
     bottom: 20px;
   }

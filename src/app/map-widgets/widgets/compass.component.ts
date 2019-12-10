@@ -18,7 +18,7 @@ export class CompassComponent implements OnInit {
     });
 
     // adds the compass to the top left corner of the MapView
-    this.view.ui.add(compass, 'top-left');
+    this.view.ui.add(compass, 'top-right');
   }
 
 }

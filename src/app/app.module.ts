@@ -9,12 +9,14 @@ import { MAP_CONFIG, CONFIG } from './core/config/map.config';
 import { HomeComponent } from './core/components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MapWidgetsModule } from './map-widgets/map-widgets.module';
+import { HideElementsDirective } from './core/directives/hide-elements.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapViewComponent,
     HomeComponent,
+    HideElementsDirective,
   ],
   imports: [
     BrowserModule,

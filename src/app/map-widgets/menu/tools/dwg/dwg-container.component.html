@@ -29,7 +29,7 @@
 							</div>
 						</div>
 
-						<div hideElement *ngIf="this.extractService.calculatedUnits > extractService.limits" @leaveEnterTransition class="alert alert-danger alert-margin-top" role="alert">
+						<div mapsVHideElements *ngIf="this.extractService.calculatedUnits > extractService.limits" @leaveEnterTransition class="alert alert-danger alert-margin-top" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>

@@ -115,6 +115,7 @@ export class MapService {
       extent: this.config.mapOptions.options.extent
     });
     this.watchLayers(view);
+    this.changeDefaultUIView(view);
     this.view = view;
     view.when((e) => {
       // All the resources in the MapView and the map have loaded. Now execute additional processes
@@ -123,6 +124,10 @@ export class MapService {
       console.log('The view\'s resources failed to load: ', error);
      });
     return this.view;
+  }
+
+  changeDefaultUIView(view: MapView) {
+    view.ui.move('zoom', 'top-right');
   }
 
   watchLayers(view) {
