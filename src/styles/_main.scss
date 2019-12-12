@@ -818,13 +818,13 @@ li.list-active {
 }
 
 .esri-ui-top-right {
-  top: 20px ;
-  right: 20px;
+  top: 10px ;
+  right: 10px;
 }
 
 .esri-ui-corner .esri-compass.esri-widget {
   position: relative;
-  top: 0;
+  top: 3px;
   right: 86px;
   width: 30px;
   height: 30px;
@@ -1362,19 +1362,17 @@ measure-map {
 #vilnius-logo {
   display: none;
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 20px;
 }
 
 #vilnius-logo img {
   width: 40px;
 }
-
-.esri-scale-bar__label {
-  text-shadow: 0 0 1px #343131, 0 0 1px #343131, 0 0 1px #343131;
-  color: #fff;
+.esri-ui-bottom-left {
+  bottom: 10px;
+  left: 10px;
 }
-
 .esri-scale-bar__line--bottom {
   border-top: 1px solid #323232 !important;
 }
@@ -1423,12 +1421,6 @@ measure-map {
 
 .esri-ui-corner .esri-scale-bar.esri-widget {
   box-shadow: none !important;
-}
-
-.esri-ui-bottom-left {
-  bottom: 60px;
-  left: -20px;
-  z-index: 0;
 }
 
 .esri-ui-corner .esri-widget {
@@ -1534,8 +1526,8 @@ measure-map {
   z-index: 0;
   display: block;
   left: auto;
-  right: 64px;
-  top: 96px;
+  right: 54px;
+  top: 87px;
   padding: 5px;
   height: 20px;
   background-color: #e61d25;
@@ -1683,14 +1675,6 @@ measure-map {
   color: #252525;
   padding: 20px 50px;
   margin-bottom: 40px;
-}
-
-.esri-ui-bottom-left, .esri-ui-bottom-right {
-  flex-flow: row nowrap;
-  align-items: flex-end;
-  display: -webkit-box;
-  -webkit-box-pack: start;
-  -webkit-box-align: start;
 }
 
 #inner-help-container h2, h3 {
@@ -2917,6 +2901,22 @@ ul>li .esri-layer-list__item-title {
   #inner-share-container {
     margin: -120px auto;
   }
+
+  .esri-ui-top-right {
+    top: 20px ;
+    right: 20px;
+  }
+
+  .esri-ui-bottom-left {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #share-btn {
+    right: 62px;
+    top: 96px;
+  }
+
 }
 
 @media only screen and (min-width: 360px) {
@@ -3149,11 +3149,6 @@ ul>li .esri-layer-list__item-title {
 
   #inner-share-container {
     margin: -120px auto;
-  }
-
-  .esri-ui-bottom-left {
-    bottom: 30px;
-    left: 30px;
   }
 
   #vilnius-logo {
@@ -3523,7 +3518,7 @@ ul>li .esri-layer-list__item-title {
 
 @media only screen and (min-width: 1024px) {
   #vilnius-logo {
-    bottom: 20px;
+    bottom: 15px;
   }
 
   .col-sm-3.themes-row p {
