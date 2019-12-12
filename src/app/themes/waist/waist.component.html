@@ -1,0 +1,12 @@
+<div class="total-stats">
+  <ul class="flex-container">
+    <li class="flex-item"><p class="waist-stat__alert"><span class="waist-stat__name">Vakar išvežta konteinerių</span>
+    <span class="stat" [countUp]="totalStatistics.totalLifts">0</span> iš <span class="stat" [countUp]="5959">0</span>
+    </p></li>
+    <li class="flex-item"><p><span class="waist-stat__name">Bendras kiekis atliekų</span>
+    <span class="stat" [countUp]="totalStatistics.weight" [options]="{decimalPlaces: 2}">0</span> kg
+    </p>
+    </li>
+  </ul>
+</div>
+<maps-v-waist-stats *ngIf="selectedFeatureAttributes" [content]="selectedFeatureAttributes"></maps-v-waist-stats>
