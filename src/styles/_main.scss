@@ -1369,12 +1369,10 @@ measure-map {
 #vilnius-logo img {
   width: 40px;
 }
-
-.esri-scale-bar__label {
-  text-shadow: 0 0 1px #343131, 0 0 1px #343131, 0 0 1px #343131;
-  color: #fff;
+.esri-ui-bottom-left {
+  bottom: 25px;
+  left: 25px;
 }
-
 .esri-scale-bar__line--bottom {
   border-top: 1px solid #323232 !important;
 }
@@ -1423,12 +1421,6 @@ measure-map {
 
 .esri-ui-corner .esri-scale-bar.esri-widget {
   box-shadow: none !important;
-}
-
-.esri-ui-bottom-left {
-  bottom: 60px;
-  left: -20px;
-  z-index: 0;
 }
 
 .esri-ui-corner .esri-widget {
@@ -1683,14 +1675,6 @@ measure-map {
   color: #252525;
   padding: 20px 50px;
   margin-bottom: 40px;
-}
-
-.esri-ui-bottom-left, .esri-ui-bottom-right {
-  flex-flow: row nowrap;
-  align-items: flex-end;
-  display: -webkit-box;
-  -webkit-box-pack: start;
-  -webkit-box-align: start;
 }
 
 #inner-help-container h2, h3 {
@@ -3152,8 +3136,9 @@ ul>li .esri-layer-list__item-title {
   }
 
   .esri-ui-bottom-left {
-    bottom: 30px;
-    left: 30px;
+    position: absolute;
+    bottom: 25px;
+    left: 70px;
   }
 
   #vilnius-logo {
