@@ -80,7 +80,7 @@ export class MenuService {
     const map = this.mapService.returnMap();
     // UPDATE hide dom instead
     if (this.subListModeOff && this.subLayersActive) {
-      view.then(() => {
+      view.when(() => {
         this.subListWidget = this.mapService.initSubLayerListWidget(view, map);
       });
       this.subListModeOff = false;

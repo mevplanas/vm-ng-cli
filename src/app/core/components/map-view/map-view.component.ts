@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2, Inject } from '@angular/core';
 
-import watchUtils from 'arcgis-js-api/core/watchUtils';
+import * as watchUtils from 'arcgis-js-api/core/watchUtils';
 
 import { MapService } from '../../services/map.service';
 import { ViewService } from '../../services/view.service';
@@ -89,7 +89,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     this.view.when((view) => {
       watchUtils.whenTrue(view, 'updating', () => {
-        console.log('UPDATING');
         if (this.bar && this.bar.nativeElement) {
           this.rend.setStyle(this.bar.nativeElement, 'display', 'block');
 

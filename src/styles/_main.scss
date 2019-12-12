@@ -747,6 +747,8 @@ li.list-active {
   color: #53575d;
   border: 1px solid #caced4;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #measure-container .measure .esri-widget.esri-widget-button.active {
@@ -1070,6 +1072,7 @@ label {
   font-size: 16px;
 }
 
+.measure svg,
 .filter-detail svg,
 .map-tool svg {
   width: 18px;
@@ -1914,6 +1917,9 @@ menu-legend div {
 }
 
 .menu-themes-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   padding-right: 20px;
 }
 
@@ -3661,10 +3667,6 @@ ul>li .esri-layer-list__item-title {
     max-height: -webkit-calc(100% - 38px);
     max-height: -o-calc(100% - 38px);
     max-height: calc(100% - 38px);
-  }
-
-  #layers.sub-menu p, #legend.sub-menu p, #tools.sub-menu p, #open-data.sub-menu p {
-    padding: 10px;
   }
 
   .menu-themes-content {

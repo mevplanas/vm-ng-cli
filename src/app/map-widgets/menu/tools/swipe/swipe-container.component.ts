@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as watchUtils from 'arcgis-js-api/core/watchUtils';
 
 @Component({
   selector: 'maps-v-swipe-container',

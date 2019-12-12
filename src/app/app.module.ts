@@ -10,6 +10,7 @@ import { HomeComponent } from './core/components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MapWidgetsModule } from './map-widgets/map-widgets.module';
 import { HideElementsDirective } from './core/directives/hide-elements.directive';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HideElementsDirective } from './core/directives/hide-elements.directive
     HideElementsDirective,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
