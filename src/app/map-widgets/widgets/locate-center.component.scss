@@ -1,7 +1,7 @@
 .center-map-icon {
   position: absolute;
-  right: 145px;
-  top: 94px;
+  right: 135px;
+  top: 86px;
   background: #fff;
   border-radius: 50%;
   width: 30px;
@@ -21,7 +21,13 @@
   left: 1px;
   font-size: 20px;
 }
+@media only screen and (min-width: 420px) {
 
+  .center-map-icon {
+    right: 145px;
+    top: 96px;
+  }
+}
 @media only screen and (min-width: 740px) {
   .center-map-icon {
     right: 194px;

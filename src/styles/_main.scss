@@ -818,13 +818,13 @@ li.list-active {
 }
 
 .esri-ui-top-right {
-  top: 20px ;
-  right: 20px;
+  top: 10px ;
+  right: 10px;
 }
 
 .esri-ui-corner .esri-compass.esri-widget {
   position: relative;
-  top: 0;
+  top: 3px;
   right: 86px;
   width: 30px;
   height: 30px;
@@ -1362,7 +1362,7 @@ measure-map {
 #vilnius-logo {
   display: none;
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 20px;
 }
 
@@ -1370,8 +1370,8 @@ measure-map {
   width: 40px;
 }
 .esri-ui-bottom-left {
-  bottom: 25px;
-  left: 25px;
+  bottom: 10px;
+  left: 10px;
 }
 .esri-scale-bar__line--bottom {
   border-top: 1px solid #323232 !important;
@@ -1526,8 +1526,8 @@ measure-map {
   z-index: 0;
   display: block;
   left: auto;
-  right: 64px;
-  top: 96px;
+  right: 54px;
+  top: 87px;
   padding: 5px;
   height: 20px;
   background-color: #e61d25;
@@ -2901,6 +2901,22 @@ ul>li .esri-layer-list__item-title {
   #inner-share-container {
     margin: -120px auto;
   }
+
+  .esri-ui-top-right {
+    top: 20px ;
+    right: 20px;
+  }
+
+  .esri-ui-bottom-left {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #share-btn {
+    right: 62px;
+    top: 96px;
+  }
+
 }
 
 @media only screen and (min-width: 360px) {
@@ -3133,12 +3149,6 @@ ul>li .esri-layer-list__item-title {
 
   #inner-share-container {
     margin: -120px auto;
-  }
-
-  .esri-ui-bottom-left {
-    position: absolute;
-    bottom: 25px;
-    left: 70px;
   }
 
   #vilnius-logo {
@@ -3508,7 +3518,7 @@ ul>li .esri-layer-list__item-title {
 
 @media only screen and (min-width: 1024px) {
   #vilnius-logo {
-    bottom: 20px;
+    bottom: 15px;
   }
 
   .col-sm-3.themes-row p {
