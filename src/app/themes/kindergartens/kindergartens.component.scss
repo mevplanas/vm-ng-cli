@@ -1,0 +1,64 @@
+.sidebar-common {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 1;
+}
+.sidebar-common p {
+  padding: 6px 20px;
+  line-height: 34px;
+  letter-spacing: -.4px;
+}
+.button.close.build-close {
+  padding: 14px 16px;
+  height: 46px;
+  width: 50px;
+  overflow-y: hidden;
+}
+.button.close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #A80C0D;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 0;
+}
+.kind.button.close {
+  top: 140px;
+  left: -50px;
+}
+.button.close .fa {
+    padding: 0;
+}
+.buldings-tooltip {
+  max-width: 120px;
+  width: auto;
+  position: absolute;
+  background-color:  #fff;
+  border-radius: 2px;
+  font-size: 14px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  color: #000;
+  line-height: 1.4;
+}
+@media screen and (max-width: 420px) {
+  .sidebar-common {
+    z-index: 7;
+  }
+  .kind.button.close {
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    padding: 13px 16px;
+  }
+  .kind.s-close.button.close {
+    top: 140px;
+    left: -50px;
+  }
+}

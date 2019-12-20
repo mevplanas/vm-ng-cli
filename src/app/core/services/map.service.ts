@@ -26,32 +26,74 @@ import QueryTask from 'arcgis-js-api/tasks/QueryTask';
 import Extent from 'arcgis-js-api/geometry/Extent';
 import Query from 'arcgis-js-api/tasks/support/Query';
 
-interface ParamI {
-  x: number;
-  y: number;
-  zoom?: number;
-}
+// Config for workers
+// Needs be set as stream services using webworkers
+// See https://github.com/esri/arcgis-webpack-plugin#usage
+import esriConfig from 'arcgis-js-api/config';
+import { Params } from '@angular/router';
+
+const DEFAULT_WORKER_URL = 'https://js.arcgis.com/4.13/';
+const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
+
+esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;
+esriConfig.workers.loaderConfig = {
+  baseUrl: `${DEFAULT_WORKER_URL}dojo`,
+  packages: [
+    { name: 'esri', location: `${DEFAULT_WORKER_URL}esri` },
+    { name: 'dojo', location: `${DEFAULT_WORKER_URL}dojo` },
+    { name: 'dojox', location: `${DEFAULT_WORKER_URL}dojox` },
+    { name: 'dstore', location: `${DEFAULT_WORKER_URL}dstore` },
+    { name: 'moment', location: `${DEFAULT_WORKER_URL}moment` },
+    { name: '@dojo', location: `${DEFAULT_WORKER_URL}@dojo` },
+    {
+      name: 'cldrjs',
+      location: `${DEFAULT_WORKER_URL}cldrjs`,
+      main: 'dist/cldr'
+    },
+    {
+      name: 'globalize',
+      location: `${DEFAULT_WORKER_URL}globalize`,
+      main: 'dist/globalize'
+    },
+    {
+      name: 'maquette',
+      location: `${DEFAULT_WORKER_URL}maquette`,
+      main: 'dist/maquette.umd'
+    },
+    {
+      name: 'maquette-css-transitions',
+      location: `${DEFAULT_WORKER_URL}maquette-css-transitions`,
+      main: 'dist/maquette-css-transitions.umd'
+    },
+    {
+      name: 'maquette-jsx',
+      location: `${DEFAULT_WORKER_URL}maquette-jsx`,
+      main: 'dist/maquette-jsx.umd'
+    },
+    { name: 'tslib', location: `${DEFAULT_WORKER_URL}tslib`, main: 'tslib' }
+  ]
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
   // selection graphic layer array:
-  private allGraphicLayers: any[] = [];
-  private featureLayerArr: any[];
+  private allGraphicLayers: GraphicsLayer[] = [];
+  private featureLayerArr: FeatureLayer[];
 
   // suspend layers toggle (e.g. suspend layers while drawing with measure tools)
   suspendedIdentitication = false;
-  private view: any;
+  private view: MapView;
 
   // visible layers
   visibleLayers: {};
   visibleSubLayerNumber = 0;
   private queryParams: any;
-  map: any;
+  map: Map;
 
   // dynamic projects layer
-  projectsDynamicLayer: any;
+  projectsDynamicLayer: MapImageLayer;
 
   // Observable  source
   private layersStatusObs = new Subject();
@@ -61,7 +103,7 @@ export class MapService {
   // array of raster layers Name
   rasterLayers = [];
   // all layers for "allLayers"
-  subDynamicLayers: any;
+  subDynamicLayers: MapImageLayer;
 
   // caching sublayer request
   sublayersJsonCache$: Observable<any>;
@@ -176,20 +218,20 @@ export class MapService {
   }
 
   // update view
-  updateView(view) {
+  updateView(view: MapView): MapView {
     return this.view = view;
   }
 
-  getView() {
+  getView(): MapView {
     return this.view;
   }
 
   // update map
-  updateMap(map) {
+  updateMap(map): Map {
     return this.map = map;
   }
 
-  returnMap() {
+  returnMap(): Map {
     return this.map;
   }
 
@@ -607,8 +649,8 @@ export class MapService {
   // selection results to graphic by creating new graphic layer
   selectionResultsToGraphic(map: any, results: any, maxScale: any, minScale: any, layer: any, number: number) {
     // let graphicLayer
-    let graphicLayer;
-    let graphic;
+    let graphicLayer: GraphicsLayer;
+    let graphic: Graphic;
     graphicLayer = this.initGraphicLayer(number, { max: maxScale, min: minScale });
     this.allGraphicLayers.push(graphicLayer);
     graphic = this.initSelectionGraphic(results, { max: maxScale, min: minScale }, graphicLayer);
@@ -616,7 +658,7 @@ export class MapService {
     map.add(graphicLayer);
   }
 
-  goTo(view: any, { x, y, zoom = 0 }: ParamI): void {
+  goTo(view: any, { x, y, zoom = 0 }: Params): void {
     // center to point and add spatialReference
     const coordinates = [x ? x : view.center.x, y ? y : view.center.y];
     const zoomLevel = zoom ? zoom : view.zoom;
@@ -642,7 +684,7 @@ export class MapService {
   }
 
   // on map component OnInit center and zoom based on URL query params
-  centerZoom(view: any, { x, y, zoom }: ParamI, snapshotUrl = null) {
+  centerZoom(view: any, { x, y, zoom }: Params, snapshotUrl = null) {
     let coordinates = [x ? x : view.center.x, y ? y : view.center.y];
     view.zoom = zoom ? zoom : view.zoom;
 
