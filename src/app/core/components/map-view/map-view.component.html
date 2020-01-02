@@ -23,7 +23,7 @@
 					</div>
 				</div>
 
-        <div id="share-btn" class="animate" (click)="shareToggle(); true; $event.stopPropagation();">
+        <div id="share-btn" #shareButton class="animate" (click)="shareToggle(); true; $event.stopPropagation();">
           <span class="share-btn-title">dalintis</span>
 					<svg>
 						<image class="svg" xlink:href="assets/img/svg/share.svg" x="0" y="0" height="18px" width="18px"/>

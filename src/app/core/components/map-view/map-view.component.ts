@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2, Inject } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2, Inject, ViewEncapsulation } from '@angular/core';
 
 import * as watchUtils from 'arcgis-js-api/core/watchUtils';
 
@@ -12,11 +12,13 @@ import { MAP_CONFIG } from '../../config/map.config';
 @Component({
   selector: 'maps-v-map-view',
   templateUrl: './map-view.component.html',
-  styleUrls: ['./map-view.component.scss']
+  styleUrls: ['./map-view.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
   @ViewChild('mainContainer', { static: false }) mainContainer: ElementRef;
   @ViewChild('bar', { read: ElementRef, static: false }) private bar: ElementRef;
+  @ViewChild('shareButton', { static: false }) private shareButton: ElementRef;
 
   queryParams = { basemap: null };
   maintenanceOn = false;
@@ -95,6 +97,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           this.addLoading(view);
         }
       });
+    });
+
+    // add share button to view UI
+    this.view.ui.add(this.shareButton.nativeElement, {
+      position: 'top-right'
     });
   }
 

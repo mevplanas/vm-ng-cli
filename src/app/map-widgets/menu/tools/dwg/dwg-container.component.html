@@ -21,7 +21,7 @@
 									<p>Apibrėžti</p>
 								</button>
 							</div>
-							<div *ngIf="this.extractService.graphic" id="draw-polygon" class="esri-widget-button esri-widget esri-interactive">
+							<div *ngIf="extractService.graphic" id="draw-polygon" class="esri-widget-button esri-widget esri-interactive">
 								<button @leaveEnterTransition
 									mat-button (click)="resetTools()" class="esri-icon-clear esri-icon-erase">
 									<p>Valyti</p>
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 
-						<div mapsVHideElements *ngIf="this.extractService.calculatedUnits > extractService.limits" @leaveEnterTransition class="alert alert-danger alert-margin-top" role="alert">
+						<div mapsVHideElements *ngIf="extractService.calculatedUnits > extractService.limits" @leaveEnterTransition class="alert alert-danger alert-margin-top" role="alert">
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -56,7 +56,7 @@
 						</div>
 
 						<div *ngIf="!extracDisabled" class="alert alert-success button-margin-top" role="alert">
-							Duomenys yra ruošiami, įprastai tai gali trukti iki {{ this.extractService.time }} minučių.
+							Duomenys yra ruošiami, įprastai tai gali trukti iki {{ extractService.time }} minučių.
 						</div>
 						<mat-progress-bar *ngIf="!extracDisabled" class="vp-mat-bar" mode="determinate" [value]="progressBarValue"></mat-progress-bar>
 						<!-- <mat-spinner *ngIf="!extracDisabled" diameter="50"></mat-spinner> -->

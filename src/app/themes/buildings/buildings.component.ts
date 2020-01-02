@@ -9,12 +9,18 @@ import { BuildingsTooltipService } from './buildings-tooltip.service';
 import { BuildingsLayersService } from './buildings-layers.service';
 import { SearchService } from 'src/app/core/services/search.service';
 import { IdentifyService } from 'src/app/core/services/identify.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service';
 import { ViewService } from 'src/app/core/services/view.service';
 import { ShareButtonService } from 'src/app/core/services/share-button.service';
 import { MAP_CONFIG } from 'src/app/core/config/map.config';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { EsriEvent } from 'src/app/core/models/esri-event';
+
+
+import Map from 'arcgis-js-api/Map';
+import MapView from 'arcgis-js-api/views/MapView';
+import Search from 'arcgis-js-api/widgets/Search';
 
 @Component({
   selector: 'maps-v-buildings',
@@ -52,13 +58,13 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
  queryUrlSubscription: Subscription;
 
  // dojo on map click event handler
- identifyEvent: any;
+ identifyEvent: EsriEvent;
 
- queryParams: any;
+ queryParams: Params;
 
- map: any;
- view: any;
- search: any;
+ map: Map;
+ view: MapView;
+ search: Search;
  mobile: boolean;
  featureLayers: any[];
 
@@ -189,7 +195,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
            const params = {
              x: features.results[0].graphic.geometry.centroid.x,
              y: features.results[0].graphic.geometry.centroid.y,
-             zoom: 4
+             zoom: 5
            };
 
            this.mapService.goTo(view, params);
@@ -215,7 +221,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
    this.metaService.setMetaData();
 
    this.queryUrlSubscription = this.activatedRoute.queryParams.subscribe(
-     (queryParam: any) => {
+     (queryParam: Params) => {
        return this.queryParams = queryParam;
      }
    );
@@ -247,7 +253,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
      this.buildingsLayersService.addCustomLayers(this.queryParams, snapshotUrl);
    }
 
-   this.view.when((view) => {
+   this.view.when((view: MapView) => {
      this.viewService.createSubLayers(this.queryParams, this.map);
 
      // if query paremeteters are defined get zoom and center
@@ -256,7 +262,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
      // add default search widget
      this.search = this.searchService.defaultSearchWidget(view);
      view.ui.add(this.search, {
-       position: 'top-left',
+       position: 'top-right',
        index: 2
      });
 

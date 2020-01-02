@@ -17,11 +17,11 @@ export class SearchService {
 
   constructor(@Inject(MAP_CONFIG) private config) {}
 
-  returnGartensSearchWidget() {
+  returnGartensSearchWidget(): Search {
     return this.gartensSearchWidget;
   }
 
-  defaultSearchWidget(view: MapView, url = this.config.search.locator) {
+  defaultSearchWidget(view: MapView, url = this.config.search.locator): Search {
     return new Search({
       view,
       includeDefaultSources: false,
@@ -56,7 +56,7 @@ export class SearchService {
     });
   }
 
-  kindergartensSearchWidget(view: any, container: string, placeholder = 'Adreso Paieška') {
+  kindergartensSearchWidget(view: any, container: string, placeholder = 'Adreso Paieška'): Search {
     this.gartensSearchWidget = new Search({
       autoSelect: false, // autoselect to false, selection will be based on only button click event
       view,

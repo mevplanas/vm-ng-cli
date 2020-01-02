@@ -1,0 +1,15 @@
+.gallery-item {
+  margin: 0;
+  max-width: 33%;
+  max-height: 100px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 2px;
+}
+@media only screen and (min-width: 1319px) {
+  .gallery-item {
+    max-width: 32%;
+  }
+}

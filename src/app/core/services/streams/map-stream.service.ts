@@ -12,7 +12,7 @@ import Renderer from 'arcgis-js-api/renderers/Renderer';
 // See https://github.com/esri/arcgis-webpack-plugin#usage
 import esriConfig from 'arcgis-js-api/config';
 
-const DEFAULT_WORKER_URL = 'https://js.arcgis.com/4.13/';
+const DEFAULT_WORKER_URL = 'https://maps.vilnius.lt/arcgis_js_api/library/4.13/';
 const DEFAULT_LOADER_URL = `${DEFAULT_WORKER_URL}dojo/dojo-lite.js`;
 
 esriConfig.workers.loaderUrl = DEFAULT_LOADER_URL;

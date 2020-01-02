@@ -30,6 +30,7 @@ body {
 
 .container-fluid, .container-fluid .row {
   height: 100%;
+  overflow: hidden;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -223,7 +224,7 @@ a:focus, a:hover {
   content: ""!important;
 }
 
-.esri-popup--is-docked-top-left.esri-popup__position-container .esri-popup__main-container, .esri-popup--is-docked-bottom-left.esri-popup__position-container .esri-popup__main-container {
+.esri-popup--is-docked-top-left.esri-popup__position-container .esri-popup__main-container, .esri-component.esri-popup.esri-popup--is-docked.esri-popup--is-docked-bottom-left .esri-popup__main-container {
   margin: 20px 10px;
   margin-bottom: 20px;
 }
@@ -244,6 +245,8 @@ a:focus, a:hover {
 .esri-widget h1, .esri-widget h2, .esri-widget h3, .esri-widget h4, .esri-widget h5, .esri-widget h6 {
   font-weight: 600;
   margin: 0;
+  font-size: 15px;
+  border-top: 1px solid #e9e9e9;
 }
 
 .esri-view-height-less-than-medium .esri-popup__main-container {
@@ -275,7 +278,7 @@ esri-map esri-search .arcgisSearch {
   padding: 1em;
 }
 
-.esri-popup-renderer span {
+.esri-popup__content span {
   font-size: 14px;
   font-weight: bold;
   line-height: 1.6;
@@ -504,6 +507,8 @@ li.list-active {
 }
 
 .filter-theme .checkbox .label-style, .filter-year .checkbox .label-style {
+  position: relative;
+  padding: 2px 10px;
   line-height: 1.8;
   border: 2px solid #53565d;
 }
@@ -602,6 +607,10 @@ li.list-active {
 
 .baguetteBox-button, .baguetteBox-button:focus, .baguetteBox-button:hover {
   background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.baguetteBox-button svg g {
+  stroke: #e61c24;
 }
 
 #baguetteBox-overlay {
@@ -853,6 +862,7 @@ li.list-active {
 .checkbox label {
   font-size: 14px;
   color: #888787;
+  cursor: pointer;
 }
 
 #layers .checkbox label {
@@ -861,8 +871,8 @@ li.list-active {
 }
 
 .checkbox, .radio {
-  margin-top: 6px;
-}
+  margin-top: 10px;
+  margin-bottom: 10px;}
 
 #layers .checkbox {
   margin-bottom: 0;
@@ -872,6 +882,7 @@ ul.projects-list {
   background-color: #fff;
   border-top: 1px solid #d2d2d2;
   position: relative;
+  margin-top: 0;
   margin-bottom: 0;
   padding-bottom: 20px;
 }
@@ -888,17 +899,17 @@ ul.projects-list p {
 
 h3 {
   margin-top: 0;
-  padding: 15px 15px;
+  padding: 12px 20px;
   margin-bottom: 10px;
-  background-color: #e61c24;
+  background-color: #f3f3f3;
   color: #fff;
-  font-size: 16px;
 }
 
 .sub-layers-container h3 {
   padding: 13px 10px 13px 60px;
   margin-bottom: 0;
   font-size: 16px;
+  background-color: #e61c24;
 }
 
 label.label-style.active {
@@ -938,10 +949,6 @@ label.label-style.active:after {
   display: inherit;
 }
 
-.radio {
-  margin-left: 15px;
-}
-
 .esri-search .esri-search__form {
   margin-top: 0;
 }
@@ -956,10 +963,6 @@ label.label-style.active:after {
   top: 0 !important;
   bottom: 0 !important;
   right: 0 !important;
-}
-
-.esri-search .esri-search__input-container {
-  border-right: solid 1px rgba(50, 50, 50, 0.25);
 }
 
 .esri-search .esri-search__submit-button {
@@ -1120,7 +1123,6 @@ label {
 }
 
 .esri-legend__layer-cell--symbols {
-  width: 15px;
   text-align: left;
   padding-left: 10px;
   padding-right: 10px;
@@ -1202,7 +1204,7 @@ measure-map {
   border-radius: 10px;
   position: absolute;
   right: 10px;
-  margin-top: 1px;
+  margin-top: 4px;
 }
 
 .filters-badge {
@@ -1362,8 +1364,8 @@ measure-map {
 #vilnius-logo {
   display: none;
   position: absolute;
-  bottom: 15px;
-  left: 20px;
+  box-shadow: none;
+  top: -2px;
 }
 
 #vilnius-logo img {
@@ -1375,6 +1377,7 @@ measure-map {
 }
 .esri-scale-bar__line--bottom {
   border-top: 1px solid #323232 !important;
+  top: 0;
 }
 
 .esri-scale-bar__line--top:before, .esri-scale-bar__line--top:after, .esri-scale-bar__line--bottom:before, .esri-scale-bar__line--bottom:after {
@@ -1385,6 +1388,7 @@ measure-map {
 .esri-scale-bar__line--top {
   bottom: 0 !important;
   border-bottom: 1px solid #323232 !important;
+  height: 16px;
 }
 
 .esri-scale-bar__line--bottom:after {
@@ -1445,6 +1449,7 @@ measure-map {
 }
 
 .form-control {
+  width: 100%;
   height: 44px;
   padding: 6px 15px;
   background-color: #fff;
@@ -1458,7 +1463,6 @@ measure-map {
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  /* -webkit-appearance: none; */
 }
 
 /*.form-control, output {
@@ -1526,8 +1530,8 @@ measure-map {
   z-index: 0;
   display: block;
   left: auto;
-  right: 54px;
-  top: 87px;
+  right: 44px;
+  top: 76px;
   padding: 5px;
   height: 20px;
   background-color: #e61d25;
@@ -2910,11 +2914,13 @@ ul>li .esri-layer-list__item-title {
   .esri-ui-bottom-left {
     bottom: 20px;
     left: 20px;
+
   }
 
   #share-btn {
-    right: 62px;
-    top: 96px;
+    right: 44px;
+    top: 76px;
+    width: auto;
   }
 
 }
@@ -2942,7 +2948,7 @@ ul>li .esri-layer-list__item-title {
     max-width: 440px;
   }
 
-  .esri-popup--is-docked-bottom-left.esri-popup__position-container .esri-popup__main-container {
+  .esri-component.esri-popup.esri-popup--is-docked.esri-popup--is-docked-bottom-left .esri-popup__main-container {
     max-height: 100%;
     margin-bottom: 0;
   }
@@ -2984,7 +2990,7 @@ ul>li .esri-layer-list__item-title {
   }
 
   .projects-theme {
-    margin-top: 8px;
+    margin-top: 4px;
   }
 
   #theme.sub-menu, #layers.sub-menu, #legend.sub-menu, #tools.sub-menu, #open-data.sub-menu {
@@ -3145,14 +3151,12 @@ ul>li .esri-layer-list__item-title {
   #building-help {
     display: block;
     left: inherit;
+    top: 20px;
+    right: 610px;
   }
 
   #inner-share-container {
     margin: -120px auto;
-  }
-
-  #vilnius-logo {
-    display: block;
   }
 
   .esri-scale-bar.esri-widget {
@@ -3254,7 +3258,7 @@ ul>li .esri-layer-list__item-title {
 }
 
 @media only screen and (min-width: 840px) {
-  .esri-popup--is-docked-top-left.esri-popup__position-container .esri-popup__main-container, .esri-popup--is-docked-bottom-left.esri-popup__position-container .esri-popup__main-container {
+  .esri-popup--is-docked-top-left.esri-popup__position-container .esri-popup__main-container, .esri-component.esri-popup.esri-popup--is-docked.esri-popup--is-docked-bottom-left .esri-popup__main-container {
     max-height: 100%;
   }
 
@@ -3304,6 +3308,10 @@ ul>li .esri-layer-list__item-title {
     align-items: center;
   }
 
+  #vilnius-logo {
+    display: block;
+  }
+
   .mobile-menu {
     margin: 0;
   }
@@ -3348,10 +3356,6 @@ ul>li .esri-layer-list__item-title {
 
   .esri-popup__action-text {
     display: none
-  }
-
-  .esri-icon-zoom-in-magnifying-glass {
-    width: 80px;
   }
 
   .esri-zoom .esri-widget-button:first-child {
@@ -3500,8 +3504,9 @@ ul>li .esri-layer-list__item-title {
   }
 
   #share-btn {
-    right: 20px;
-    top: 95px;
+    right: 0;
+    top: 72px;
+    width: 70px;
   }
 
   #inner-help-container {
@@ -3517,10 +3522,6 @@ ul>li .esri-layer-list__item-title {
 }
 
 @media only screen and (min-width: 1024px) {
-  #vilnius-logo {
-    bottom: 15px;
-  }
-
   .col-sm-3.themes-row p {
     font-size: 17px;
   }
@@ -3559,6 +3560,7 @@ ul>li .esri-layer-list__item-title {
     background: -ms-linear-gradient(top, #ed1c24 0%, #c1272d 100%);
     background: linear-gradient(to bottom, #ed1c24 0%, #c1272d 100%);
     background: #E61C24;
+    max-height: 40px;
   }
 
   #layers:target~.modes #menu-layers, #legend:target~.modes #menu-legend, #tools:target~.modes #menu-tools, #open-data:target~.modes #menu-open-data {
@@ -3584,7 +3586,7 @@ ul>li .esri-layer-list__item-title {
     display: none;
   }
 
-  .esri-popup--is-docked-bottom-left.esri-popup__position-container .esri-popup__main-container {
+  .esri-component.esri-popup.esri-popup--is-docked.esri-popup--is-docked-bottom-left .esri-popup__main-container {
     margin: 20px;
   }
 
@@ -3620,7 +3622,7 @@ ul>li .esri-layer-list__item-title {
   }
 
   #tools.sub-menu {
-    width: 477px;
+    width: 480px;
     max-height: 300px;
     bottom: auto;
     overflow: inherit;
@@ -3820,6 +3822,9 @@ ul>li .esri-layer-list__item-title {
 @media only screen and (min-width: 740px) {
   .themes-page-logo span {
     margin-right: 130px;
+  }
+  #share-btn {
+    width: 70px;
   }
 }
 

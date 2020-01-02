@@ -1,0 +1,20 @@
+.swipe-msg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+	width: 0;
+	background: rgba(25, 28, 26, 0.67);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	color: #fff;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+img {
+  position: absolute;
+}

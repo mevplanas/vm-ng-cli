@@ -11,6 +11,9 @@ import { MetaService } from '../../core/services/meta.service';
 import { SearchService } from '../../core/services/search.service';
 import { IdentifyService } from '../../core/services/identify.service';
 import { EsriEvent } from 'src/app/core/models/esri-event';
+import MapView from 'arcgis-js-api/views/MapView';
+import Map from 'arcgis-js-api/Map';
+import Search from 'arcgis-js-api/widgets/Search';
 
 @Component({
   selector: 'maps-v-default',
@@ -27,9 +30,9 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
   queryParams: any;
   maintenanceOn = false;
 
-  map: any;
-  view: any;
-  search: any;
+  map: Map;
+  view: MapView;
+  search: Search;
   featureLayers: any[];
 
   helpContainerActive = false;

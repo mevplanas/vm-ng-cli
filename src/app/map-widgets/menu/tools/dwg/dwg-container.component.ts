@@ -39,7 +39,7 @@ export class DwgContainerComponent implements OnInit, OnDestroy {
   constructor(
     private mapService: MapService,
     private cdr: ChangeDetectorRef,
-    private extractService: DwgService,
+    public extractService: DwgService,
   ) { }
 
   ngOnInit() {

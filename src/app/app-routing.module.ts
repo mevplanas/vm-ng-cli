@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   // See RoutingService where we push all default childres routes from config file
   { path: '', component: MapViewComponent, children: [
-    { path: 'pastatai', loadChildren: () => import('./themes/buildings/buildings.module').then(m => m.BuildingsModule ) }
+    { path: 'pastatai', loadChildren: () => import('./themes/buildings/buildings.module').then(m => m.BuildingsModule ) },
+    { path: 'projektai', loadChildren: () => import('./themes/projects/projects.module').then(m => m.ProjectsModule ) }
   ] }
 ];
 

@@ -26,6 +26,8 @@ import { MeasureContainerComponent } from './menu/tools/measure/measure-containe
 import { MeasureMapComponent } from './menu/tools/measure/measure-map.component';
 import { ExtractContainerComponent } from './menu/tools/threed-extract/extract-container.component';
 import { ExtractComponent } from './menu/tools/threed-extract/extract.component';
+import { MenuLayersProjectsComponent } from './menu/themes/projects/menu-layers-projects.component';
+import { MenuLegendProjectsComponent } from './menu/themes/projects/menu-legend-projects.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { ExtractComponent } from './menu/tools/threed-extract/extract.component'
     MeasureContainerComponent,
     MeasureMapComponent,
     ExtractContainerComponent,
-    ExtractComponent
+    ExtractComponent,
+    MenuLayersProjectsComponent,
+    MenuLegendProjectsComponent
   ],
   exports: [CommonWidgetsComponent],
   imports: [

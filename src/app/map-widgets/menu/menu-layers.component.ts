@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject, OnDestroy, AfterViewInit } from '@angular/core';
 import { MapService } from '../../core/services/map.service';
 import { MenuService } from '../../core/services/menu/menu.service';
 import { ToolsNameService } from './tools-name.service';
@@ -10,7 +10,7 @@ import { Utils } from '../../core/services/utils/utils';
   templateUrl: './menu-layers.component.html',
   styleUrls: ['./menu-layers.component.scss']
 })
-export class MenuLayersComponent implements OnInit, OnDestroy {
+export class MenuLayersComponent implements AfterViewInit, OnDestroy {
   @ViewChild('list', { static: false }) list: ElementRef;
   name: string;
   isChecked = true;
@@ -40,7 +40,7 @@ export class MenuLayersComponent implements OnInit, OnDestroy {
     window.location.hash = '#';
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     // add temp delay to get layers change to Observable
     setTimeout(() => {
       this.name = this.config.themes.itvTheme.name;

@@ -7,8 +7,10 @@ $icomoon-font-path: "styles/themes/base/icons/fonts" !default;
 
 @import '~src/styles/themes/base/icons/style';
 
-body, button,
-.mat-stepper-horizontal, .mat-stepper-vertical {
+body, button, input,
+.mat-stepper-horizontal, .mat-stepper-vertical,
+.mat-radio-button,
+.label-projects {
   font-family: "Avenir Next W00";
 }
 

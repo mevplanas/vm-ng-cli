@@ -1,0 +1,15 @@
+<div>
+  <p>Temos sluoksniai:</p>
+  <a (click)="closeToggle()" class="button close animate" title="Uždaryti">✕</a>
+  <div id="layer-list" class="inner">
+    <div class="layer-group" *ngIf="name">
+      <p>{{name}}:</p>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" [ngModel]="isChecked" value id="projects" (ngModelChange)="toggleLayerVisibility($event)">
+      <label class="animate" [ngClass]="isChecked ? 'esri-icon-visible': 'esri-icon-non-visible'" for="projects">
+       <span class="label-projects">Investiciniai projektai</span>
+      </label>
+    </div>
+  </div>
+</div>

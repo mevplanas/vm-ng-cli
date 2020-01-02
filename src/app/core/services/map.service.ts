@@ -1,4 +1,4 @@
-import { Injectable, NgZone, Inject, Renderer } from '@angular/core';
+import { Injectable, NgZone, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, Subject } from 'rxjs';
@@ -25,12 +25,9 @@ import Basemap from 'arcgis-js-api/Basemap';
 import QueryTask from 'arcgis-js-api/tasks/QueryTask';
 import Extent from 'arcgis-js-api/geometry/Extent';
 import Query from 'arcgis-js-api/tasks/support/Query';
+import Renderer from 'arcgis-js-api/renderers/Renderer';
 
-interface ParamI {
-  x: number;
-  y: number;
-  zoom?: number;
-}
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -346,9 +343,9 @@ export class MapService {
     });
   }
 
-  initCommonFeatureLayer(layer: string, opacity = 1, id: number, title, symbolType): FeatureLayer {
+  initCommonFeatureLayer(url: string, opacity = 1, id: number, title, symbolType): FeatureLayer {
     return new FeatureLayer({
-      url: layer,
+      url,
       id: 'feature-' + id,
       outFields: ['*'],
       opacity,
@@ -616,7 +613,7 @@ export class MapService {
     map.add(graphicLayer);
   }
 
-  goTo(view: any, { x, y, zoom = 0 }: ParamI): void {
+  goTo(view: any, { x, y, zoom = 0 }: Params): void {
     // center to point and add spatialReference
     const coordinates = [x ? x : view.center.x, y ? y : view.center.y];
     const zoomLevel = zoom ? zoom : view.zoom;
@@ -642,7 +639,7 @@ export class MapService {
   }
 
   // on map component OnInit center and zoom based on URL query params
-  centerZoom(view: any, { x, y, zoom }: ParamI, snapshotUrl = null) {
+  centerZoom(view: any, { x, y, zoom }: Params, snapshotUrl = null) {
     let coordinates = [x ? x : view.center.x, y ? y : view.center.y];
     view.zoom = zoom ? zoom : view.zoom;
 

@@ -5,7 +5,8 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/close";
 
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~src/styles/material';
 
 @import '~arcgis-js-api/themes/light/main.css';
 @import '~arcgis-js-api/themes/light/view.css';
@@ -24,3 +25,6 @@
 
 @import '~src/styles/fonts';
 
+
+// Gallery styling for projects theme
+@import '~baguettebox.js/src/baguetteBox';
