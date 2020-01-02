@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -18,10 +19,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   exports: [
     MatSelectModule,
@@ -29,10 +31,11 @@ import { MatRadioModule } from '@angular/material/radio';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   providers: [{ provide: MATERIAL_SANITY_CHECKS, useValue: false }]
 })

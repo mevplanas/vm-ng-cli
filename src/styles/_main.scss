@@ -953,6 +953,15 @@ label.label-style.active:after {
   margin-top: 0;
 }
 
+.kindergartens .gartens-search  .esri-search__container .esri-widget--button,
+.kindergartens .sidebar-container .gartens-search .esri-search__submit-button {
+  padding: 22px;
+}
+
+.kindergartens .gartens-search .esri-search__container .esri-icon-close:before {
+  color: #f40c0f !important;
+}
+
 .form-control {
   padding-right: 48px;
 }
@@ -3473,10 +3482,6 @@ ul>li .esri-layer-list__item-title {
   }*/
   label {
     font-weight: normal;
-  }
-
-  .input-group label {
-    width: 100%;
   }
 
   .input-group label:hover {

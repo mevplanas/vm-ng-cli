@@ -34,21 +34,21 @@ import { Params } from '@angular/router';
 })
 export class MapService {
   // selection graphic layer array:
-  private allGraphicLayers: any[] = [];
-  private featureLayerArr: any[];
+  private allGraphicLayers: GraphicsLayer[] = [];
+  private featureLayerArr: FeatureLayer[];
 
   // suspend layers toggle (e.g. suspend layers while drawing with measure tools)
   suspendedIdentitication = false;
-  private view: any;
+  private view: MapView;
 
   // visible layers
   visibleLayers: {};
   visibleSubLayerNumber = 0;
   private queryParams: any;
-  map: any;
+  map: Map;
 
   // dynamic projects layer
-  projectsDynamicLayer: any;
+  projectsDynamicLayer: MapImageLayer;
 
   // Observable  source
   private layersStatusObs = new Subject();
@@ -58,7 +58,7 @@ export class MapService {
   // array of raster layers Name
   rasterLayers = [];
   // all layers for "allLayers"
-  subDynamicLayers: any;
+  subDynamicLayers: MapImageLayer;
 
   // caching sublayer request
   sublayersJsonCache$: Observable<any>;
@@ -173,20 +173,20 @@ export class MapService {
   }
 
   // update view
-  updateView(view) {
+  updateView(view: MapView): MapView {
     return this.view = view;
   }
 
-  getView() {
+  getView(): MapView {
     return this.view;
   }
 
   // update map
-  updateMap(map) {
+  updateMap(map): Map {
     return this.map = map;
   }
 
-  returnMap() {
+  returnMap(): Map {
     return this.map;
   }
 
@@ -604,8 +604,8 @@ export class MapService {
   // selection results to graphic by creating new graphic layer
   selectionResultsToGraphic(map: any, results: any, maxScale: any, minScale: any, layer: any, number: number) {
     // let graphicLayer
-    let graphicLayer;
-    let graphic;
+    let graphicLayer: GraphicsLayer;
+    let graphic: Graphic;
     graphicLayer = this.initGraphicLayer(number, { max: maxScale, min: minScale });
     this.allGraphicLayers.push(graphicLayer);
     graphic = this.initSelectionGraphic(results, { max: maxScale, min: minScale }, graphicLayer);

@@ -1,13 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { MapService } from 'src/app/core/services/map.service';
-import { HeatingDataValues, MAP_CONFIG } from 'src/app/core/config/map.config';
+import { HeatingDataValues, MAP_CONFIG } from '../../core/config/map.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapWidgetsService {
 
-  constructor(private mapService: MapService, @Inject(MAP_CONFIG) private config
+  constructor(
+    private mapService: MapService,
+    @Inject(MAP_CONFIG) private config
   ) { }
 
   // fetch heating data based on building id
@@ -147,7 +149,7 @@ export class MapWidgetsService {
       }
     });
     if (ids.length > 0) {
-      featureLayer.queryExtent().then(function(results) {
+      featureLayer.queryExtent().then((results) => {
         // go to the extent of the results satisfying the query
         const extent = results.extent;
         const width = ((extent.xmax - extent.xmin) / view.width) * 450;
@@ -161,6 +163,7 @@ export class MapWidgetsService {
           buffer.geometry.extent.xmax = buffer.geometry.extent.xmax + width;
           buffer.geometry.extent.ymax = buffer.geometry.extent.ymax + width;
         }
+
         // if result is only one object (width === 0)
         if (!width) {
           view.goTo({
