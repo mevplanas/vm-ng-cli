@@ -144,7 +144,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
    // add tooltip on mouse move
    // TODO remove event on destroy
    const rend = this.renderer2;
-   this.buildingsTooltipService.addTooltip(view, this.view, mainContainerDom, rend);
+   this.buildingsTooltipService.addTooltip(view, mainContainerDom, rend);
 
   //  this.cdr.detectChanges();
 

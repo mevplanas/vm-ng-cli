@@ -1,120 +1,85 @@
 import { Injectable, ElementRef, Renderer2 } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { EsriEvent } from 'src/app/core/models/esri-event';
+import MapView from 'arcgis-js-api/views/MapView';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildingsTooltipService {
- // dojo events
- tooltipEvent: any;
- // tooltip dom
- tooltip: any;
- unsubsribe$: Subject<void>;
- parentNode: ElementRef;
- private clear = false;
- constructor() { }
+  parentNode: ElementRef;
+  tooltipEvent: EsriEvent;
 
- addTooltip(view, mapView, element: ElementRef, rend: Renderer2) {
-   const tooltip = rend.createElement('div');
-   this.tooltip = tooltip;
-   this.parentNode = element;
-   this.clear = false;
-   rend.appendChild(element.nativeElement, this.tooltip);
-   const requestAnimationFrame = window.requestAnimationFrame.bind(window);
-   let stop = true;
+  // tooltip dom
+  tooltip: any;
 
-   this.unsubsribe$ = new Subject<void>();
+  constructor() { }
 
-   fromEvent(document, 'pointermove').pipe(
-     takeUntil(this.unsubsribe$)
-   ).subscribe((e) => {
-     if ((e.target as Element).tagName === 'CANVAS') {
-       stop = false;
-     } else {
-       stop = true;
-     }
-   });
+  addTooltip(view: MapView, element: ElementRef, rend: Renderer2) {
+    const tooltip = rend.createElement('div');
+    this.tooltip = tooltip;
+    this.parentNode = element;
 
-   this.tooltipEvent = mapView.on('pointer-move', (event) => {
-     const screenPoint = {
-       // hitTest BUG, as browser fails to execute 'elementFromPoint' on 'Document'
-       // FIXME bug with x coordinate value, when menu icon is in view, temp solution: change x value from 0 to any value
-       x: event.x ? event.x : 600,
-       y: event.y
-     };
+    this.tooltipEvent = view.on('pointer-move', (event) => {
+      const screenPoint = {
+        // hitTest BUG, as browser fails to execute 'elementFromPoint' on 'Document'
+        // FIXME bug with x coordinate value, when menu icon is in view, temp solution: change x value from 0 to any value
+        x: event.x ? event.x : 600,
+        y: event.y
+      };
 
-     if (tooltip.textContent.length > 0) {
-       tooltip.textContent = '';
-       rend.setStyle(tooltip, 'padding', '0px');
-     }
+      view.hitTest(screenPoint)
+        .then((response) => {
+          // TEMP use address atribute for temp condition by showing only tooltip on buildings layer
+          if (response.results.length > 0 && response.results[0].graphic.attributes.ADRESAS) {
+            const newRsponse = response.results[0].graphic.attributes.ADRESAS;
+            if (response !== newRsponse) {
+              drawTooltip(response, event);
+            }
+            response = newRsponse;
+          } else {
+            tooltip.textContent = '';
+            rend.setStyle(tooltip, 'display', 'none');
+            rend.setProperty(document.body.style, 'cursor', 'auto');          }
+        });
+    });
 
-     view.hitTest(screenPoint)
-       .then((response) => {
-         // TEMP use address atribute for temp condition by showing only tooltip on buildings layer
-         if (response.results.length > 0 && response.results[0].graphic.attributes.ADRESAS) {
-           const newRsponse = response.results[0].graphic.attributes.ADRESAS;
-           stop = false;
-           if (response !== newRsponse) {
-             drawTooltip(response, event);
-           }
+    function drawTooltip(response, event) {
+      rend.setProperty(document.body.style, 'cursor', 'pointer');
 
-           response = newRsponse;
-         } else {
-           stop = true;
-           rend.setProperty(document.body.style, 'cursor', 'auto');
-         }
-       });
-   });
+      // tslint:disable-next-line: max-line-length
+      const top = (event.y + 100) < window.innerHeight ? window.innerHeight - event.y + 10 + 'px' : window.innerHeight - event.y - 30 + 'px';
+      const left = (event.x + 100) < window.innerWidth ? event.x + 20 + 'px' : (event.x - 110) + 'px';
+      // using 2 feature layers with different attributes
+      const values = response.results[0] ? response.results[0] : response.results[1];
+      // don't add tooltip in case of stop variable
+      // or in case we hit graphic object with no attributes
+      if (values.graphic.attributes) {
+        // using 2 feature layers with different attributes
+        const textMsg = values.graphic.attributes.ADRESAS ? `${values.graphic.attributes.ADRESAS}` : `${values.graphic.attributes.Pavad}`;
 
-   const self = this;
+        tooltip.textContent = textMsg;
+        rend.appendChild(element.nativeElement, tooltip);        rend.addClass(tooltip, 'buldings-tooltip');
+        rend.setStyle(tooltip, 'transform', 'translate3d(' + left + ', -' + top + ', 0)');
+        rend.setStyle(tooltip, 'padding', '5px');
+        rend.setStyle(tooltip, 'display', 'block');
+      } else {
+        tooltip.textContent = '';
+        rend.setStyle(tooltip, 'display', 'none');
+        rend.setProperty(document.body.style, 'cursor', 'auto');
+      }
 
-   function drawTooltip(response, event) {
-     function draw() {
-       rend.setProperty(document.body.style, 'cursor', 'pointer');
+    }
 
-       if (stop || self.clear) {
-         rend.setStyle(tooltip, 'display', 'none');
-         return;
-       }
+  }
 
-       // tslint:disable-next-line: max-line-length
-       const top = (event.y + 100) < window.innerHeight ? window.innerHeight - event.y + 10 + 'px' : window.innerHeight - event.y - 30 + 'px';
-       const left = (event.x + 100) < window.innerWidth ? event.x + 20 + 'px' : (event.x - 110) + 'px';
-       // using 2 feature layers with different attributes
-       const values = response.results[0] ? response.results[0] : response.results[1];
-       // don't add tooltip in case of stop variable
-       // or in case we hit graphic object with no attributes
-       if (!stop && values.graphic.attributes) {
-         // using 2 feature layers with different attributes
-         const textMsg = values.graphic.attributes.ADRESAS ? `${values.graphic.attributes.ADRESAS}` : `${values.graphic.attributes.Pavad}`;
+  clearMemoryAndNodes(rend) {
+    if (this.tooltipEvent) {
+      this.tooltipEvent.remove();
+    }
 
-         tooltip.innerHTML = textMsg;
-         rend.addClass(tooltip, 'buldings-tooltip');
-         rend.setStyle(tooltip, 'transform', 'translate3d(' + left + ', -' + top + ', 0)');
-         rend.setStyle(tooltip, 'padding', '5px');
-         rend.setStyle(tooltip, 'display', 'block');
-       }
-
-       requestAnimationFrame(draw);
-     }
-
-     requestAnimationFrame(draw);
-   }
-
- }
-
- clearMemoryAndNodes(rend) {
-   this.clear = true;
-   if (this.tooltipEvent) {
-     this.tooltipEvent.remove();
-   }
-
-   this.unsubsribe$.next();
-   this.unsubsribe$.complete();
-   this.unsubsribe$ = null;
-
-   rend.removeChild(this.parentNode, this.tooltip);
- }
+    rend.removeChild(this.parentNode, this.tooltip);
+  }
 
 }

@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatIconModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ],
   exports: [
     MatSelectModule,
@@ -35,7 +37,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatIconModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DragDropModule
   ],
   providers: [{ provide: MATERIAL_SANITY_CHECKS, useValue: false }]
 })

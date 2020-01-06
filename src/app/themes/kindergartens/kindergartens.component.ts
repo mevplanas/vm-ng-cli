@@ -124,7 +124,7 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     const mainContainerDom = this.viewService.getMapElementRef();
     const rend = this.renderer2;
 
-    this.kindergartensTooltipService.addTooltip(view, this.view, mainContainerDom, rend, this.dataStore);
+    this.kindergartensTooltipService.addTooltip(view, mainContainerDom, rend, this.dataStore);
 
     this.cdr.detectChanges();
 
