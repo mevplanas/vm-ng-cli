@@ -18,10 +18,8 @@ export class RoutingService {
     forIn(this.config.themes, (layer) => {
       if (!layer.custom && layer.production ) {
         const id = layer.id;
-        this.router.config[1].children.push({ path: id, loadChildren: () => import('../../themes/default/default.module').then(m => {
-          // console.log('Module', m);
-          return m.DefaultModule;
-        })
+        // tslint:disable-next-line: max-line-length
+        this.router.config[1].children.push({ path: id, loadChildren: () => import('../../themes/default/default.module').then(m => m.DefaultModule)
         });
       }
     });

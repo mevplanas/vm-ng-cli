@@ -55,8 +55,8 @@ export class MeasureContainerComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private zone: NgZone,
     private mapService: MapService,
-    private measureMapService: MeasureMapService,
-    private themeNameService: ThemeNameService
+    public measureMapService: MeasureMapService,
+    public themeNameService: ThemeNameService
   ) {
     this.cdr.detach();
   }

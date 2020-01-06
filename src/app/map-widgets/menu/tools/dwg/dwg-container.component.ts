@@ -17,9 +17,9 @@ import { leaveEnterTransition } from 'src/app/core/animations/leaveEnter-transit
 export class DwgContainerComponent implements OnInit, OnDestroy {
   // dojo draw events handlers Array
   private eventHandlers = [];
-  private drawActive = false;
-  private progressBarValue = 0;
-  private gpError = false;
+  public drawActive = false;
+  public gpError = false;
+  public progressBarValue = 0;
 
   subscription: Subscription;
   view: any;

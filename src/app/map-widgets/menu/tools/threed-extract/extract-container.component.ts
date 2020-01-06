@@ -18,7 +18,7 @@ export class ExtractContainerComponent implements OnInit, OnDestroy {
   // dojo draw events handlers Array
   private eventHandlers = [];
 
-  private drawActive = false;
+  public drawActive = false;
 
   subscription: Subscription;
   view: any;
@@ -33,7 +33,7 @@ export class ExtractContainerComponent implements OnInit, OnDestroy {
   constructor(
     private mapService: MapService,
     private cdr: ChangeDetectorRef,
-    private extractService: ExtractService,
+    public extractService: ExtractService,
   ) {
     // this.cdr.detach();
   }

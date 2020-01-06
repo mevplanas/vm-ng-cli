@@ -730,13 +730,16 @@ export class MapService {
       // container: "layer-list",
       container,
       view,
-      listItemCreatedFunction: this.updateListItem
+      listItemCreatedFunction: this.updateListItem.bind(this)
     });
     return listWidget;
   }
 
   // update certain features of Listlayer ListItems
   updateListItem(listItem) {
+    // check and hide items
+    this.hideLayerListLayers(listItem.item);
+
     listItem.item.open = true;
     listItem.item.actionsOpen = true;
 
@@ -753,6 +756,22 @@ export class MapService {
           id: 'decrease-opacity'
         }]
       ];
+    }
+
+  }
+
+  // hide layers from list
+  // based on on title name "_HIDE"
+  hideLayerListLayers(item) {
+    const regex = /\w*_hide\b/gmi;
+
+    if (regex.test(item.layer.title)) {
+      item.layer.legendEnabled = false;
+      item.layer.listMode = 'hide';
+    } else {
+      if (item.children.items.length > 0) {
+        item.children.items.forEach(childItem => this.hideLayerListLayers(childItem));
+      }
     }
   }
 

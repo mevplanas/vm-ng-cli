@@ -11,7 +11,7 @@ export class HideElementsDirective {
 
   parent: ElementRef;
 
-  @HostListener('click', ['$event'])
+  @HostListener('click')
   onClick() {
     this.renderer.setStyle(this.el.nativeElement, 'display', 'none')
   }

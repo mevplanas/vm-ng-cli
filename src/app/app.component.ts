@@ -7,11 +7,9 @@ import { RoutingService } from './core/services/routing.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'vm-ng-cli';
-
-  constructor(private routingService: RoutingService) {}
+  // constructor(private routingService: RoutingService) {}
 
   ngOnInit() {
-    this.routingService.addDefaultRoutes();
+    // this.routingService.addDefaultRoutes();
   }
 }

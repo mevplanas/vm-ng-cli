@@ -24,6 +24,10 @@
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
+    "strictInjectionParameters": true,
+    "enableIvy": true
+  },
+  "files": [
+    "src/app/core/config/map.config.ts"
+  ]
 }

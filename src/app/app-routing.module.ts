@@ -4,6 +4,22 @@ import { HomeComponent } from './core/components/home/home.component';
 import { MapViewComponent } from './core/components/map-view/map-view.component';
 
 import { environment } from '../environments/environment';
+import forIn from 'lodash-es/forIn';
+
+import { CONFIG } from './core/config/map.config';
+
+const defaultThemesRoutes =  [];
+
+function addDefaultRoutes() {
+  forIn(CONFIG.themes, (layer) => {
+    if (!layer.custom && layer.production ) {
+      const id = layer.id;
+      defaultThemesRoutes.push({ path: id, loadChildren: () => import('./themes/default/default.module').then(m => m.DefaultModule) });
+    }
+  });
+}
+
+addDefaultRoutes();
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -25,6 +41,14 @@ if (!environment.production) {
   };
 
 }
+
+// add rest routes
+routes[1] = {
+  path: '', component: MapViewComponent, children: [
+    ...routes[1].children,
+    ...defaultThemesRoutes
+  ]
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -13,7 +13,7 @@ import { MapService } from '../../../../core/services/map.service';
 })
 export class ProfileContainerComponent  implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(ProfileElevationComponent, {static: false}) pEC;
-  private drawActive = false;
+  public drawActive = false;
 
   // dojo draw events handlers Array
   private eventHandlers = [];

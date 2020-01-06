@@ -39,7 +39,7 @@ export class ProjectsListComponent implements OnInit {
   selectedIdx =  -1;
   projectsThemes: number[];
   projectsFinalYears: string[];
-  buttonActive: false;
+  buttonActive = false;
   activeTheme;
   activeYear;
   // activated filters number badge property
