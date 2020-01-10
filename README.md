@@ -16,7 +16,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `ng build --prod --deployUrl=dist/` flags for a production build and files can deployed in dist catalogs on IIS.  
+
+## Web workers
+In order to use esri web workers follow current [Esri guide](https://github.com/esri/arcgis-webpack-plugin#usage).
+Unfortunately due to compiling issues set `"optimization": false` in angular.json, but this generates big bundle size.
+Use and `"optimization": true` and `"buildOptimizer": false`
+
 
 ## Running unit tests
 
@@ -29,3 +35,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Update
+Update ngrx-popper, which is currently not supported for Angular 8

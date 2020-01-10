@@ -3955,6 +3955,13 @@ popper-content {
   border: none;
 }
 
+// AdHoc fix for not shwowing tooltip,
+// ngx-popper 7.0.0
+// Angular 8
+popper-content > div:first-child {
+  display: none;
+}
+
 .ngxp__inner {
   font-size: 14px;
 }

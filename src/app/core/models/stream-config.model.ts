@@ -6,6 +6,7 @@ export interface StreamConfig {
   rotationAttribute?: string;
   color?: string;
   style?: string;
-  labelFeature?: string;
+  labelFeatures?: string[];
   stops?: any;
+  renderer?: any;
 }

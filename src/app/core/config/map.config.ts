@@ -169,11 +169,11 @@ export const CONFIG = {
       streamLayers: {
         grindaStream: {
           url: 'https://geoevent.vilnius.lt/arcgis/rest/services/stream-service-out_GRINDA_LKS/StreamServer',
-          visible: false,
+          visible: true,
           title: 'UAB Grinda automobilių parko stebėjimas',
           setRotation: true,
           rotationAttribute: 'direction',
-          labelFeature: 'plate'
+          labelFeatures: ['plate']
         } as StreamConfig
       }
     },
@@ -230,21 +230,82 @@ export const CONFIG = {
       },
       streamLayers: {
         vvtStream: {
-          url: 'https://geoevent.vilnius.lt/arcgis/rest/services/stream-service-out_VIESASIS_TRANSPORTAS_LKS/StreamServer',
-          visible: false,
+          url: 'https://geoevent.vilnius.lt/arcgis/rest/services/stream-service-out_VIESASIS_TRANSPORTAS_AG/StreamServer',
+          visible: true,
           title: 'Viešojo transporto stebėjimas',
           setRotation: true,
-          rotationAttribute: 'Field7',
-          labelFeature: 'Field2',
+          rotationAttribute: 'angle',
+          labelFeatures: ['trType', 'label'],
           stops: {
             type: 'color',
-            field: 'Field1',
+            field: 'trCode',
+            valueExpression: 'Number($feature.trCode)',
             valueExpressionTitle: 'Legenda',
             legendOptions: { showLegend: false },
             stops: [
               // API 13 : value must be number
-              { value: 'Troleibusai', color: '#e61d25', label: 'Troleibusai' },
-              { value: 'Autobusai', color: '#ef7f1a', label: 'Autobusai' }
+              { value: 1, color: '#e61d25', label: 'Troleibusai' },
+              { value: 2, color: '#05629f', label: 'Autobusai' }
+            ]
+          },
+          renderer: {
+            type: 'unique-value',  // autocasts as new UniqueValueRenderer()
+            field: 'trCode',
+            legendOptions: {
+              title: ' '  // leave empty legend title
+            },
+            defaultLabel: '-',
+            defaultSymbol: { type: 'simple-fill' },  // autocasts as new SimpleFillSymbol()
+            uniqueValueInfos: [
+              {
+                // All features with value of "North" will be blue
+                value: '1',
+                label: 'Troleibusai',
+                symbol: {
+                  type: 'simple-marker', // autocasts as new SimpleMarkerSymbol()
+                  // style, // not using style, using path instead
+                  // use an SVG path to create an arrow shape
+                  // tslint:disable-next-line: max-line-length
+                  path: 'M54.15199047330047,1.621444913480601 C36.122233905216476,1.621444913480601 21.505981653418786,16.23769716527829 21.505981653418786,34.26745373336229 C21.505981653418786,52.29742629134226 43.94538793811259,94.34698721310683 54.15199047330047,94.34698721310683 S86.79799929318216,52.29721030144628 86.79799929318216,34.26745373336229 C86.79799929318216,16.23769716527829 72.18174704138447,1.621444913480601 54.15199047330047,1.621444913480601',
+                  color: '#e61d25',
+                  outline: {
+                    color: [255, 255, 255, 0.7],
+                    width: 0.5
+                  },
+                  // since the arrow points down, you can set the angle to 180
+                  // to force it to point up (0 degrees North) by default
+                  angle: 180,
+                  size: 15
+                }
+              },
+              {
+                // All features with value of "North" will be blue
+                value: '2',
+                label: 'Autobusai',
+                symbol: {
+                  type: 'simple-marker', // autocasts as new SimpleMarkerSymbol()
+                  // style, // not using style, using path instead
+                  // use an SVG path to create an arrow shape
+                  // tslint:disable-next-line: max-line-length
+                  path: 'M54.15199047330047,1.621444913480601 C36.122233905216476,1.621444913480601 21.505981653418786,16.23769716527829 21.505981653418786,34.26745373336229 C21.505981653418786,52.29742629134226 43.94538793811259,94.34698721310683 54.15199047330047,94.34698721310683 S86.79799929318216,52.29721030144628 86.79799929318216,34.26745373336229 C86.79799929318216,16.23769716527829 72.18174704138447,1.621444913480601 54.15199047330047,1.621444913480601',
+                  color: '#05629f',
+                  outline: {
+                    color: [255, 255, 255, 0.7],
+                    width: 0.5
+                  },
+                  // since the arrow points down, you can set the angle to 180
+                  // to force it to point up (0 degrees North) by default
+                  angle: 180,
+                  size: 15
+                }
+              }
+            ],
+            visualVariables: [
+              {
+                type: 'rotation', // indicates that symbols should be rotated based on value in field
+                field: 'angle', // field containing aspect values
+                rotationType: 'geographic'
+              }
             ]
           }
         } as StreamConfig

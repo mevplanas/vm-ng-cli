@@ -11,7 +11,7 @@ import { CONFIG } from './core/config/map.config';
 const defaultThemesRoutes =  [];
 
 function addDefaultRoutes() {
-  forIn(CONFIG.themes, (layer) => {
+  forIn(CONFIG.themes, ( layer: any) => {
     if (!layer.custom && layer.production ) {
       const id = layer.id;
       defaultThemesRoutes.push({ path: id, loadChildren: () => import('./themes/default/default.module').then(m => m.DefaultModule) });
@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   // See RoutingService where we push all default childres routes from config file
   { path: '', component: MapViewComponent, children: [
+    // { path: 'transportas', loadChildren: () => import('./themes/default/default.module').then(m => m.DefaultModule ) },
     { path: 'pastatai', loadChildren: () => import('./themes/buildings/buildings.module').then(m => m.BuildingsModule ) },
     { path: 'projektai', loadChildren: () => import('./themes/projects/projects.module').then(m => m.ProjectsModule ) },
     { path: 'darzeliai', loadChildren: () => import('./themes/kindergartens/kindergartens.module').then(m => m.KindergartensModule ) }

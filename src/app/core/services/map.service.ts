@@ -544,7 +544,6 @@ export class MapService {
 
   pickCustomThemeLayers(layer, key, queryParams, groupLayer, serviceKey, symbolType = 'simple-fill') {
     const feature = this.initCommonFeatureLayer(layer.dynimacLayerUrls + '/' + serviceKey, layer.opacity, key, layer.name, symbolType);
-
     if (groupLayer) {
       groupLayer.add(feature);
     } else {
@@ -701,6 +700,8 @@ export class MapService {
 
   findSublayer(layer: any, ids: string, map: any) {
     const idsArr = ids.split('!');
+    this.hideAllThemeLayers(layer);
+
     idsArr.forEach(id => {
       if (layer.type !== 'stream') {
         const sublayer = layer.findSublayerById(parseInt(id));
@@ -708,9 +709,16 @@ export class MapService {
       } else if (id === '0' && layer.type === 'stream') {
         // logic for streams
         layer.visible = true;
+      } else {
+        layer.visible = false;
       }
 
     });
+  }
+
+  // set visibility to false
+  hideAllThemeLayers(layer: GroupLayer): void {
+    layer.sublayers.items.forEach(item => item.visible = false );
   }
 
   // mobile check
