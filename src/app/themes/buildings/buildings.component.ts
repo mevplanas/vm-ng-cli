@@ -158,7 +158,7 @@ export class BuildingsComponent implements AfterViewInit, OnDestroy {
 
      // hitTest check graphics in the view
      this.hitTestFeaturePopup(view, event);
-   }, (error) => { console.error(error); });
+   });
  }
 
  hitTestFeaturePopup(view: any, event: any) {

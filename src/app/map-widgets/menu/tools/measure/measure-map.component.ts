@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
 import { MeasureMapService } from './measure-map.service';
 import { ToolsNameService } from '../../tools-name.service';
 import { ToolsList } from '../../tools.list';
+import { MapService } from '../../../../core/services/map.service';
 
 @Component({
   selector: 'maps-v-measure-map',

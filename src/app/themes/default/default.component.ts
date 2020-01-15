@@ -119,7 +119,7 @@ export class DefaultComponent implements AfterViewInit, OnDestroy {
       this.cdr.detectChanges();
 
       // init identification of default or sub layers on MapView
-      this.identifyEvent = this.identify.identifyLayers(view);
+      this.identifyEvent = this.identify.identifyLayers(this.view);
     }, err => { console.error('VP error: view loading issues ', err); });
   }
 

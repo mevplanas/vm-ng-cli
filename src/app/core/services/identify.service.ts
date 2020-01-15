@@ -50,6 +50,7 @@ export class IdentifyService {
         breakpoint: false,
         position: 'bottom-left'
       }
+
       identifyParams.geometry = event.mapPoint;
       identifyParams.mapExtent = view.extent;
       identifyParams.tolerance = 10;
@@ -57,7 +58,7 @@ export class IdentifyService {
       identifyParams.height = view.height;
       identifyParams.layerOption = layerOption as LayerOptions;
 
-      let identificationLayers: any[]
+      let identificationLayers: any[];
       // foreach item execute task
       if (specialLayer === 'quarters') {
         identificationLayers = this.mapService.returnMap().findLayerById('quarters').sublayers.items.sort((a, b) => a.id - b.id);
@@ -66,6 +67,7 @@ export class IdentifyService {
       } else {
         identificationLayers = view.layerViews.items;
       }
+
       identificationLayers.forEach(item => {
         // do not execute if layer is for buffer graphics and if layer is GroupLayer with list mode 'hide-children'
         // or type is group which means it is dedicated for retrieving data to custom sidebar via feature layer hitTest method
@@ -123,7 +125,7 @@ export class IdentifyService {
         }
       });
 
-    }, (error) => { console.error(error); });
+    });
 
     return this.mapClickEvent = mapClickEvent;
   }
