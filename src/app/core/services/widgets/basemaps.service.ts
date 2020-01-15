@@ -13,7 +13,7 @@ export class BasemapsService {
   // DEFAULT basemap
   activeBasemap = 'base-dark';
 
-  constructor(private mapService: MapService,  @Inject(MAP_CONFIG) private config) { }
+  constructor(private mapService: MapService, @Inject(MAP_CONFIG) private config) { }
 
   returnBasemaps(): Basemap[] {
     return BASEMAPS;
@@ -64,16 +64,17 @@ export class BasemapsService {
       } else {
         item.visible = false;
         // if active base map is basemapEngineeringUrl, add  another  basemap as well ("base-dark" for example)
-        ((this.activeBasemap === 'base-en-t') && (item.id === 'base-dark'))
-          ? item.visible = true
-          : void (0);
+        if ((this.activeBasemap === 'base-en-t') && (item.id === 'base-dark')) {
+          item.visible = true;
+        }
 
-        ((this.activeBasemap === 'base-en-s') && (item.id === 'base-map'))
-          ? item.visible = true
-          : void (0);
+        if ((this.activeBasemap === 'base-en-s') && (item.id === 'base-map')) {
+          item.visible = true;
+        }
+
       }
 
-    })
+    });
   }
 
 }

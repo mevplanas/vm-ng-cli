@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "./dist/options",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -28,6 +28,6 @@
     "enableIvy": true
   },
   "files": [
-    "src/app/core/config/map.config.ts"
+    "src/app/core/config/config.ts"
   ]
 }

@@ -3,6 +3,6 @@ export interface Process {
 }
 
 interface Env {
-  LANG?: string;
   SENTRY_DSN?: string;
+  MAPSDEV?: boolean;
 }

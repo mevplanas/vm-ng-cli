@@ -66,18 +66,21 @@ export class MeasureMapComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     const view = this.mapService.getView();
-    view.on('layerview-create', (event) => {
-      // wait for last layer to be loaded then init createInputsData
-      if (!this.firstThemeLoaded) {
-        if (event.layer.id === 'allLayers') {
-          // create buffer inputs data
-          this.measureMapService.createInputsData(view);
-          this.firstThemeLoaded = true;
+    view.when((mview) => {
+      mview.on('layerview-create', (event) => {
+        // wait for last layer to be loaded then init createInputsData
+        if (!this.firstThemeLoaded) {
+          if (event.layer.id === 'allLayers') {
+            // create buffer inputs data
+            this.firstThemeLoaded = true;
+          }
+
+        } else {
+          // create buffer inputs based on new theme
+          this.measureMapService.createInputsData(event.layer);
         }
-      } else {
-        // create buffer inputs based on new theme
-        this.measureMapService.createInputsData(view);
-      }
+
+      });
     });
   }
 

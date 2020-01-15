@@ -5,8 +5,7 @@ import { MapViewComponent } from './core/components/map-view/map-view.component'
 
 import { environment } from '../environments/environment';
 import forIn from 'lodash-es/forIn';
-
-import { CONFIG } from './core/config/map.config';
+import { CONFIG } from './core/config/config';
 
 const defaultThemesRoutes =  [];
 

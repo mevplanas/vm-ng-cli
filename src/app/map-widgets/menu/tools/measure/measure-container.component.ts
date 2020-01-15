@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, NgZone, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, NgZone, OnDestroy, AfterViewInit } from '@angular/core';
 import { AnalyzeParams } from './AnalyzeParams';
 import { MapService } from '../../../../core/services/map.service';
 import { MeasureMapService } from './measure-map.service';
@@ -12,14 +12,14 @@ import forOwn from 'lodash-es/forOwn';
   templateUrl: './measure-container.component.html',
   styleUrls: ['./measure-container.component.scss']
 })
-export class MeasureContainerComponent implements OnInit, OnDestroy {
-  @ViewChild('bufferCheckbox', { static: false }) bufferCheckbox: ElementRef;
+export class MeasureContainerComponent implements AfterViewInit, OnDestroy {
   view: any;
   draw: any;
   activeToolsState = false;
   activeTool = '';
   previousActiveTool = '';
-  checkboxChecked: boolean;
+  checkboxChecked = false;
+  bufferCheckbox = false;
   canCreateBuffer = true;
   analyzeParams: AnalyzeParams = {
     bufferSize: 1,
@@ -61,7 +61,7 @@ export class MeasureContainerComponent implements OnInit, OnDestroy {
     this.cdr.detach();
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.view = this.mapService.getView();
 
     // add draw capabilities for temporary geometries
@@ -71,7 +71,7 @@ export class MeasureContainerComponent implements OnInit, OnDestroy {
   }
 
   checkBoxChange() {
-    this.checkboxChecked = this.bufferCheckbox.nativeElement.checked;
+    this.cdr.detectChanges();
     this.measureMapService.resetCalculate();
   }
 

@@ -23,13 +23,16 @@
 
 	<hr />
 
-	<form ngNativeValidate #form="ngForm">
+	<form #form="ngForm">
 		<div class="input-group">
 			<span class="input-group-addon">
-					<input id="bufferBox" type="checkbox" #bufferCheckbox (change)="checkBoxChange()" aria-label="Checkbox for following text input">
+          <input id="bufferBox" type="checkbox"
+          [(ngModel)]="checkboxChecked"
+          (change)="checkBoxChange()"
+          name="bufferBox"
+         >
 				</span>
-			<!-- <span class="input-group-addon">Brėžti buferį</span> -->
-			<label for="bufferBox">Matuojant pridėti buferį</label>
+      <label for="bufferBox">Matuojant pridėti buferį</label>
 		</div>
 		<div class="form-group" *ngIf="checkboxChecked">
 			<div class="form-title form-split-title">Buferio dydis</div>

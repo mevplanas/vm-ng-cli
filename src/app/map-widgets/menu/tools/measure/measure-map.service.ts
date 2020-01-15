@@ -162,13 +162,11 @@ export class MeasureMapService {
   }
 
   // create buffer inputs data
-  createInputsData(view) {
+  createInputsData(layer) {
     const rasterLayers = this.mapService.getRasterLayers();
     const themeLayerInputs = [];
-    const currentThemelayers: any[] = view.layerViews.items.filter((item) => item.layer.id !== 'allLayers');
-    currentThemelayers.forEach(layer => {
-      if (layer.layer.allSublayers) {
-        layer.layer.allSublayers.items.forEach(item => {
+    if (layer.allSublayers) {
+      layer.allSublayers.items.forEach(item => {
         if (!item.sublayers) {
           // check if  layer name is in rasterLayers array and do not add layer to inputs list
           const hasItem = rasterLayers.includes(item.title);
@@ -176,9 +174,9 @@ export class MeasureMapService {
             themeLayerInputs.push({ name: item.title, url: item.url });
           }
         }
-      }); }
-    });
-    this.themeLayers = themeLayerInputs.reverse();
+      });
+    }
+    this.themeLayers = [...this.themeLayers, ...themeLayerInputs.reverse()];
   }
 
   createBuffer(options: any, evt) {

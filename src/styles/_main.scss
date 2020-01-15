@@ -67,6 +67,10 @@ button:focus {
   outline: 0;
 }
 
+.close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+  opacity: 1;
+}
+
 #tools button.active {
   background: #53565d;
   color: #f8f8f8;
@@ -594,7 +598,7 @@ li.list-active {
 
 .esri-legend__service:last-child {
   border-bottom: none;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 #gallery-container {
@@ -658,6 +662,10 @@ li.list-active {
 .print.print-active, .measure.measure-active, .map-tool.measure-active {
   display: block;
   z-index: 1003;
+}
+
+.esri-layer-list__item-label:hover {
+  cursor: pointer;
 }
 
 .esri-layer-list__item-action, .esri-layer-list__action-toggle {

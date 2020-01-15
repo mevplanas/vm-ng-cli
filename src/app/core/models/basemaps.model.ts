@@ -1,4 +1,4 @@
-export const BASEMAPS: any[] = [
+export const BASEMAPS: Basemap[] = [
   {
     id: 'base-dark',
     name: 'Tamsus',
@@ -6,7 +6,7 @@ export const BASEMAPS: any[] = [
   },
   {
     id: 'base-orto',
-    name: 'Ortofoto / 2017',
+    name: 'Orto / 2017',
     serviceName: 'ortofotoUrl'// based on Options.ts
   },
   {
@@ -16,8 +16,13 @@ export const BASEMAPS: any[] = [
   },
   {
     id: 'base-map-19',
-    name: 'Ortofoto / 2019',
+    name: 'Orto / 2019',
     serviceName: 'ortofotoDetailed19Url' // based on Options.ts
+  },
+  {
+    id: 'base-map-19-full',
+    name: 'Orto / 2019',
+    serviceName: 'ortofotoFull19Url' // based on Options.ts
   },
   {
     id: 'base-en-t',
