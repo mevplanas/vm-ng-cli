@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import values from 'lodash-es/values';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MAP_CONFIG } from '../../core/config/map.config';
 
 @Component({
   selector: 'maps-v-menu-themes',

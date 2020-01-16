@@ -139,7 +139,7 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
       // this.view.popup.close()
       // hitTest check graphics in the view
       this.hitTestFeaturePopup(view, event);
-    }, (error) => { console.error(error); });
+    });
   }
 
   hitTestFeaturePopup(view: MapView, event) {

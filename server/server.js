@@ -1,8 +1,8 @@
 const express = require('express');
 const url = require('url');
-const op = require('./options/app/core/config/config.js').default;
+const op = require('./options/app/core/config/config.js');
 
-const themes = op.themes;
+const themes = op.CONFIG.themes;
 const oembedUrl = 'https://gis.vplanas.lt/oembed/?url=https://maps.vilnius.lt';
 const oembedTitle = 'Vilniaus miesto interaktyvūs žemėlapiai';
 const oembedDescription = 'Vilniaus miesto savivaldybės interaktyvūs žemėlapiai';

@@ -32,7 +32,7 @@ Compine options file with `npm run options`. Upload `options` folder in dist cat
 ## Web workers
 In order to use esri web workers follow current [Esri guide](https://github.com/esri/arcgis-webpack-plugin#usage).
 Unfortunately due to compiling issues set `"optimization": false` in angular.json, but this generates large bundle size.
-Use and `"optimization": true` and `"buildOptimizer": false` (this sets way larger bundle size)
+Use and `"optimization": true` and `"buildOptimizer": false` (this ceates way larger bundle size)
 
 
 ## Running unit tests

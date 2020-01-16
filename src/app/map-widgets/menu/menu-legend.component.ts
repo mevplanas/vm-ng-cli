@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
-import { MenuService } from 'src/app/core/services/menu/menu.service';
+import { MenuService } from '../../core/services/menu/menu.service';
 
 @Component({
   selector: 'maps-v-menu-legend',

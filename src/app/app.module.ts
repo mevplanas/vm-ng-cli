@@ -13,8 +13,8 @@ import { HideElementsDirective } from './core/directives/hide-elements.directive
 import { SharedModule } from './shared.module';
 
 import Raven from 'raven-js';
-import { environment } from 'src/environments/environment';
 import { CONFIG } from './core/config/config';
+import { environment } from '../environments/environment';
 
 if (environment.production) {
   Raven

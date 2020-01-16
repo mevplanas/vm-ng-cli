@@ -1,8 +1,9 @@
 import { StreamConfig } from '../models/stream-config.model';
-import { environment } from 'src/environments/environment';
-import { Process } from '../models/process';
+import { environment } from '../../../environments/environment';
 
-declare const process: Process;
+if (environment.mapsdev) {
+  console.log('%c MapsDev', 'color: green; font-weight:bold', environment);
+}
 
 export const CONFIG = {
   defaultTitle: 'Vilniaus miesto interaktyvūs žemėlapiai',
@@ -32,7 +33,7 @@ export const CONFIG = {
       // tslint:disable-next-line: max-line-length
       printServiceUrl: 'https://zemelapiai.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Interaktyvus_Default/GPServer/Export%20Web%20Map',
       extract3DGP: {
-        url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
+        url: 'https://a;tviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
         params: {
           // Geoprocessor input name of the service
           name: 'Teritorija'

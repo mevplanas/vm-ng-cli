@@ -4,7 +4,7 @@ import Graphic from 'arcgis-js-api/Graphic';
 import TextSymbol from 'arcgis-js-api/symbols/TextSymbol';
 import Point from 'arcgis-js-api/geometry/Point';
 import GeometryService from 'arcgis-js-api/tasks/GeometryService';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MAP_CONFIG } from '../../core/config/map.config';
 
 @Injectable({
   providedIn: 'root'
