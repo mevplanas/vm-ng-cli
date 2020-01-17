@@ -6,10 +6,10 @@ import * as baguetteBox from 'baguettebox.js';
   selector: 'maps-v-gallery-view',
   template: `
     <!--Fake Gallery DOM -->
-    <div id="gallery-ng-projects" class="gallery" *ngIf="gallery">
+    <div id="gallery-ng-projects" class="gallery">
       <div class="gallery-item" *ngFor="let item of gallery">
-        <a href="{{item.image}}">
-            <img src="{{item.thumbnail}}" alt="Investiciniai projektai">
+        <a [href]="item.image">
+            <img [src]="item.thumbnail" alt="Investiciniai projektai">
         </a>
       </div>
     </div>
@@ -24,14 +24,16 @@ export class GalleryViewComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     baguetteBox.run('.gallery');
+    console.log(this.gallery);
 
     // append Gallery to popup
     setTimeout(() => {
+      const container = document.getElementsByClassName('esri-feature__main-container');
       const gallery = document.getElementById('gallery-ng-projects');
-      const loader = document.getElementById('gallery-loader');
-      if ((gallery !== null) && (loader !== null)) {
-        this.rend.setStyle(loader, 'display', 'none');
-        this.rend.appendChild(document.getElementById('gallery-container'), gallery);
+      // const loader = document.getElementById('gallery-loader');
+      if ((gallery !== null && container.length > 0)) {
+        // this.rend.setStyle(loader, 'display', 'none');
+        this.rend.appendChild(container[0], gallery);
       }
     }, 1000);
   }

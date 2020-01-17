@@ -118,7 +118,7 @@ export class ProjectsListService {
       if (attributes.PAV == 1) {
         let arr;
         // tslint:disable-next-line: max-line-length
-        galleryTitle = '<p>Nuotraukų galerija:</p><img id="gallery-loader"style="width: 20px; margin: 20px auto; display: block" src="assets/img/ajax-loader.gif">';
+        galleryTitle = '<p>Nuotraukų galerija:</p><img id="gallery-loader" style="width: 20px; margin: 20px auto; display: block" src="./assets/img/ajax-loader.gif">';
         // return gallery based on number of images
         switch (parseInt(attributes.PAV_K)) {
           case 2:

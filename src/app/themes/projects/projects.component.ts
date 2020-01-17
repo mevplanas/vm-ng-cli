@@ -215,7 +215,7 @@ initView(view) {
       }
     });
 
-  }, (error) => { console.error(error); });
+  });
 }
 
 addFeaturesToMap() {
