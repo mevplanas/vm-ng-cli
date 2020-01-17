@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var environment_1 = require("src/environments/environment");
-var CONFIG = {
+var environment_1 = require("../../../environments/environment");
+if (environment_1.environment.mapsdev) {
+    console.log('%c MapsDev', 'color: green; font-weight:bold', environment_1.environment);
+}
+exports.CONFIG = {
     defaultTitle: 'Vilniaus miesto interaktyvūs žemėlapiai',
     mapOptions: {
         options: {
@@ -21,6 +24,7 @@ var CONFIG = {
             basemapDarkUrl: 'https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_dark_calibrated/MapServer',
             ortofotoUrl: 'https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2017_LKS/MapServer',
             ortofotoDetailed19Url: 'https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS/MapServer',
+            ortofotoFull19Url: 'https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS_FULL/MapServer',
             basemapEngineeringUrl: 'https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer',
             geometryUrl: 'https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer',
             // tslint:disable-next-line: max-line-length
@@ -28,14 +32,14 @@ var CONFIG = {
             // tslint:disable-next-line: max-line-length
             printServiceUrl: 'https://zemelapiai.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Interaktyvus_Default/GPServer/Export%20Web%20Map',
             extract3DGP: {
-                url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
+                url: 'https://a;tviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
                 params: {
                     // Geoprocessor input name of the service
                     name: 'Teritorija'
                 }
             },
             extractDWG: {
-                url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/fgdbDwgZipLimitedAlt/GPServer/fgdbDwgZipLimitedAlt',
+                url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/fgdbDwgZipLimited/GPServer/fgdbDwgZipLimited',
                 params: {
                     name: 'Input_area'
                 },
@@ -432,9 +436,7 @@ var CONFIG = {
             }
         },
         propertyUnits: {
-            // process.env.MAPSDEV only will be usable in mapsdev enviroment with node js
-            // MAPSDEV will be set for test evnvironment only
-            production: !environment_1.environment.production || environment_1.environment.mapsdev || !process.env.MAPSDEV,
+            production: !environment_1.environment.production || environment_1.environment.mapsdev,
             name: 'Savivaldybės turtas',
             // id: "civ-sauga", //theme id class and theme URL query name
             description: 'Savivaldybės turtas',
@@ -538,9 +540,7 @@ var CONFIG = {
             }
         },
         waist: {
-            // process.env.MAPSDEV only will be usable in mapsdev enviroment with node js
-            // MAPSDEV will be set for test evnvironment only
-            production: !environment_1.environment.production || environment_1.environment.mapsdev || !process.env.MAPSDEV,
+            production: !environment_1.environment.production || environment_1.environment.mapsdev,
             custom: true,
             name: 'Atliekų tvarkymas',
             // id: "theme-buildings", //theme id class and theme URL query name
@@ -710,5 +710,5 @@ exports.HeatingDataValues = {
         label5: 'Ypatingai bloga (12-15)'
     }
 };
-exports.default = CONFIG;
+// export default CONFIG;
 //# sourceMappingURL=config.js.map

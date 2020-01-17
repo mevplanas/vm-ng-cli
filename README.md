@@ -1,7 +1,7 @@
 # Vilnius maps
 
-Vilnius city municipality administration (VCMA) interactive maps based on [ArcGis API] 4.x and [Angular] 6.x
-
+Vilnius city municipality administration (VCMA) interactive maps based on [ArcGis API] ^4.13, [Angular] ^8.x. and [Angular CLI]
+ 
 ![screenshot](sreenshot.png)
 
 ## Development server
