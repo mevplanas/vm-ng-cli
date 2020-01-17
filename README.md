@@ -65,7 +65,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 Currently using express js and ejs in production. 
-See private repo `vm-ng-cli-configuration` in vplanas accoutn `https://github.com/mevplanas`
+See private repo `vm-ng-cli-configuration` in vplanas account `https://github.com/mevplanas`
   
 Check the npm packages described in the package.json  
 
