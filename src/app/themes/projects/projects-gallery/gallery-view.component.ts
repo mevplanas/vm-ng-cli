@@ -24,7 +24,6 @@ export class GalleryViewComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     baguetteBox.run('.gallery');
-    console.log(this.gallery);
 
     // append Gallery to popup
     setTimeout(() => {

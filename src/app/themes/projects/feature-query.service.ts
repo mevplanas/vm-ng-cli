@@ -287,7 +287,7 @@ export class FeatureQueryService {
                 uniqueID = result.feature.attributes.UNIKALUS_NR;
                 // add geometry type to check if we clicked on point then proceed
                 if (result.feature.geometry.type === 'point') { geometryTypes.hasPoint = true; }
-                if  (result.feature.geometry.rings) { geometryTypes.hasPolygon = true;}
+                if  (result.feature.geometry.rings) { geometryTypes.hasPolygon = true; }
                 if (result.feature.geometry.paths) { geometryTypes.hasLine = true; }
                 uniqueIdCount += 1;
               } else {
@@ -296,8 +296,13 @@ export class FeatureQueryService {
                   uniqueID = result.feature.attributes.UNIKALUS_NR;
                 }
                 // add geometry type to check if we clicked on point then proceed
-                result.feature.geometry.type === 'point' ? geometryTypes.hasPoint = true : '';
-                result.feature.geometry.rings ? geometryTypes.hasPolygon = true : '';
+                if (result.feature.geometry.type === 'point') {
+                  geometryTypes.hasPoint = true;
+                }
+
+                if (result.feature.geometry.rings) {
+                  geometryTypes.hasPolygon = true;
+                }
               }
             }
           });
@@ -348,7 +353,7 @@ export class FeatureQueryService {
               }
             }
           }
-        })
+        });
       }
     });
   }

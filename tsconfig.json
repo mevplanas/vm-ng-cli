@@ -15,10 +15,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    // "lib": [
-    //   "es2018",
-    //   "dom"
-    // ]
     "target": "es5",
     "lib": ["dom", "es2015.promise", "es5", "es6", "es2017"]
   },

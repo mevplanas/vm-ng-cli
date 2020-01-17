@@ -94,7 +94,7 @@ helpOpen() {
 }
 
 select(e) {
-  e.target.select()
+  e.target.select();
 }
 
 // toggle share container
