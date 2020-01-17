@@ -6,12 +6,9 @@ const themes = op.CONFIG.themes;
 const oembedUrl = 'https://gis.vplanas.lt/oembed/?url=https://maps.vilnius.lt';
 const oembedTitle = 'Vilniaus miesto interaktyvūs žemėlapiai';
 const oembedDescription = 'Vilniaus miesto savivaldybės interaktyvūs žemėlapiai';
-const oembedImg = './app/img/vilnius_logo_o.png';
+const oembedImg = './assets/img/vilnius_logo_o.png';
 
 const app = express();
-
-// using dotenv for prod and test, .env file must be specified, check .envexample
-require('dotenv').config();
 
 app.set('view engine', 'ejs');
 app.use("/dist", express.static(__dirname + '/./dist'));
