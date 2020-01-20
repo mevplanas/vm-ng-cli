@@ -34,7 +34,7 @@ The build artifacts for production should be stored stored in the `dist/` direct
 Run `ng build -c mapsdev --deployUrl=dist/` for a QA / mapsdev server.
 
 ## Backend server.js configurations
-Compine options file with `npm run options`. Upload `options` folder in dist catalog to www... directory
+Combine options file with `npm run options`. Upload `options` folder in dist catalog to www... directory
 
 ## Web workers !important
 In order to use esri web workers follow current [Esri guide](https://github.com/esri/arcgis-webpack-plugin#usage).
