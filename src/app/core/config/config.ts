@@ -33,7 +33,7 @@ export const CONFIG = {
       // tslint:disable-next-line: max-line-length
       printServiceUrl: 'https://zemelapiai.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Interaktyvus_Default/GPServer/Export%20Web%20Map',
       extract3DGP: {
-        url: 'https://a;tviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
+        url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
         params: {
           // Geoprocessor input name of the service
           name: 'Teritorija'
@@ -159,6 +159,7 @@ export const CONFIG = {
           dynimacLayerUrls:  // dynamicService URL, only 1 url per uniquer Layer
             'https://gis.vv.lt/arcgis/rest/services/Public/Avarijos_public/MapServer',
           opacity: 0.8,
+          visible: true,
           name: 'Vandentiekio ir nuotekų tinklo avarijos:' // dynamicLayers group name
         },
         sisp: { // layer unique name //
@@ -171,7 +172,7 @@ export const CONFIG = {
       streamLayers: {
         grindaStream: {
           url: 'https://geoevent.vilnius.lt/arcgis/rest/services/stream-service-out_GRINDA_LKS/StreamServer',
-          visible: true,
+          visible: false,
           title: 'UAB Grinda automobilių parko stebėjimas',
           setRotation: true,
           rotationAttribute: 'direction',
@@ -233,7 +234,7 @@ export const CONFIG = {
       streamLayers: {
         vvtStream: {
           url: 'https://geoevent.vilnius.lt/arcgis/rest/services/stream-service-out_VIESASIS_TRANSPORTAS_AG/StreamServer',
-          visible: true,
+          visible: false,
           title: 'Viešojo transporto stebėjimas',
           setRotation: true,
           rotationAttribute: 'angle',
@@ -661,6 +662,26 @@ export const CONFIG = {
       id: 'open-data', // theme id class and theme URL query name
       imgUrl: 'assets/img/od.png', // image URL
       imgAlt: 'Vilniaus atviri duomenys' // image alt attribute
+    },
+    sispTransportFlowExternal: {
+      url: 'https://portal.sisp.lt/portal/apps/webappviewer/index.html?id=43930ae997c1452a8db631a2aac31b15',
+      production: true, // if theme is ready for production
+      external: true, // external application
+      custom: true, // true if theme funcionality is custom
+      name: 'Transporto srautai', // theme name
+      id: 'sisp-transport-flow', // theme id class and theme URL query name
+      imgUrl: 'assets/img/tr_srautai.png', // image URL
+      imgAlt: 'Transporto srautai' // image alt attribute
+    },
+    sispTransportIntensityExternal: {
+      url: 'https://portal.sisp.lt/portal/apps/webappviewer/index.html?id=212c94a819344ae8994b49da93b74118',
+      production: true, // if theme is ready for production
+      external: true, // external application
+      custom: true, // true if theme funcionality is custom
+      name: 'Intensyvios sankryžos', // theme name
+      id: 'sisp-transport-intensity', // theme id class and theme URL query name
+      imgUrl: 'assets/img/sankryzu_int.png', // image URL
+      imgAlt: 'Intensyvios sankryžos' // image alt attribute
     },
     emptyTeam: {
       // url: "https://maps.vilnius.lt/maps_vilnius/?theme=civ-sauga",

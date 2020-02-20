@@ -877,13 +877,13 @@
 }
 .esri-icon-visible {
   &:before {
-    content: unicode($esri-icon-visible);
+    content: unicode($esri-icon-radio-checked);
     color: $fill-color;
   }
 }
 .esri-icon-non-visible {
   &:before {
-    content: unicode($esri-icon-non-visible);
+    content: unicode($esri-icon-radio-unchecked);
     color: $fill-color;
   }
 }

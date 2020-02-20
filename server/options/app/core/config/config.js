@@ -32,7 +32,7 @@ exports.CONFIG = {
             // tslint:disable-next-line: max-line-length
             printServiceUrl: 'https://zemelapiai.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Interaktyvus_Default/GPServer/Export%20Web%20Map',
             extract3DGP: {
-                url: 'https://a;tviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
+                url: 'https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/3DEXPORT_LIMITED/GPServer/3D_OBJ_GP_su_PIKET_LIMIT',
                 params: {
                     // Geoprocessor input name of the service
                     name: 'Teritorija'
