@@ -2,20 +2,20 @@ import {
    Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, Renderer2, Inject, OnDestroy, AfterViewInit
   } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
-import { MenuService } from 'src/app/core/services/menu/menu.service';
-import { MetaService } from 'src/app/core/services/meta.service';
+import { MapService } from '../../core/services/map.service';
+import { MenuService } from '../../core/services/menu/menu.service';
+import { MetaService } from '../../core/services/meta.service';
 import { BuildingsTooltipService } from './buildings-tooltip.service';
 import { BuildingsLayersService } from './buildings-layers.service';
-import { SearchService } from 'src/app/core/services/search.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { SearchService } from '../../core/services/search.service';
+import { IdentifyService } from '../../core/services/identify.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service';
-import { ViewService } from 'src/app/core/services/view.service';
-import { ShareButtonService } from 'src/app/core/services/share-button.service';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { BasemapsService } from '../../core/services/widgets/basemaps.service';
+import { ViewService } from '../../core/services/view.service';
+import { ShareButtonService } from '../../core/services/share-button.service';
+import { MAP_CONFIG } from '../../core/config/map.config';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { EsriEvent } from 'src/app/core/models/esri-event';
+import { EsriEvent } from '../../core/models/esri-event';
 
 
 import Map from 'arcgis-js-api/Map';

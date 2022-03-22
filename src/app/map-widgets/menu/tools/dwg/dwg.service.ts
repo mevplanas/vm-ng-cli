@@ -4,7 +4,7 @@ import Polygon from 'arcgis-js-api/geometry/Polygon';
 import Graphic from 'arcgis-js-api/Graphic';
 import FeatureSet from 'arcgis-js-api/tasks/support/FeatureSet';
 import Geoprocessor from 'arcgis-js-api/tasks/Geoprocessor';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 import { MenuToolsService } from '../../menu-tools.service';
 import { ToolsList } from '../../tools.list';
 import { Symbols } from '../../symbols';

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MapService } from '../../core/services/map.service';
+import { MAP_CONFIG } from '../../core/config/map.config';
 
 import findKey from 'lodash-es/findKey';
 import pick from 'lodash-es/pick';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { MapService } from '../../core/services/map.service';
+import { IdentifyService } from '../../core/services/identify.service';
 import { ProjectsListService } from './projects-list/projects-list.service';
 import { PointAddRemoveService } from './point-add-remove.service';
 

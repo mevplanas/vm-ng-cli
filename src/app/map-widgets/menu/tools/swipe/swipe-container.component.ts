@@ -1,6 +1,6 @@
 import { Component, InjectionToken, ChangeDetectionStrategy, ViewChild, ElementRef, Inject, NgZone, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 import * as watchUtils from 'arcgis-js-api/core/watchUtils';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 import { timer, of } from 'rxjs';
 import { switchMap, first, filter } from 'rxjs/operators';
 import MapView from 'arcgis-js-api/views/MapView';

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 
 @Component({
   selector: 'maps-v-menu-legend-projects',

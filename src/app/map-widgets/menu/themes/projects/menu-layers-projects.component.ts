@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 import { ToolsNameService } from '../../tools-name.service';
-import { Utils } from 'src/app/core/services/utils/utils';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { Utils } from '../../../../core/services/utils/utils';
+import { MAP_CONFIG } from '../../../../core/config/map.config';
 
 @Component({
   selector: 'maps-v-menu-layers-projects',

@@ -1,14 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
-import { MenuService } from 'src/app/core/services/menu/menu.service';
-import { MetaService } from 'src/app/core/services/meta.service';
-import { SearchService } from 'src/app/core/services/search.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { MapService } from '../../core/services/map.service';
+import { MenuService } from '../../core/services/menu/menu.service';
+import { MetaService } from '../../core/services/meta.service';
+import { SearchService } from '../../core/services/search.service';
+import { IdentifyService } from '../../core/services/identify.service';
 import { ActivatedRoute } from '@angular/router';
-import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service';
-import { ViewService } from 'src/app/core/services/view.service';
-import { ShareButtonService } from 'src/app/core/services/share-button.service';
+import { BasemapsService } from '../../core/services/widgets/basemaps.service';
+import { ViewService } from '../../core/services/view.service';
+import { ShareButtonService } from '../../core/services/share-button.service';
 import { WaistLayersService } from './waist-layers.service';
 
 @Component({

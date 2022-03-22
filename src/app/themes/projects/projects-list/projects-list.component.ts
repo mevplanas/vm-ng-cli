@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, NgZone, Inject } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../core/services/map.service';
 import { ProjectsFilterService } from './projects-filter.service';
 import { ProjectsListService } from './projects-list.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { IdentifyService } from '../../../core/services/identify.service';
 import Point, { bind } from 'arcgis-js-api/geometry/Point';
 import MapView from 'arcgis-js-api/views/MapView';
 import Map from 'arcgis-js-api/Map';
@@ -10,7 +10,7 @@ import Map from 'arcgis-js-api/Map';
 import all from 'dojo/promise/all';
 import { FeatureQueryService } from '../feature-query.service';
 import { PointAddRemoveService } from '../point-add-remove.service';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MAP_CONFIG } from '../../../core/config/map.config';
 
 @Component({
   selector: 'maps-v-projects-list',

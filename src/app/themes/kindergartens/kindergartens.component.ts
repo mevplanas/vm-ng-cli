@@ -1,23 +1,23 @@
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
-import { sidebarAnimation } from 'src/app/core/animations/sidebar-animation';
+import { sidebarAnimation } from '../../core/animations/sidebar-animation';
 import { Subscription, Observable } from 'rxjs';
-import { MapService } from 'src/app/core/services/map.service';
-import { SearchService } from 'src/app/core/services/search.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { MapService } from '../../core/services/map.service';
+import { SearchService } from '../../core/services/search.service';
+import { IdentifyService } from '../../core/services/identify.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service';
-import { MetaService } from 'src/app/core/services/meta.service';
-import { MenuService } from 'src/app/core/services/menu/menu.service';
-import { ViewService } from 'src/app/core/services/view.service';
+import { BasemapsService } from '../../core/services/widgets/basemaps.service';
+import { MetaService } from '../../core/services/meta.service';
+import { MenuService } from '../../core/services/menu/menu.service';
+import { ViewService } from '../../core/services/view.service';
 import { KindergartensLayersService } from './kindergartens-layers.service';
 import { KindergartensTooltipService } from './kindergartens-tooltip.service';
-import { ShareButtonService } from 'src/app/core/services/share-button.service';
+import { ShareButtonService } from '../../core/services/share-button.service';
 import { switchMap, take } from 'rxjs/operators';
 import MapView from 'arcgis-js-api/views/MapView';
 import Map from 'arcgis-js-api/Map';
 import Search from 'arcgis-js-api/widgets/Search';
 import View from 'arcgis-js-api/views/View';
-import { EsriEvent } from 'src/app/core/models/esri-event';
+import { EsriEvent } from '../../core/models/esri-event';
 import { DataStore } from './kindergartens-interface.model';
 
 export interface ISpatialReference {

@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, ChangeDetectorRef, Inject } from '@angular/core';
-import { DataStore } from 'src/app/themes/kindergartens/kindergartens.service';
+import { DataStore } from '../../../../themes/kindergartens/kindergartens.service';
 import { MapWidgetsService } from '../../map-widgets.service';
-import { MapService } from 'src/app/core/services/map.service';
-import { SearchService } from 'src/app/core/services/search.service';
-import { MenuToolsService } from 'src/app/map-widgets/menu/menu-tools.service';
+import { MapService } from '../../../../core/services/map.service';
+import { SearchService } from '../../../../core/services/search.service';
+import { MenuToolsService } from '../../../../map-widgets/menu/menu-tools.service';
 import FeatureSet from 'arcgis-js-api/tasks/support/FeatureSet';
 import BufferParameters from 'arcgis-js-api/tasks/support/BufferParameters';
 import Graphic from 'arcgis-js-api/Graphic';
 import Polygon from 'arcgis-js-api/geometry/Polygon';
-import { Symbols } from 'src/app/map-widgets/menu/symbols';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { Symbols } from '../../../../map-widgets/menu/symbols';
+import { MAP_CONFIG } from '../../../../core/config/map.config';
 import { SelectorsService } from './selectors.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -210,12 +210,12 @@ export class SidebarKindergartensComponent implements OnInit {
       // search using search widget
       search.autoSelect = true;
       search.search().then((e) => {
-        const searchGeometry = e.results[0].results[0].feature.geometry;
+        const searchGeometry = search.results[0].results[0].feature.geometry;
         // tslint:disable-next-line: max-line-length
         this.mapService.runQueryByGeometry(this.config.themes.kindergartens.layers.darzeliai.dynimacLayerUrls + '/2', searchGeometry).then((result: FeatureSet) => {
           this.analyzeParams.eldership = result.features[0].attributes.NR;
           const idsGartens = this.mapWidgetsService.filterKindergartents(this.dataStore, this.analyzeParams);
-          this.createBuffer(this.analyzeParams, e.results[0].results[0].feature).then(buffer => {
+          this.createBuffer(this.analyzeParams, search.results[0].results[0].feature).then(buffer => {
             const url = this.config.themes.kindergartens.layers.darzeliai.dynimacLayerUrls + '/0';
             this.createQuery(buffer, url, idsGartens).then((filteredIds: any[]) => {
               this.filteredGartens = this.dataStore.mainInfo.filter(data => filteredIds.includes(data.GARDEN_ID));

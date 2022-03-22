@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../core/services/map.service';
 import { MAP_CONFIG } from '../../core/config/map.config';
-import { HeatingDataValues } from 'src/app/core/config/config';
+import { HeatingDataValues } from '../../core/config/config';
 
 @Injectable({
   providedIn: 'root'

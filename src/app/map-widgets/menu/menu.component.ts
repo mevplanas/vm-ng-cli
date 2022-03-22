@@ -135,6 +135,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     // set  toolsActive to false and get back menu wrapper fro mobile
     this.toolsActive = false;
   }
+  targetHelp() {
+    window.location.hash === '#help' ? window.location.hash = '#' : window.location.hash = '#help';
+    // set  toolsActive to false and get back menu wrapper fro mobile
+    this.toolsActive = false;
+  }
 
 
 

@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, Renderer2, Inject, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { MapService } from 'src/app/core/services/map.service';
-import { MenuService } from 'src/app/core/services/menu/menu.service';
-import { MetaService } from 'src/app/core/services/meta.service';
-import { SearchService } from 'src/app/core/services/search.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
-import { BasemapsService } from 'src/app/core/services/widgets/basemaps.service';
-import { ShareButtonService } from 'src/app/core/services/share-button.service';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MapService } from '../../core/services/map.service';
+import { MenuService } from '../../core/services/menu/menu.service';
+import { MetaService } from '../../core/services/meta.service';
+import { SearchService } from '../../core/services/search.service';
+import { IdentifyService } from '../../core/services/identify.service';
+import { BasemapsService } from '../../core/services/widgets/basemaps.service';
+import { ShareButtonService } from '../../core/services/share-button.service';
+import { MAP_CONFIG } from '../../core/config/map.config';
 
 import all from 'dojo/promise/all';
 import * as watchUtils from 'arcgis-js-api/core/watchUtils';

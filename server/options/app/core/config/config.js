@@ -647,7 +647,7 @@ exports.CONFIG = {
             imgAlt: 'Apsodinkime Vilnių kartu' // image alt attribute
         },
         openDataExternal: {
-            url: 'http://gis.opendata.lt/',
+            url: 'https://data-vplanas.opendata.arcgis.com',
             production: true,
             external: true,
             custom: true,

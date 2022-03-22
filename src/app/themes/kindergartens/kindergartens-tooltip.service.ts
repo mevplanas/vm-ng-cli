@@ -1,5 +1,5 @@
 import { Injectable, ElementRef, Renderer2 } from '@angular/core';
-import { EsriEvent, EsriPointerEvent } from 'src/app/core/models/esri-event';
+import { EsriEvent, EsriPointerEvent } from '../../core/models/esri-event';
 import MapView from 'arcgis-js-api/views/MapView';
 import { Subject } from 'rxjs';
 

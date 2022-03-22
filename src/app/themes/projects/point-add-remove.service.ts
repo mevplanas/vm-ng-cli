@@ -1,12 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../core/services/map.service';
 import { ProjectsListService } from './projects-list/projects-list.service';
-import { IdentifyService } from 'src/app/core/services/identify.service';
+import { IdentifyService } from '../../core/services/identify.service';
 import Extent from 'arcgis-js-api/geometry/Extent';
 import Point from 'arcgis-js-api/geometry/Point';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MAP_CONFIG } from '../../core/config/map.config';
 
 @Injectable()
 export class PointAddRemoveService {

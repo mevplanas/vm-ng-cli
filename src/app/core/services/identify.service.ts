@@ -53,7 +53,7 @@ export class IdentifyService {
 
       identifyParams.geometry = event.mapPoint;
       identifyParams.mapExtent = view.extent;
-      identifyParams.tolerance = 10;
+      identifyParams.tolerance = 4;
       identifyParams.width = view.width;
       identifyParams.height = view.height;
       identifyParams.layerOption = layerOption as LayerOptions;

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
-import { MapService } from 'src/app/core/services/map.service';
-import { LayerViewEvent } from 'src/app/core/models/esri-event';
+import { MAP_CONFIG } from '../../core//config/map.config';
+import { MapService } from '../../core/services/map.service';
+import { LayerViewEvent } from '../../core/models/esri-event';
 
 import { KindergartensService } from './kindergartens.service';
 

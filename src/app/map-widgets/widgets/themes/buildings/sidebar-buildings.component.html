@@ -69,7 +69,7 @@
           <span>Kvartalo pavadinimas<br /></span>
           {{sidebarHeatContent.KV_PAV}}
         </p>
-        <p>
+        <!-- <p>
           <span>Namų skaičius<br /></span>
           {{sidebarHeatContent.DAUG_SK}} vnt.
         </p>
@@ -100,7 +100,7 @@
         <p>
           <span>Atnaujintinų (renovuotinų) namų bendrasis plotas<br /></span>
           {{sidebarHeatContent.REN_PL / 1000 | number:'1.0-1'}} tūkst. m<sup>2</sup>
-        </p>
+        </p> -->
       </div>
       <div class="sidebar-buildings-info">
         <p>Kvartalas <span class="green" *ngIf="sidebarHeatContent.Atr_KV === 1; else quartersProgram">patenka</span>
@@ -192,7 +192,7 @@
               [style.color]="selectionByTypeState ? '#fff' : '#4c4c4c' " class="heat-highlight border-r-2 type-no"
               [popper]="popperContent" [popperTrigger]="'hover'" [popperPlacement]="'top'"
               (click)="selectBuildingsByType()">
-              <ng-container *ngIf="sidebarHeatContent?.TIPINIS_PR.trim(); else typeNotFount">
+              <ng-container *ngIf="sidebarHeatContent?.TIPINIS_PR; else typeNotFount">
                 {{sidebarHeatContent?.TIPINIS_PR}}
               </ng-container>
               <ng-template #typeNotFount>Nenustatyto</ng-template>
@@ -221,11 +221,11 @@
           <span>Prižiūrinti organizacija<br /></span>
           {{sidebarHeatContent.PRIEZIURA}}
         </p>
-        <p *ngIf="sidebarHeatContent.TIPINIS_PR.trim()">
+        <p *ngIf="sidebarHeatContent.TIPINIS_PR">
           <span>Tipinių namų rūšiavimas<br /></span>
           {{sidebarHeatContent.TIPINIS_PR}}
         </p>
-        <p *ngIf="!sidebarHeatContent.TIPINIS_PR.trim()">
+        <p *ngIf="!sidebarHeatContent.TIPINIS_PR">
           <span>Tipinių namų rūšiavimas<br /></span>
           -
         </p>

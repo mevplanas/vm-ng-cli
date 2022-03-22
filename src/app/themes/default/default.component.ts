@@ -10,7 +10,7 @@ import { ShareButtonService } from '../../core/services/share-button.service';
 import { MetaService } from '../../core/services/meta.service';
 import { SearchService } from '../../core/services/search.service';
 import { IdentifyService } from '../../core/services/identify.service';
-import { EsriEvent } from 'src/app/core/models/esri-event';
+import { EsriEvent } from '../../core/models/esri-event';
 import MapView from 'arcgis-js-api/views/MapView';
 import Map from 'arcgis-js-api/Map';
 import Search from 'arcgis-js-api/widgets/Search';

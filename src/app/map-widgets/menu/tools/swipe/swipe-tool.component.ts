@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { SwipeToolService } from './swipe-tool.service';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 import { ToolsNameService } from '../../tools-name.service';
 import { debounceTime, takeUntil, tap, filter } from 'rxjs/operators';
 import { ToolsList } from '../../tools.list';

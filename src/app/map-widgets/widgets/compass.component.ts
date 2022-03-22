@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../core/services/map.service';
 import Compass from 'arcgis-js-api/widgets/Compass';
 
 @Component({

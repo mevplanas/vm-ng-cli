@@ -770,7 +770,7 @@ esriMeasurement .dijitContentPane, #layers .inner, #legend .inner {
 	overflow-y: auto;*/
 }
 
-#layers.sub-menu, #legend.sub-menu, #tools.sub-menu, #open-data.sub-menu, #build-data.sub-menu, .build-s.sub-menu {
+#layers.sub-menu, #legend.sub-menu, #tools.sub-menu, #open-data.sub-menu, #help.sub-menu, #build-data.sub-menu, .build-s.sub-menu {
   padding: 0;
 }
 
@@ -853,7 +853,7 @@ esriMeasurement .dijitContentPane, #layers .inner, #legend .inner {
   padding-bottom: 20px;
 }
 
-#layers.sub-menu p, #legend.sub-menu p, #tools.sub-menu p, #open-data.sub-menu p {
+#layers.sub-menu p, #legend.sub-menu p, #tools.sub-menu p, #open-data.sub-menu p, #help.sub-menu p {
   padding: 10px;
   margin: 0;
 }
@@ -1016,19 +1016,19 @@ p.build-p:first-child {
   height: 160px;
 }
 
-#open-data.sub-menu .inner a, #build-docs.sub-menu .inner a, #build-help.sub-menu .inner a, #build-imp-info.sub-menu .inner a, .page-content #content a {
+#help.sub-menu .inner a, #open-data.sub-menu .inner a, #build-docs.sub-menu .inner a, #build-help.sub-menu .inner a, #build-imp-info.sub-menu .inner a, .page-content #content a {
   color: #C1272D;
   border-bottom: 1px solid #C1272D;
   font-weight: normal;
   line-height: 1.5;
 }
 
-#open-data.sub-menu .inner a:hover, #build-docs.sub-menu .inner a:hover, #build-help.sub-menu .inner a:hover, #build-imp-info.sub-menu .inner a:hover, .page-content #content a:hover {
+#help.sub-menu .inner a:hover, #open-data.sub-menu .inner a:hover, #build-docs.sub-menu .inner a:hover, #build-help.sub-menu .inner a:hover, #build-imp-info.sub-menu .inner a:hover, .page-content #content a:hover {
   color: #C1272D;
   border-bottom: none;
 }
 
-#layers:target~.modes #menu-layers, #legend:target~.modes #menu-legend, #tools:target~.modes #menu-tools, #open-data:target~.modes #menu-open-data {
+#layers:target~.modes #menu-layers, #legend:target~.modes #menu-legend, #tools:target~.modes #menu-tools, #open-data:target~.modes #menu-open-data, #help:target~.modes #menu-help {
   background-color: #C1272D;
   background-color: #F3F3F3;
   color: #53565D;

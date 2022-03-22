@@ -1,7 +1,7 @@
 import { Injectable, ElementRef, Renderer2 } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { EsriEvent } from 'src/app/core/models/esri-event';
+import { EsriEvent } from '../../core/models/esri-event';
 import MapView from 'arcgis-js-api/views/MapView';
 
 @Injectable({

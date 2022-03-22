@@ -100,8 +100,13 @@ h5 {
 .mat-error {
   margin-top: 0;
   margin-bottom: 20px;
-}
 
+}
+.alert-success-red {
+  color: #773b29;
+  background-color: #f1c9c3;
+  border-color: #e6d0c3;
+}
 .vp-mat-bar {
   position: relative !important;
   width: 186px;

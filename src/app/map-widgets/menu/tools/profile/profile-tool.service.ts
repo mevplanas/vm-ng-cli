@@ -3,13 +3,13 @@ import Geoprocessor from 'arcgis-js-api/tasks/Geoprocessor';
 import Draw from 'arcgis-js-api/views/draw/Draw';
 import Graphic from 'arcgis-js-api/Graphic';
 import FeatureSet from 'arcgis-js-api/tasks/support/FeatureSet';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../../../core/services/map.service';
 import { MenuToolsService } from '../../menu-tools.service';
 import { Symbols } from '../../symbols';
 import geometryEngine from 'arcgis-js-api/geometry/geometryEngine';
 
 import * as Raven from 'raven-js';
-import { MAP_CONFIG } from 'src/app/core/config/map.config';
+import { MAP_CONFIG } from '../../../../core/config/map.config';
 
 @Injectable({
   providedIn: 'root'

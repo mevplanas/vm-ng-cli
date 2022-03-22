@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, ChangeDetectorRef } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
+import { MapService } from '../../core/services/map.service';
 
 @Component({
   selector: 'maps-v-waist-stats',

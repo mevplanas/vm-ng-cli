@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
-import { MapService } from 'src/app/core/services/map.service';
-import { SearchService } from 'src/app/core/services/search.service';
+import { MapService } from '../../../../core/services/map.service';
+import { SearchService } from '../../../../core/services/search.service';
 import Search from 'arcgis-js-api/widgets/Search';
 
 @Component({

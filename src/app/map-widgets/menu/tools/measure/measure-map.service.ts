@@ -130,9 +130,9 @@ export class MeasureMapService {
     const endString = ended ? '' : ' (užbaigti dvigubu paspaudimu)';
     let text: string;
     // tslint:disable-next-line: max-line-length
-    geometryType === 'line' ? text = geometry.toFixed(0) + ' m' + endString : text = `x: ${points[1].toFixed(2)}, y: ${points[0].toFixed(2)}`;
+    geometryType === 'line' ? text = geometry.toFixed(2) + ' m' + endString : text = `x: ${points[1].toFixed(2)}, y: ${points[0].toFixed(2)}`;
     // tslint:disable-next-line: max-line-length
-    geometryType === 'line' ? this.calculatedUnits = geometry.toFixed(0) + ' m' : this.calculatedUnits = `x: ${points[1].toFixed(2)}, <br>y: ${points[0].toFixed(2)}`;
+    geometryType === 'line' ? this.calculatedUnits = geometry.toFixed(2) + ' m' : this.calculatedUnits = `x: ${points[1].toFixed(2)}, <br>y: ${points[0].toFixed(2)}`;
     const graphic = this.menuToolsService.createLineOrPointLabelGraphic(points, text, this.view);
     this.view.graphics.add(graphic);
   }
