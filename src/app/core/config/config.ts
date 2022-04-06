@@ -48,9 +48,9 @@ export const CONFIG = {
         },
       },
       extractDWG: {
-        url: "https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/fgdbDwgZipLimited/GPServer/fgdbDwgZipLimited",
+        url: "https://atviras.vplanas.lt/arcgis/rest/services/Geoprocesingai/fgdbDwgZipLimited/GPServer/GKTR_SEDR_unzip_optimizuotas",
         params: {
-          name: "Input_Area",
+          name: "terit",
         },
         limitsFrontEnd: 2.1, // limited size, backend has same limits
         title: "Atsisiųsti topografijos FGDB / DWG fragmentą:",
@@ -59,12 +59,12 @@ export const CONFIG = {
         aproxExtractTime: 10,
         zipFiles: {
           zip1: {
-            name: "FGDB_zip",
-            title: "FGDB",
+            name: "kdb500_GDB_zip",
+            title: "GDB",
           },
 
           zip2: {
-            name: "DWG_zip",
+            name: "kdb500_DWG_zip",
             title: "DWG",
           },
         },
