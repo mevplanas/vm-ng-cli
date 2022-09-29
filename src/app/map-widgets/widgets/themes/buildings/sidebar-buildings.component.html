@@ -1,73 +1,206 @@
-<div [class.heat-sidebar]="sidebarHeatContent" class="col-xs-6 col-md-4 r-sidebar sidebar-right sidebar-buildings">
+<div
+  [class.heat-sidebar]="sidebarHeatContent"
+  class="col-xs-6 col-md-4 r-sidebar sidebar-right sidebar-buildings"
+>
   <perfect-scrollbar>
     <ng-content></ng-content>
     <div id="build-inner" class="inner sub-build">
-      <ng-container [ngTemplateOutlet]="sidebarHeatContent && heatContent"></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="sidebarHeatContent && heatContent"
+      ></ng-container>
     </div>
   </perfect-scrollbar>
-  <ng-container [ngTemplateOutlet]="sidebarHeatContent && quartersContent"></ng-container>
+  <ng-container
+    [ngTemplateOutlet]="sidebarHeatContent && quartersContent"
+  ></ng-container>
   <ng-container [ngTemplateOutlet]="heatMonthsChart"></ng-container>
   <ng-container [ngTemplateOutlet]="heatClassesChart"></ng-container>
-  <ng-container [ngTemplateOutlet]="sidebarHeatContent && infoTemplate"></ng-container>
+  <ng-container
+    [ngTemplateOutlet]="sidebarHeatContent && infoTemplate"
+  ></ng-container>
 </div>
 
 <ng-template #heatContent>
   <div [@sidebarToggle]="innerState">
-    <h3>{{sidebarHeatContent?.ADRESAS}}</h3>
+    <h3>
+      Adresas: <strong>{{ sidebarHeatContent?.ADRESAS }}</strong>
+    </h3>
     <ng-container>
       <p *ngIf="!!sidebarHeatContent.RENOVUOTA">
-        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA < 100">Renovacijos darbai <strong>atlikti</strong><br /></span>
-        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 100">Renovacijos darbai <strong>vyksta</strong><br /></span>
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA < 100"
+          >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
+          <strong>Atnaujintas</strong><br
+        /></span>
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 100"
+          >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
+          <strong>Atnaujinamas</strong><br
+        /></span>
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA > 100"
+          >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
+          <strong>Rengiamasi atnaujinimui</strong><br
+        /></span>
       </p>
       <p>
-          <span class="font-l">
-              Kvartalo prioriteto grupė:
-              <ng-container [ngSwitch]="sidebarHeatContent.Atr_KV">
-                  <span *ngSwitchCase="1" class="group--highlight"
-                  [popper]="'I prioriteto grupė  - kvartalai, kurių kompleksinis atnaujinimas vykdomas pagal Programą iki 2023 metų'"
-                  [popperTrigger]="'hover'" [popperPlacement]="'bottom'"><span class="quarters-symbol"  mapRgbaColor [outline]="quaretrsBorderSybol" [fill]="quaretrsFillSybol['group1']"></span><strong>{{sidebarHeatContent.Atr_KV}} grupė</strong><br />
-                  </span>
-                  <span *ngSwitchCase="2" class="group--highlight"
-                  [popper]="'II prioriteto grupė - kvartalai, kurių kompleksinis atnaujinimas gali būti įtrauktas į Programą. Į Programą gali būti įtraukiami kvartalai, kuriuose atnaujintų daugiabučių gyvenamųjų namų ir namų, kurių gyventojai yra priėmę sprendimą dėl sutikimo atnaujinti daugiabutį gyvenamąjį namą, yra daugiau kaip 25 proc., lyginant su visais kvartale atnaujintinais daugiabučiais gyvenamaisiais namais.'"
-                  [popperTrigger]="'hover'" [popperPlacement]="'bottom'"><span class="quarters-symbol"  mapRgbaColor [outline]="quaretrsBorderSybol" [fill]="quaretrsFillSybol['group2']"></span><strong>{{sidebarHeatContent.Atr_KV}} grupė</strong><br /></span>
-                  <span *ngSwitchCase="3" class="group--highlight"
-                  [popper]="'III prioriteto grupė - kvartalai, kuriuose pagal jų užstatymo parametrus jų kompleksinio atnaujinimo reikmė nėra prioritetinė.'"
-                  [popperTrigger]="'hover'" [popperPlacement]="'bottom'"><span class="quarters-symbol"  mapRgbaColor [outline]="quaretrsBorderSybol" [fill]="quaretrsFillSybol['group3']"></span><strong>{{sidebarHeatContent.Atr_KV}} grupė</strong><br /></span>
-              </ng-container>
-
-          </span>
+        <span>Kvartalo pavadinimas: </span>
+        <ng-container *ngIf="sidebarHeatContent.STATMETAI; else yearUnknown"
+          >{{ sidebarHeatContent.KV_PAV }}
+        </ng-container>
+        <ng-template #yearUnknown>-</ng-template>
       </p>
+      <p>
+        <span class="font-l">
+          Kvartalo prioriteto grupė:
+          <ng-container [ngSwitch]="sidebarHeatContent.Atr_KV">
+            <span
+              *ngSwitchCase="1"
+              class="group--highlight"
+              [popper]="
+                'I prioriteto grupė  - kvartalai, kurių kompleksinis atnaujinimas vykdomas pagal Programą iki 2023 metų'
+              "
+              [popperTrigger]="'hover'"
+              [popperPlacement]="'bottom'"
+              ><span
+                class="quarters-symbol"
+                mapRgbaColor
+                [outline]="quaretrsBorderSybol"
+                [fill]="quaretrsFillSybol['group1']"
+              ></span
+              ><strong>{{ sidebarHeatContent.Atr_KV }} grupė</strong><br />
+            </span>
+            <span
+              *ngSwitchCase="2"
+              class="group--highlight"
+              [popper]="
+                'II prioriteto grupė - kvartalai, kurių kompleksinis atnaujinimas gali būti įtrauktas į Programą. Į Programą gali būti įtraukiami kvartalai, kuriuose atnaujintų daugiabučių gyvenamųjų namų ir namų, kurių gyventojai yra priėmę sprendimą dėl sutikimo atnaujinti daugiabutį gyvenamąjį namą, yra daugiau kaip 25 proc., lyginant su visais kvartale atnaujintinais daugiabučiais gyvenamaisiais namais.'
+              "
+              [popperTrigger]="'hover'"
+              [popperPlacement]="'bottom'"
+              ><span
+                class="quarters-symbol"
+                mapRgbaColor
+                [outline]="quaretrsBorderSybol"
+                [fill]="quaretrsFillSybol['group2']"
+              ></span
+              ><strong>{{ sidebarHeatContent.Atr_KV }} grupė</strong><br
+            /></span>
+            <span
+              *ngSwitchCase="3"
+              class="group--highlight"
+              [popper]="
+                'III prioriteto grupė - kvartalai, kuriuose pagal jų užstatymo parametrus jų kompleksinio atnaujinimo reikmė nėra prioritetinė.'
+              "
+              [popperTrigger]="'hover'"
+              [popperPlacement]="'bottom'"
+              ><span
+                class="quarters-symbol"
+                mapRgbaColor
+                [outline]="quaretrsBorderSybol"
+                [fill]="quaretrsFillSybol['group3']"
+              ></span
+              ><strong>{{ sidebarHeatContent.Atr_KV }} grupė</strong><br
+            /></span>
+          </ng-container>
+        </span>
+      </p>
+      <div class="sidebar-buildings-info">
+        <p>
+          Kvartalas
+          <span
+            class="green"
+            *ngIf="sidebarHeatContent.Atr_KV === 1; else quartersProgram"
+            >patenka</span
+          >
+          <ng-template #quartersProgram
+            ><span class="red">nepatenka</span></ng-template
+          >
+          į kvartalinės renovacijos programos sąrašą
+        </p>
+        <p>
+          Atnaujinti namai – daugiabučiai namai, kuriuose atnaujinimo procesas
+          yra užbaigtas arba yra vykdomi atnaujinimo darbai, arba yra gautas LR
+          Aplinkos projektų valdymo agentūros (APVA) pritarimas finansuoti
+          projektą.
+        </p>
+        <p>
+          <a href="https://amiestas.lt/"
+            >Papildoma informacija apie kvartalinę renovaciją ir daugiabučių
+            atnaujinimo tvarką</a
+          >
+        </p>
+        <p>
+          Kilus klausimams kreiptis
+          <a href="mailto:info@amiestas.lt ">info@amiestas.lt</a>
+        </p>
+      </div>
     </ng-container>
 
     <div class="clear-both"></div>
 
     <div class="bt-wrapper">
+      <p class="build-bt build-top" (click)="openSidaberGroup('info')">
+        <span class="animate">Pastato informacija</span>
+      </p>
       <p class="build-bt build-top" (click)="openSidaberGroup('quarters')">
-        <span class="animate">Kvartalo bendroji informacija</span>
+        <span class="animate"
+          >Fasado renovacijos architektūriniai sprendiniai</span
+        >
       </p>
       <p class="build-bt build-top" (click)="openSidaberGroup('classes')">
         <span class="animate">Faktinio energijos vartojimo klasė</span>
       </p>
       <p class="build-bt build-top" (click)="openSidaberGroup('months')">
-        <span class="animate">Namo šilumos suvartojimo grafikas</span>
-      </p>
-      <p class="build-bt build-top" (click)="openSidaberGroup('info')">
-        <span class="animate">Informacija</span>
+        <span class="animate">Pastato energijos suvartojimo grafikas</span>
       </p>
     </div>
   </div>
 </ng-template>
 
 <ng-template #quartersContent>
-  <div class="heat-months-graphic sidebar-container" [@sidebarToggle]="sidebarQuartersState">
+  <div
+    class="heat-months-graphic sidebar-container"
+    [@sidebarToggle]="sidebarQuartersState"
+  >
     <perfect-scrollbar>
-      <div class="build-p sidebar-header" (click)="closeSidaberGroup('quarters')">
-        <a href="javascript:void(0)" class="button close animate build-close">Atgal</a>
+      <div
+        class="build-p sidebar-header"
+        (click)="closeSidaberGroup('quarters')"
+      >
+        <a href="javascript:void(0)" class="button close animate build-close"
+          >Atgal</a
+        >
       </div>
       <div class="main-s-content">
-        <p>
+        <!-- <p>
           <span>Kvartalo pavadinimas<br /></span>
-          {{sidebarHeatContent.KV_PAV}}
+          {{ sidebarHeatContent.KV_PAV }}
+        </p> -->
+
+        <div class="building-title">
+          <p>Fasado renovacijos architektūriniai sprendiniai <br /></p>
+        </div>
+        <p>
+          <span>Fasado apdaila: </span>
+          <ng-container
+            *ngIf="sidebarHeatContent.FAS_APDAIL; else decorationUnknown"
+            >{{ sidebarHeatContent.FAS_APDAIL }}
+          </ng-container>
+          <ng-template #decorationUnknown>duomenų nėra</ng-template>
+        </p>
+        <p>
+          <span>Apdailos tipas: </span>
+          <ng-container
+            *ngIf="sidebarHeatContent.FAS_AP_MED; else decorationTypeUnknown"
+            >{{ sidebarHeatContent.FAS_AP_MED }}
+          </ng-container>
+          <ng-template #decorationTypeUnknown>duomenų nėra</ng-template>
+        </p>
+        <p>
+          <span>Spalvinis sprendinys: </span>
+          <ng-container
+            *ngIf="sidebarHeatContent.FAS_AP_MED; else decorationTypeUnknown"
+            >{{ sidebarHeatContent.SPAL_SPREN }}
+          </ng-container>
+          <ng-template #decorationTypeUnknown>duomenų nėra</ng-template>
         </p>
         <!-- <p>
           <span>Namų skaičius<br /></span>
@@ -102,77 +235,153 @@
           {{sidebarHeatContent.REN_PL / 1000 | number:'1.0-1'}} tūkst. m<sup>2</sup>
         </p> -->
       </div>
-      <div class="sidebar-buildings-info">
-        <p>Kvartalas <span class="green" *ngIf="sidebarHeatContent.Atr_KV === 1; else quartersProgram">patenka</span>
-          <ng-template #quartersProgram><span class="red">nepatenka</span></ng-template> į kvartalinės renovacijos
-          programos sąrašą
+      <!-- <div class="sidebar-buildings-info">
+        <p>
+          Kvartalas
+          <span
+            class="green"
+            *ngIf="sidebarHeatContent.Atr_KV === 1; else quartersProgram"
+            >patenka</span
+          >
+          <ng-template #quartersProgram
+            ><span class="red">nepatenka</span></ng-template
+          >
+          į kvartalinės renovacijos programos sąrašą
         </p>
-        <p>Atnaujinti namai – daugiabučiai namai, kuriuose atnaujinimo procesas yra užbaigtas arba yra vykdomi
-          atnaujinimo darbai, arba yra gautas VšĮ Būsto energijos taupymo agentūra pritarimas finansuoti projektą.</p>
-        <p><a
-            href="https://vilnius.lt/lt/savivaldybe/aplinkosauga-ir-energetika/daugiabuciu-namu-atnaujinimas-modernizavimas/">Papildoma
-            informacija apie kvartalinę renovaciją ir daugiabučių atnaujinimo tvarką</a></p>
-        <p>Kilus klausimams kreiptis <a href="mailto:savivaldybe@vilnius.lt">savivaldybe@vilnius.lt</a></p>
-      </div>
+        <p>
+          Atnaujinti namai – daugiabučiai namai, kuriuose atnaujinimo procesas
+          yra užbaigtas arba yra vykdomi atnaujinimo darbai, arba yra gautas VšĮ
+          Būsto energijos taupymo agentūra pritarimas finansuoti projektą.
+        </p>
+        <p>
+          <a
+            href="https://vilnius.lt/lt/savivaldybe/aplinkosauga-ir-energetika/daugiabuciu-namu-atnaujinimas-modernizavimas/"
+            >Papildoma informacija apie kvartalinę renovaciją ir daugiabučių
+            atnaujinimo tvarką</a
+          >
+        </p>
+        <p>
+          Kilus klausimams kreiptis
+          <a href="mailto:savivaldybe@vilnius.lt">savivaldybe@vilnius.lt</a>
+        </p>
+      </div> -->
     </perfect-scrollbar>
   </div>
 </ng-template>
 
 <ng-template #heatMonthsChart>
-  <div class="heat-months-graphic sidebar-container" [@sidebarToggle]="sidebarMonthsState">
+  <div
+    class="heat-months-graphic sidebar-container"
+    [@sidebarToggle]="sidebarMonthsState"
+  >
     <perfect-scrollbar>
-      <div class="build-p sidebar-header" (click)="closeSidaberGroup('months')"> <a href="javascript:void(0)"
-          class="button close animate build-close">Atgal</a></div>
-      <div [ngClass]="{'hide': !showCharts}">
+      <div class="build-p sidebar-header" (click)="closeSidaberGroup('months')">
+        <a href="javascript:void(0)" class="button close animate build-close"
+          >Atgal</a
+        >
+      </div>
+      <div [ngClass]="{ hide: !showCharts }">
         <div class="heat-title">
-          <p>Vidutinis šilumos kiekis, tenkantis namo 1 m² naudingojo ploto, kWh/m²
+          <p>
+            Vidutinis šilumos kiekis, tenkantis namo 1 m² naudingojo ploto,
+            kWh/m²
 
-            <span class="heat-tip">
-              <span class="heat-highlight border-r-2"
-                [popper]="'Mėnesinis šilumos suvartojimas pagal mokėjimus už šilumą yra įtakojamas normatyvinio karšto vandens gyvatuko ir netolygaus gyventojų karšto vandens suvartojimo, todėl šis kiekis neturi sutapti su Faktiniu kiekvieno pastato išskaičiuotu vartojimu (žiūrėti į 1 grafą)'"
-                [popperTrigger]="'hover'" [popperPlacement]="'bottom'">Paaiškinimas</span>
-            </span></p>
+            <!-- <span class="heat-tip">
+              <span
+                class="heat-highlight border-r-2"
+                [popper]="
+                  'Mėnesinis šilumos suvartojimas pagal mokėjimus už šilumą yra įtakojamas normatyvinio karšto vandens gyvatuko ir netolygaus gyventojų karšto vandens suvartojimo, todėl šis kiekis neturi sutapti su Faktiniu kiekvieno pastato išskaičiuotu vartojimu (žiūrėti į 1 grafą). Šilumos suvartojimo duomenys - AB Vilniaus šilumos tinklai'
+                "
+                [popperTrigger]="'hover'"
+                [popperPlacement]="'bottom'"
+                >Paaiškinimas</span
+              >
+            </span> -->
+          </p>
         </div>
         <div class="canvas-wrapper">
           <canvas width="326" height="400" #mChart></canvas>
         </div>
       </div>
-      <div [ngClass]="{'hide': showCharts}">
-        <p class="not-found-template--margin">&sdot; <span>Informacija apie šilumos suvartojimą neteikiama</span></p>
+      <div [ngClass]="{ hide: !showCharts }">
+        <div class="heat-title">
+          <p>
+            Vidutinė šildymo kaina, Eur/m²
+
+            <!-- <span class="heat-tip">
+              <span
+                class="heat-highlight border-r-2"
+                [popper]="
+                  'Mėnesinis šilumos suvartojimas pagal mokėjimus už šilumą yra įtakojamas normatyvinio karšto vandens gyvatuko ir netolygaus gyventojų karšto vandens suvartojimo, todėl šis kiekis neturi sutapti su Faktiniu kiekvieno pastato išskaičiuotu vartojimu (žiūrėti į 1 grafą). Šilumos suvartojimo duomenys - AB Vilniaus šilumos tinklai'
+                "
+                [popperTrigger]="'hover'"
+                [popperPlacement]="'bottom'"
+                >Paaiškinimas</span
+              >
+            </span> -->
+          </p>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas width="326" height="400" #pChart></canvas>
+        </div>
+      </div>
+      <div [ngClass]="{ hide: showCharts }">
+        <p class="not-found-template--margin">
+          &sdot; <span>Informacija apie šilumos suvartojimą neteikiama</span>
+        </p>
       </div>
     </perfect-scrollbar>
   </div>
 </ng-template>
 
 <ng-template #heatClassesChart>
-  <div class="heat-classes-graphic sidebar-container" [@sidebarToggle]="sidebarClassesState">
+  <div
+    class="heat-classes-graphic sidebar-container"
+    [@sidebarToggle]="sidebarClassesState"
+  >
     <perfect-scrollbar>
-      <div class="build-p sidebar-header" (click)="closeSidaberGroup('classes')"> <a href="javascript:void(0)"
-          class="button close animate build-close">Atgal</a></div>
+      <div
+        class="build-p sidebar-header"
+        (click)="closeSidaberGroup('classes')"
+      >
+        <a href="javascript:void(0)" class="button close animate build-close"
+          >Atgal</a
+        >
+      </div>
 
-      <div [ngClass]="{'hide': !showCharts}">
+      <div [ngClass]="{ hide: !showCharts }">
         <div class="heat-title">
-          <p>Faktinio energijos vartojimo klasė <br /> </p>
+          <p>Faktinio energijos vartojimo klasė <br /></p>
         </div>
         <p class="split-half">
           <span class="font-l">sezonas<br /></span>
-          {{sidebarHeatContent?.REITMAXMET}}-{{sidebarHeatContent?.REITMAXMET+1}}
+          {{ sidebarHeatContent?.REITMAXMET }}-{{
+            sidebarHeatContent?.REITMAXMET + 1
+          }}
         </p>
         <p class="split-half">
           <span>klasė<br /></span>
-          <span [class.highlight]="sidebarHeatContent?.REITING > 6" class="border-r-2">
-            <strong>{{sidebarHeatContent?.REITING}}</strong>
+          <span
+            [class.highlight]="sidebarHeatContent?.REITING > 6"
+            class="border-r-2"
+          >
+            <strong>{{ sidebarHeatContent?.REITING }}</strong>
           </span>
         </p>
         <div class="clear-both"></div>
         <p class="split-half">
           <span class="font-l">sezonas<br /></span>
-          {{sidebarHeatContent?.REITMAXMET-1}}-{{sidebarHeatContent?.REITMAXMET}}
+          {{ sidebarHeatContent?.REITMAXMET - 1 }}-{{
+            sidebarHeatContent?.REITMAXMET
+          }}
         </p>
         <p class="split-half">
           <span>klasė<br /></span>
-          <span [class.highlight]="sidebarHeatContent?.REITING > 6" class="border-r-2">
-            <strong>{{sidebarHeatContent?.REITING1}}</strong>
+          <span
+            [class.highlight]="sidebarHeatContent?.REITING > 6"
+            class="border-r-2"
+          >
+            <strong>{{ sidebarHeatContent?.REITING1 }}</strong>
           </span>
         </p>
         <div class="clear-both"></div>
@@ -183,30 +392,61 @@
           <canvas width="326" height="400" #cChart></canvas>
         </div>
         <div class="heat-info">
-          <p>Grafike vaizduojama paskutinio šildymo sezono <strong>{{heatingClassesData?.totalResults}}</strong> namų
+          <p>
+            Grafike vaizduojama paskutinio šildymo sezono
+            <strong>{{ heatingClassesData?.totalResults }}</strong> namų
             palyginimas pagal energijos
-            <a href="./assets/docs/metodika_2013.pdf" target="_blank"
-              [popper]="'Faktinio Energijos Vartojimo Klasė yra skirta įvertinti, kiek energijos pastatas faktiškai vartoja patalpų šildymui. Pagal energijos vartojimą patalpų šildymui pastatai suskirstyti į 15 klasių: pati mažiausia ir efektyviausia yra 1 klasė, pati didžiausia ir mažiausiai efektyvi yra 15 klasė. Faktinio energijos vartojimo klasės skaitinė reikšmė tai dydis, kurį skaičiuojant iš jo yra eliminuota skirtingo šildymo sezono trukmės įtaka, skirtingo šildymo sezono išorės oro temperatūros įtaka, skirtingo pastato šildymo ploto įtaka, todėl galima lyginti skirtingų įvairaus dydžio pastatų skirtingų šildymo sezonų klases tarpusavyje, to paties FEVK įvairiais metais, mėnesiais ir pan.'"
-              [popperTrigger]="'hover'" [popperPlacement]="'top'">vartojimo klasę</a>
-            <span [style.background-color]="selectionByTypeState ? '#e61c24' : '#ececec' "
-              [style.color]="selectionByTypeState ? '#fff' : '#4c4c4c' " class="heat-highlight border-r-2 type-no"
-              [popper]="popperContent" [popperTrigger]="'hover'" [popperPlacement]="'top'"
-              (click)="selectBuildingsByType()">
-              <ng-container *ngIf="sidebarHeatContent?.TIPINIS_PR; else typeNotFount">
-                {{sidebarHeatContent?.TIPINIS_PR}}
+            <a
+              href="./assets/docs/metodika_2013.pdf"
+              target="_blank"
+              [popper]="
+                'Faktinio Energijos Vartojimo Klasė yra skirta įvertinti, kiek energijos pastatas faktiškai vartoja patalpų šildymui. Pagal energijos vartojimą patalpų šildymui pastatai suskirstyti į 15 klasių: pati mažiausia ir efektyviausia yra 1 klasė, pati didžiausia ir mažiausiai efektyvi yra 15 klasė. Faktinio energijos vartojimo klasės skaitinė reikšmė tai dydis, kurį skaičiuojant iš jo yra eliminuota skirtingo šildymo sezono trukmės įtaka, skirtingo šildymo sezono išorės oro temperatūros įtaka, skirtingo pastato šildymo ploto įtaka, todėl galima lyginti skirtingų įvairaus dydžio pastatų skirtingų šildymo sezonų klases tarpusavyje, to paties FEVK įvairiais metais, mėnesiais ir pan.'
+              "
+              [popperTrigger]="'hover'"
+              [popperPlacement]="'top'"
+              >vartojimo klasę</a
+            >
+            <span
+              [style.background-color]="
+                selectionByTypeState ? '#e61c24' : '#ececec'
+              "
+              [style.color]="selectionByTypeState ? '#fff' : '#4c4c4c'"
+              class="heat-highlight border-r-2 type-no"
+              [popper]="popperContent"
+              [popperTrigger]="'hover'"
+              [popperPlacement]="'top'"
+              (click)="selectBuildingsByType()"
+            >
+              <ng-container
+                *ngIf="sidebarHeatContent?.TIPINIS_PR; else typeNotFount"
+              >
+                {{ sidebarHeatContent?.TIPINIS_PR }}
               </ng-container>
               <ng-template #typeNotFount>Nenustatyto</ng-template>
-            </span> tipo namuose</p>
-          <p><a href="./assets/docs/metodika_2013.pdf" target="_blank">Atsisiųskite metodiką</a></p>
+            </span>
+            tipo namuose
+          </p>
+          <p>
+            <a href="./assets/docs/metodika_2013.pdf" target="_blank"
+              >Atsisiųskite metodiką</a
+            >
+          </p>
         </div>
         <popper-content #popperContent>
-          <span *ngIf="!selectionByTypeState; else message">Žemėlapyje filtruokite tik šio tipo namus</span>
+          <span *ngIf="!selectionByTypeState; else message"
+            >Žemėlapyje filtruokite tik šio tipo namus</span
+          >
           <ng-template #message>Naikinti šio tipo namų filtravimą</ng-template>
         </popper-content>
       </div>
-      <div [ngClass]="{'hide': showCharts}">
-        <p class="not-found-template--margin">&sdot; <span>Informacija apie faktinio energijos suvartojimo klases
-            neteikiama</span></p>
+      <div [ngClass]="{ hide: showCharts }">
+        <p class="not-found-template--margin">
+          &sdot;
+          <span
+            >Informacija apie faktinio energijos suvartojimo klases
+            neteikiama</span
+          >
+        </p>
       </div>
     </perfect-scrollbar>
   </div>
@@ -214,33 +454,107 @@
 <ng-template #infoTemplate>
   <div class="sidebar-container" [@sidebarToggle]="sidebarInfoState">
     <perfect-scrollbar>
-      <div class="build-p sidebar-header" (click)="closeSidaberGroup('info')"> <a href="javascript:void(0)"
-          class="button close animate build-close">Atgal</a></div>
+      <div class="build-p sidebar-header" (click)="closeSidaberGroup('info')">
+        <a href="javascript:void(0)" class="button close animate build-close"
+          >Atgal</a
+        >
+      </div>
       <div class="main-s-content">
+        <div class="building-title">
+          <p>Pastato informacija <br /></p>
+        </div>
         <p>
-          <span>Prižiūrinti organizacija<br /></span>
-          {{sidebarHeatContent.PRIEZIURA}}
+          <span>Pastato valdytojas: </span>
+          {{ sidebarHeatContent.PRIEZIURA }}
         </p>
-        <p *ngIf="sidebarHeatContent.TIPINIS_PR">
+        <p>
+          <span>Renovacijos projekto administratorius: </span>
+          <ng-container
+            *ngIf="
+              sidebarHeatContent.RENPROJADM;
+              else renovationAdministratorUnknown
+            "
+            >{{ sidebarHeatContent.RENPROJADM }}
+          </ng-container>
+          <ng-template #renovationAdministratorUnknown
+            >duomenų nėra</ng-template
+          >
+        </p>
+        <!-- <p *ngIf="sidebarHeatContent.TIPINIS_PR">
           <span>Tipinių namų rūšiavimas<br /></span>
-          {{sidebarHeatContent.TIPINIS_PR}}
+          {{ sidebarHeatContent.TIPINIS_PR }}
         </p>
         <p *ngIf="!sidebarHeatContent.TIPINIS_PR">
           <span>Tipinių namų rūšiavimas<br /></span>
           -
+        </p> -->
+        <!-- <p *ngIf="sidebarHeatContent.TIPINIS_PR">
+          <span>Tipinių namų rūšiavimas<br /></span>
+          {{ sidebarHeatContent.TIPINIS_PR }}
         </p>
+        <p *ngIf="!sidebarHeatContent.TIPINIS_PR">
+          <span>Tipinių namų rūšiavimas<br /></span>
+          -
+        </p> -->
         <p>
-          <span>Statybos metai<br /></span>
-          <ng-container *ngIf="sidebarHeatContent.STATMETAI; else yearUnknown">{{sidebarHeatContent.STATMETAI}}
+          <span>Statybos metai: </span>
+          <ng-container *ngIf="sidebarHeatContent.STATMETAI; else yearUnknown"
+            >{{ sidebarHeatContent.STATMETAI }}
           </ng-container>
           <ng-template #yearUnknown>-</ng-template>
         </p>
+        <p>
+          <span>Naudingas plotas: </span>
+          <ng-container *ngIf="sidebarHeatContent.SILDPLOT; else areaUnknown"
+            >{{ sidebarHeatContent.SILDPLOT }}m²
+          </ng-container>
+          <ng-template #areaUnknown>-</ng-template>
+        </p>
+        <p>
+          <span>Aukštų sk.: </span>
+          <ng-container *ngIf="sidebarHeatContent.AUKSTAI; else floorsUnknown"
+            >{{ sidebarHeatContent.AUKSTAI }}
+          </ng-container>
+          <ng-template #floorsUnknown>-</ng-template>
+        </p>
+        <p>
+          <span>Gyvenamų patalpų skaičius: </span>
+          <ng-container
+            *ngIf="sidebarHeatContent.GPATALP_SK; else liveApartmentsUnknown"
+            >{{ sidebarHeatContent.GPATALP_SK }}
+          </ng-container>
+          <ng-template #liveApartmentsUnknown>-</ng-template>
+        </p>
+        <p>
+          <span>Negyvenamų patalpų skaičius: </span>
+          <ng-container
+            *ngIf="sidebarHeatContent.PATALP_SK; else notLiveApartmentsUnknown"
+            >{{ sidebarHeatContent.PATALP_SK }}
+          </ng-container>
+          <ng-template #notLiveApartmentsUnknown>-</ng-template>
+        </p>
+        <p>
+          <span>Bendra investicinio projekto vertė: </span>
+          <ng-container *ngIf="sidebarHeatContent.INVPROJVER; else worthUnknown"
+            >{{ sidebarHeatContent.INVPROJVER }} EUR
+          </ng-container>
+          <ng-template #worthUnknown>duomenų nėra</ng-template>
+        </p>
       </div>
       <div class="heat-info">
-        <p><a target="_blank" rel="noopener noreferrer" [href]="renovationProgramUrl">Daugiabučių namų
-            atnaujinimo tvarka</a></p>
-        <p>Šilumos suvartojimo duomenys - AB „Vilniaus šilumos tinklai“</p>
-        <p>Kilus klausimams kreiptis <a href="mailto:savivaldybe@vilnius.lt">savivaldybe@vilnius.lt</a></p>
+        <!-- <p>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            [href]="renovationProgramUrl"
+            >Daugiabučių namų atnaujinimo tvarka</a
+          >
+        </p>
+        <p>Šilumos suvartojimo duomenys - AB „Vilniaus šilumos tinklai“</p> -->
+        <p>
+          Kilus klausimams kreiptis
+          <a href="mailto:savivaldybe@vilnius.lt">info@amiestas.lt </a>
+        </p>
       </div>
     </perfect-scrollbar>
   </div>
