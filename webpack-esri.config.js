@@ -9,7 +9,7 @@ module.exports = {
     new ArcGISPlugin({
       locales: ["lt"],
       features: {
-        "3d": false
+        "3d": false,
       },
       // exclude modules
       userDefinedExcludes: [
@@ -21,9 +21,9 @@ module.exports = {
         "arcgis-js-api/layers/OpenStreetMapLayer",
         "arcgis-js-api/layers/WMSLayer",
         "arcgis-js-api/layers/WMTSLayer",
-        "arcgis-js-api/layers/WebTileLayer"
-      ]
-    })
+        "arcgis-js-api/layers/WebTileLayer",
+      ],
+    }),
     /**
      * A way to include process.env params
      * from backend to front end
@@ -34,11 +34,11 @@ module.exports = {
     // }),
   ],
   externals: {
-    moment: 'moment'
+    moment: "moment",
   },
   node: {
     process: false,
     global: false,
-    fs: "empty"
-  }
+    fs: "empty",
+  },
 };
