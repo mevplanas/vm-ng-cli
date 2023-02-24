@@ -25,16 +25,16 @@ export const CONFIG = {
         "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_LKS_su_rajonu/MapServer",
       basemapDarkUrl:
         "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_dark_calibrated/MapServer",
-      ortofotoUrl:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2017_LKS/MapServer",
-      ortofotoDetailed19Url:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS/MapServer",
-      ortofotoFull19Url:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS_FULL/MapServer",
-      basemapEngineeringUrl:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
-      geometryUrl:
-        "https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+      // ortofotoUrl:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2017_LKS/MapServer",
+      // ortofotoDetailed19Url:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS/MapServer",
+      // ortofotoFull19Url:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS_FULL/MapServer",
+      // basemapEngineeringUrl:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
+      // geometryUrl:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer",
       // tslint:disable-next-line: max-line-length
       //  printServiceUrl: "https://zemelapiai.vplanas.lt/arcgis/rest/services/ITV_teritorijos/ITV_teritorijos_spausdinimas/GPServer/Export%20Web%20Map"
       // tslint:disable-next-line: max-line-length

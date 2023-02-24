@@ -2,22 +2,38 @@
   <p>Pasirinkite įrankį:</p>
   <a (click)="closeToggle()" class="button close animate" title="Uždaryti">✕</a>
 
-	<div id="tools-container">
-		<!-- temporarily removing print component due to Gp performance issues -->
+  <div id="tools-container">
+    <!-- temporarily removing print component due to Gp performance issues -->
     <!-- <print-map></print-map> -->
-		<maps-v-measure-map></maps-v-measure-map>
-		<maps-v-extract></maps-v-extract>
-		<maps-v-profile-tool></maps-v-profile-tool>
-		<maps-v-swipe-tool *ngIf="currentTheme === 'projektai'"></maps-v-swipe-tool>
-		<maps-v-dwg [tool]="toolList.dwg" [title]="'Topografijos'" *ngIf="1"></maps-v-dwg>
-		<maps-v-dwg [tool]="toolList.dwgTech"  [title]="'Techninių pr.'" *ngIf="1"></maps-v-dwg>
-		<button class="tool-button">
-			<span class="esri-icon-link" aria-label="link icon"></span>
-			<a href="http://zemelapiai.vplanas.lt/Suliniu_korteles" target="blank" rel="noopener, noreferrer"> Įrenginių kortelės</a>
-		</button>
-		<button class="tool-button">
-			<span class="esri-icon-link" aria-label="link icon"></span>
-			<a href="https://vplanas.maps.arcgis.com/apps/dashboards/444f88e9ecf548f4bcf4162f1a374b60" target="blank" rel="noopener, noreferrer"> LiDAR duomenys</a>
-		</button>
+    <maps-v-measure-map></maps-v-measure-map>
+    <maps-v-extract></maps-v-extract>
+    <maps-v-profile-tool></maps-v-profile-tool>
+    <maps-v-swipe-tool *ngIf="currentTheme === 'projektai'"></maps-v-swipe-tool>
+    <!-- <maps-v-dwg [tool]="toolList.dwg" [title]="'Topografijos'" *ngIf="1"></maps-v-dwg> -->
+    <maps-v-dwg
+      [tool]="toolList.dwgTech"
+      [title]="'Techninių pr.'"
+      *ngIf="1"
+    ></maps-v-dwg>
+    <button class="tool-button">
+      <span class="esri-icon-link" aria-label="link icon"></span>
+      <a
+        href="http://zemelapiai.vplanas.lt/Suliniu_korteles"
+        target="blank"
+        rel="noopener, noreferrer"
+      >
+        Įrenginių kortelės</a
+      >
+    </button>
+    <button class="tool-button">
+      <span class="esri-icon-link" aria-label="link icon"></span>
+      <a
+        href="https://vplanas.maps.arcgis.com/apps/dashboards/444f88e9ecf548f4bcf4162f1a374b60"
+        target="blank"
+        rel="noopener, noreferrer"
+      >
+        LiDAR duomenys</a
+      >
+    </button>
   </div>
 </div>
