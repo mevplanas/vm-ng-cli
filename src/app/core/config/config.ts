@@ -902,6 +902,26 @@ export const CONFIG = {
       imgUrl: "assets/img/trees.png", // image URL
       imgAlt: "Apsodinkime Vilnių kartu", // image alt attribute
     },
+    eventsExternal: {
+      url: "https://renginiai.vilnius.lt/",
+      production: true, // if theme is ready for production
+      external: true, // external application
+      custom: true, // true if theme funcionality is custom
+      name: "Vilniaus miesto renginių žemėlapis", // theme name
+      id: "renginiai-vilnius", // theme id class and theme URL query name
+      imgUrl: "assets/img/renginiu.png", // image URL
+      imgAlt: "Vilniaus miesto renginių žemėlapis", // image alt attribute
+    },
+    dnrVilnius: {
+      url: "https://zemelapiai.vplanas.lt/vilniausdnr/lt",
+      production: true, // if theme is ready for production
+      external: true, // external application
+      custom: true, // true if theme funcionality is custom
+      name: "Vilniaus DNR", // theme name
+      id: "renginiai-vilnius", // theme id class and theme URL query name
+      imgUrl: "assets/img/Vilnius_DNR.png", // image URL
+      imgAlt: "Vilniaus DNR", // image alt attribute
+    },
     emptyTeam: {
       // url: "https://maps.vilnius.lt/maps_vilnius/?theme=civ-sauga",
       production: true, // if theme is ready for production
