@@ -19,11 +19,11 @@ export const BASEMAPS: Basemap[] = [
   //   name: "Orto / 2019",
   //   serviceName: "ortofotoDetailed19Url", // based on Options.ts
   // },
-  // {
-  //   id: "base-map-19-full",
-  //   name: "Orto / 2019",
-  //   serviceName: "ortofotoFull19Url", // based on Options.ts
-  // },
+  {
+    id: "base-map-19-full",
+    name: "Orto / 2019",
+    serviceName: "ortofotoFull19Url", // based on Options.ts
+  },
   // {
   //   id: 'base-en-t',
   //   name: 'Inžinerija / T', // engineering plus base-dark
