@@ -4,11 +4,6 @@ export const BASEMAPS: Basemap[] = [
     name: "Tamsus",
     serviceName: "basemapDarkUrl", // based on Options.ts
   },
-  // {
-  //   id: "base-orto",
-  //   name: "Orto / 2017",
-  //   serviceName: "ortofotoUrl", // based on Options.ts
-  // },
   {
     id: "base-map",
     name: "Žemėlapis",
@@ -23,6 +18,11 @@ export const BASEMAPS: Basemap[] = [
     id: "base-map-19-full",
     name: "Orto / 2019",
     serviceName: "ortofotoFull19Url", // based on Options.ts
+  },
+  {
+    id: "base-orto",
+    name: "Orto / 2022",
+    serviceName: "ortofotoUrl", // based on Options.ts
   },
   // {
   //   id: 'base-en-t',

@@ -25,8 +25,8 @@ export const CONFIG = {
         "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_LKS_su_rajonu/MapServer",
       basemapDarkUrl:
         "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_dark_calibrated/MapServer",
-      // ortofotoUrl:
-      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2017_LKS/MapServer",
+      ortofotoUrl:
+        "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2022_LKS/MapServer",
       // ortofotoDetailed19Url:
       // "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS/MapServer",
       ortofotoFull19Url:
