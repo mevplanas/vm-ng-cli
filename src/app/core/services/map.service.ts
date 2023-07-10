@@ -99,7 +99,7 @@ export class MapService {
       constraints: {
         snapToZoom: true, // When true, the view snaps to the next LOD when zooming in or out. When false, the zoom is continuous.
         rotationEnabled: true, // Disables map rotation
-        maxScale: 100,
+        maxScale: 100, // max zoom
       },
       popup: {
         dockEnabled: true,
