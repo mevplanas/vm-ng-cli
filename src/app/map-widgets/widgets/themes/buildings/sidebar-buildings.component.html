@@ -504,6 +504,13 @@
           <ng-template #yearUnknown>-</ng-template>
         </p>
         <p>
+          <span>Renovacijos metai: </span>
+          <ng-container *ngIf="sidebarHeatContent.RENOVMETAI; else yearUnknown"
+            >{{ sidebarHeatContent.RENOVMETAI }}
+          </ng-container>
+          <ng-template #yearUnknown>-</ng-template>
+        </p>
+        <p>
           <span>Naudingas plotas: </span>
           <ng-container *ngIf="sidebarHeatContent.SILDPLOT; else areaUnknown"
             >{{ sidebarHeatContent.SILDPLOT }}m²
