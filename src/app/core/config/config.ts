@@ -619,6 +619,23 @@ export const CONFIG = {
         },
       },
     },
+    culturalHeritage: {
+      production: true, // if theme is ready for production
+      name: "Kultūros paveldas", // theme name
+      description: "Kultūros paveldas",
+      id: "kulturos_paveldas", // theme id class and theme URL query name
+      imgUrl: "assets/img/paveldas.png", // image URL
+      imgAlt: "Kultūros Paveldas", // image alt attribute
+      layers: {
+        paveldas: {
+          // layer unique name //
+          // dynamicService URL, only 1 url per uniquer Layer
+          dynimacLayerUrls:
+            "https://gis.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Paveldas/MapServer",
+          name: "Kultūros paveldas", // dynamicLayers group name
+        },
+      },
+    },
     quarterlyRenovation: {
       // url: "https://maps.vilnius.lt/maps_vilnius/?theme=civ-sauga",
       custom: true, // true if theme funcionality is custom
