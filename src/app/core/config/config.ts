@@ -28,9 +28,9 @@ export const CONFIG = {
       ortofotoUrl:
         "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2022_LKS/MapServer",
       // ortofotoDetailed19Url:
-      // "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS/MapServer",
+      // "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS/MapServer",
       ortofotoFull19Url:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS_FULL/MapServer",
+        "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS_FULL/MapServer",
       // basemapEngineeringUrl:
       //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
       // geometryUrl:
