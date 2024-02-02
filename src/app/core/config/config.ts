@@ -33,8 +33,8 @@ export const CONFIG = {
         "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS_FULL/MapServer",
       // basemapEngineeringUrl:
       //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
-      // geometryUrl:
-      //   "https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+      geometryUrl:
+        "https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer",
       // tslint:disable-next-line: max-line-length
       //  printServiceUrl: "https://zemelapiai.vplanas.lt/arcgis/rest/services/ITV_teritorijos/ITV_teritorijos_spausdinimas/GPServer/Export%20Web%20Map"
       // tslint:disable-next-line: max-line-length
