@@ -27,18 +27,32 @@
     </h3>
     <ng-container>
       <p *ngIf="!!sidebarHeatContent.RENOVUOTA">
-        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA < 100"
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 100"
+          >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
+          <strong>Atnaujinamas (projektavimo etapas)</strong><br
+        /></span>
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 90"
+          >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
+          <strong>Atnaujinamas. Statybos rangos darbų etapas</strong><br
+        /></span>
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 10"
           >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
           <strong>Atnaujintas</strong><br
         /></span>
-        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 100"
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 120"
           >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
-          <strong>Atnaujinamas</strong><br
+          <strong>Galima renovacija senamiestyje</strong><br
         /></span>
-        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA > 100"
+        <span class="font-l" *ngIf="sidebarHeatContent.RENOVUOTA === 110"
           >Daugiabučio namo atnaujinimo (modernizavimo) statusas:
           <strong>Rengiamasi atnaujinimui</strong><br
         /></span>
+
+        <!-- 100  Atnaujinamas (projektavimo etapas)
+90   Atnaujinamas. Statybos rangos darbų etapas
+10   Atnaujintas
+120   Galima renovacija senamiestyje
+110   Rengiamasi atnaujinimui -->
       </p>
       <p>
         <span>Kvartalo pavadinimas: </span>
