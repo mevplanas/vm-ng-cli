@@ -11,7 +11,8 @@ h2 {
   font-size: 28px;
   line-height: 1.6;
 }
-.col-2, .col-sm-3 {
+.col-2,
+.col-sm-3 {
   position: relative;
   width: 50%;
   padding: 0;
@@ -58,7 +59,7 @@ h2 {
   top: 5px;
   color: #fff;
 }
-.row.themes-component .themes-page-logo img  {
+.row.themes-component .themes-page-logo img {
   margin: 0 auto;
   width: 90px;
 }
@@ -72,12 +73,44 @@ h2 {
   .row.themes-component h1 {
     display: none;
   }
-  .row.themes-component .themes-page-logo img  {
+  .row.themes-component .themes-page-logo img {
     float: left;
     margin-left: 20px;
     width: 90px;
   }
   .themes-page-logo span {
     top: 25px;
+  }
+}
+
+.themes-page-alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px 20px 5px 20px;
+  background: #fff;
+  color: #464646;
+}
+
+.alert-icon {
+  height: 20px;
+  margin-right: 4px;
+}
+
+.alert-link {
+  color: #464646;
+  text-decoration: underline;
+  color: #0db561;
+  margin-right: 2px;
+}
+
+@media only screen and (max-width: 720px) {
+  .themes-page-alert {
+    font-size: small;
+  }
+  .alert-icon {
+    height: 16px;
+    margin-right: 4px;
   }
 }
