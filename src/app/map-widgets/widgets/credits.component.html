@@ -1,10 +1,18 @@
 <div id="credits">
-  {{ year | date: "y" }} m.
+  {{ year | date : "y" }} m.
   <span class="credits-content name"> | VMS interaktyvūs žemėlapiai </span> |
   <a
     id="copyright"
     [popper]="
-      '© UAB Vilniaus planas <br>© Vilniaus miesto savivaldybė<br>ORT5LT © Nacionalinė žemės tarnyba prie ŽŪM<br>© Valstybinė saugomų teritorijų tarnyba prie Aplinkos ministerijos<br>© Policijos departamentas prie Vidaus reikalų ministerijos'
+      '© ID Vilnius<br>
+© Vilniaus miesto savivaldybė<br>
+© Valstybinė miškų tarnyba<br>
+© Valstybės įmonė Registrų centras, pagal CC BY 4.0. (pakeitimai nedaryti)<br>
+© Nacionalinė žemės tarnyba prie Aplinkos ministerijos<br>
+© Valstybinė saugomų teritorijų tarnyba prie Aplinkos ministerijos<br>
+© Kultūros paveldo departamentas prie Kultūros ministerijos<br>
+© Policijos departamentas prie Vidaus reikalų ministerijos
+'
     "
     [popperTrigger]="'hover'"
     [popperPlacement]="'top'"
@@ -13,8 +21,6 @@
   </a>
   <span class="credits-content company"
     >|
-    <a href="http://www.vilniausplanas.lt/" target="_blank"
-      >UAB „Vilniaus planas“</a
-    >
+    <a href="https://www.idvilnius.lt/" target="_blank">ID Vilnius</a>
   </span>
 </div>
