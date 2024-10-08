@@ -18,6 +18,7 @@ import Color from "arcgis-js-api/Color";
 import SimpleLineSymbol from "arcgis-js-api/symbols/SimpleLineSymbol";
 import SimpleFillSymbol from "arcgis-js-api/symbols/SimpleFillSymbol";
 import TileLayer from "arcgis-js-api/layers/TileLayer";
+import ImageryLayer from "arcgis-js-api/layers/ImageryLayer";
 import FeatureLayer from "arcgis-js-api/layers/FeatureLayer";
 import Point from "arcgis-js-api/geometry/Point";
 import LayerList from "arcgis-js-api/widgets/LayerList";
@@ -376,11 +377,19 @@ export class MapService {
   }
 
   initTiledLayer(layer: string, name: string, visible = true): TileLayer {
-    return new TileLayer({
-      url: layer,
-      id: name,
-      visible,
-    });
+    if (name === "base-imagery") {
+      return new ImageryLayer({
+        url: layer,
+        id: name,
+        visible,
+      });
+    } else {
+      return new TileLayer({
+        url: layer,
+        id: name,
+        visible,
+      });
+    }
   }
 
   initFeatureLayer(layer: string, opacity = 1, index: number): FeatureLayer {

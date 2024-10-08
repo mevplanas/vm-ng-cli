@@ -24,6 +24,11 @@ export const BASEMAPS: Basemap[] = [
     name: "Orto / 2022",
     serviceName: "ortofotoUrl", // based on Options.ts
   },
+  {
+    id: "base-imagery",
+    name: "Aktualiausia orto",
+    serviceName: "imageryUrl", // based on Options.ts
+  },
   // {
   //   id: 'base-en-t',
   //   name: 'Inžinerija / T', // engineering plus base-dark
