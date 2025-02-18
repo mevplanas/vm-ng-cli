@@ -1,14 +1,14 @@
-import { Injectable, Inject } from '@angular/core';
-import { MAP_CONFIG } from '../../core//config/map.config';
-import { MapService } from '../../core/services/map.service';
-import { LayerViewEvent } from '../../core/models/esri-event';
+import { Injectable, Inject } from "@angular/core";
+import { MAP_CONFIG } from "../../core//config/map.config";
+import { MapService } from "../../core/services/map.service";
+import { LayerViewEvent } from "../../core/models/esri-event";
 
-import { KindergartensService } from './kindergartens.service';
+import { KindergartensService } from "./kindergartens.service";
 
-import { Subject, ObservableInput, Observable, from, forkJoin } from 'rxjs';
-import findKey from 'lodash-es/findKey';
-import pick from 'lodash-es/pick';
-import forIn from 'lodash-es/forIn';
+import { Subject, ObservableInput, Observable, from, forkJoin } from "rxjs";
+import findKey from "lodash-es/findKey";
+import pick from "lodash-es/pick";
+import forIn from "lodash-es/forIn";
 
 @Injectable()
 export class KindergartensLayersService {
@@ -18,7 +18,7 @@ export class KindergartensLayersService {
     private mapService: MapService,
     private kindergartensService: KindergartensService,
     @Inject(MAP_CONFIG) private config
-    ) { }
+  ) {}
 
   addCustomLayers(queryParams, snapshotUrl) {
     let dataStore$: Observable<any>;
@@ -28,38 +28,87 @@ export class KindergartensLayersService {
     const mapEsri = this.mapService.returnMap();
 
     // all theme layers will be added to common group layer
-    const mainGroupLayer = this.mapService.initGroupLayer(themeName + 'group', 'Ikimokylinio ugdymo įstaigos', 'show');
+    const mainGroupLayer = this.mapService.initGroupLayer(
+      themeName + "group",
+      "Ikimokylinio ugdymo įstaigos",
+      "show"
+    );
     mapEsri.add(mainGroupLayer);
 
-    mainGroupLayer.on('layerview-create', (event: LayerViewEvent) => {
+    mainGroupLayer.on("layerview-create", (event: LayerViewEvent) => {
       // create group and add all grouped layers to same group, so we could manage group visibility
-      const groupLayer = this.mapService.initGroupLayer('kindergartensSub' + 'group', 'Ikimokylinio ugdymo įstaigos', 'hide-children');
+      const groupLayer = this.mapService.initGroupLayer(
+        "kindergartensSub" + "group",
+        "Ikimokylinio ugdymo įstaigos",
+        "hide-children"
+      );
       mainGroupLayer.add(groupLayer);
 
-      groupLayer.on('layerview-create', (event: LayerViewEvent) => {
+      groupLayer.on("layerview-create", (event: LayerViewEvent) => {
         forIn(themeLayers, (layer, key) => {
           const popupEnabled = false;
 
           // add feature layer with opacity 0
-          this.mapService.pickCustomThemeLayers(layer, key, queryParams, groupLayer, 0, 'simple-marker');
+          this.mapService.pickCustomThemeLayers(
+            layer,
+            key,
+            queryParams,
+            groupLayer,
+            0,
+            "simple-marker"
+          );
 
-          this.mapService.pickMainThemeLayers(layer, key, queryParams, popupEnabled, groupLayer);
+          this.mapService.pickMainThemeLayers(
+            layer,
+            key,
+            queryParams,
+            popupEnabled,
+            groupLayer
+          );
 
           // create data Observables from promises and forkJoin all Observables
           const url = layer.dynimacLayerUrls;
           const dataElderates$ = from(
-            this.kindergartensService.getAllQueryDataPromise(url + '/4', ['ID', 'LABEL'])
+            this.kindergartensService.getAllQueryDataPromise(url + "/4", [
+              "ID",
+              "LABEL",
+            ])
           );
           const dataMainInfo$ = from(
             // tslint:disable-next-line: max-line-length
-            this.kindergartensService.getAllQueryDataPromise(url + '/5', ['GARDEN_ID', 'LABEL', 'EMAIL', 'PHONE', 'FAX', 'ELDERATE', 'ELDERATE2', 'ELDERATE3', 'ELDERATE4', 'SCHOOL_TYPE'])
+            this.kindergartensService.getAllQueryDataPromise(url + "/5", [
+              "GARDEN_ID",
+              "LABEL",
+              "EMAIL",
+              "PHONE",
+              "FAX",
+              "ELDERATE",
+              "ELDERATE2",
+              "ELDERATE3",
+              "ELDERATE4",
+              "SCHOOL_TYPE",
+              "WEBSITE",
+              "ADDRESS",
+              "WORKING_HOURS",
+              "SCHOOL_TYPE_ID",
+            ])
           );
           const dataInfo$ = from(
             // tslint:disable-next-line: max-line-length
-            this.kindergartensService.getAllQueryDataPromise(url + '/6', ['DARZ_ID', 'LAN_LABEL', 'TYPE_LABEL', 'CHILDS_COUNT', 'FREE_SPACE'])
+            this.kindergartensService.getAllQueryDataPromise(url + "/6", [
+              "DARZ_ID",
+              "LAN_LABEL",
+              "TYPE_LABEL",
+              "CHILDS_COUNT",
+              "FREE_SPACE",
+            ])
           );
           const dataSummary$ = from(
-            this.kindergartensService.getAllQueryDataPromise(url + '/7', ['DARZ_ID', 'CHILDS_COUNT', 'FREE_SPACE'])
+            this.kindergartensService.getAllQueryDataPromise(url + "/7", [
+              "DARZ_ID",
+              "CHILDS_COUNT",
+              "FREE_SPACE",
+            ])
           );
 
           dataStore$ = forkJoin(
@@ -67,11 +116,16 @@ export class KindergartensLayersService {
             dataMainInfo$,
             dataInfo$,
             dataSummary$,
-            (elderates: any[], mainInfo: any[], info: any[], summary: any[]) => ({
+            (
+              elderates: any[],
+              mainInfo: any[],
+              info: any[],
+              summary: any[]
+            ) => ({
               elderates,
               mainInfo,
               info,
-              summary
+              summary,
             })
           );
 
@@ -84,5 +138,4 @@ export class KindergartensLayersService {
       });
     });
   }
-
 }

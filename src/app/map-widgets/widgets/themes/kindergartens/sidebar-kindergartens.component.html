@@ -32,18 +32,38 @@
       <span>el. paštas<br /></span>
       <a href="mailto:{{ sidebarContent.EMAIL }}">{{ sidebarContent.EMAIL }}</a>
     </p>
+    <p *ngIf="sidebarContent.ADDRESS && sidebarContent.ADDRESS !== '-'">
+      <span>adresas<br /></span>
+      {{ sidebarContent.ADDRESS }}
+    </p>
+    <!-- Add these lines inside the #kindergartensContent template, for example after the existing ADDRESS block -->
+    <p
+      *ngIf="
+        sidebarContent.WORKING_HOURS && sidebarContent.WORKING_HOURS !== '-'
+      "
+    >
+      <span>darbo valandos<br /></span>
+      {{ sidebarContent.WORKING_HOURS }}
+    </p>
+    <p *ngIf="sidebarContent.WEBSITE && sidebarContent.WEBSITE !== '-'">
+      <span>interneto puslapis<br /></span>
+      <a href="{{ sidebarContent.WEBSITE }}" target="_blank">{{
+        sidebarContent.WEBSITE
+      }}</a>
+    </p>
+
     <div class="group-grid" *ngIf="groups.length > 0">
       <div class="flex-grid-3 title">
         <div class="col-1">Grupė</div>
         <div class="col-2">Kalba</div>
-        <div class="col-3">Vaik. sk.</div>
+        <!-- <div class="col-3">Vaik. sk.</div> -->
         <!-- <div class="col-4">Liko vt.</div> -->
       </div>
       <div *ngFor="let group of groups">
         <div class="flex-grid-3">
           <div class="col-1">{{ group.TYPE_LABEL }}</div>
           <div class="col-2">{{ group.LAN_LABEL }}</div>
-          <div class="col-3">{{ group.CHILDS_COUNT }}</div>
+          <!-- <div class="col-3">{{ group.CHILDS_COUNT }}</div> -->
           <!-- <div class="col-4">{{ group.FREE_SPACE }}</div> -->
         </div>
       </div>
@@ -116,7 +136,7 @@
             </mat-expansion-panel-header>
 
             <div class="form-group">
-              <div class="input-field col s12">
+              <!-- <div class="input-field col s12">
                 <div class="form-title">Darželio tipas</div>
                 <select
                   required
@@ -137,6 +157,28 @@
                   >
                     {{ data }}
                   </option>
+                </select>
+                <span
+                  class="mat-expansion-indicator vp-select"
+                  style="transform: rotate(0deg)"
+                ></span>
+              </div> -->
+              <div class="input-field col s12">
+                <div class="form-title">Darželio tipas</div>
+                <select
+                  required
+                  class="form-control"
+                  id="themeSelectD"
+                  [(ngModel)]="analyzeParams.groupByType"
+                  name="themeSelect"
+                  #themeSelect="ngModel"
+                  [class.selected-garten-filter]="
+                    analyzeParams.groupByType !== ''
+                  "
+                >
+                  <option value="">Pasirinkite</option>
+                  <option value="privatus">Privatus</option>
+                  <option value="valstybiniai">Valstybiniai</option>
                 </select>
                 <span
                   class="mat-expansion-indicator vp-select"

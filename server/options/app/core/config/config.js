@@ -34,8 +34,10 @@ exports.CONFIG = {
         "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS/MapServer",
       ortofotoFull19Url:
         "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS_FULL/MapServer",
-      basemapEngineeringUrl:
-        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
+      imagery2024:
+        "https://opencity.vplanas.lt/image/rest/services/P_BO_Ortho/Vilnius_BO_ortofoto/ImageServer",
+      // basemapEngineeringUrl:
+      //   "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_Inzinerija/MapServer",
       geometryUrl:
         "https://gis.vplanas.lt/arcgis/rest/services/Utilities/Geometry/GeometryServer",
       // tslint:disable-next-line: max-line-length

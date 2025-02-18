@@ -34,6 +34,11 @@ export const BASEMAPS: Basemap[] = [
   //   name: 'Inžinerija / Ž', // engineering plus base-map
   //   serviceName: 'basemapEngineeringUrl' // based on Options.ts
   // }
+  {
+    id: "base-imagery",
+    name: "Aktualiausia ortofoto",
+    serviceName: "imagery2024", // based on Options.ts
+  },
 ];
 
 export class Basemap {

@@ -1,24 +1,33 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
-import { sidebarAnimation } from '../../core/animations/sidebar-animation';
-import { Subscription, Observable } from 'rxjs';
-import { MapService } from '../../core/services/map.service';
-import { SearchService } from '../../core/services/search.service';
-import { IdentifyService } from '../../core/services/identify.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { BasemapsService } from '../../core/services/widgets/basemaps.service';
-import { MetaService } from '../../core/services/meta.service';
-import { MenuService } from '../../core/services/menu/menu.service';
-import { ViewService } from '../../core/services/view.service';
-import { KindergartensLayersService } from './kindergartens-layers.service';
-import { KindergartensTooltipService } from './kindergartens-tooltip.service';
-import { ShareButtonService } from '../../core/services/share-button.service';
-import { switchMap, take } from 'rxjs/operators';
-import MapView from 'arcgis-js-api/views/MapView';
-import Map from 'arcgis-js-api/Map';
-import Search from 'arcgis-js-api/widgets/Search';
-import View from 'arcgis-js-api/views/View';
-import { EsriEvent } from '../../core/models/esri-event';
-import { DataStore } from './kindergartens-interface.model';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ChangeDetectorRef,
+  Renderer2,
+  AfterViewInit,
+  OnDestroy,
+} from "@angular/core";
+import { sidebarAnimation } from "../../core/animations/sidebar-animation";
+import { Subscription, Observable } from "rxjs";
+import { MapService } from "../../core/services/map.service";
+import { SearchService } from "../../core/services/search.service";
+import { IdentifyService } from "../../core/services/identify.service";
+import { ActivatedRoute, Params } from "@angular/router";
+import { BasemapsService } from "../../core/services/widgets/basemaps.service";
+import { MetaService } from "../../core/services/meta.service";
+import { MenuService } from "../../core/services/menu/menu.service";
+import { ViewService } from "../../core/services/view.service";
+import { KindergartensLayersService } from "./kindergartens-layers.service";
+import { KindergartensTooltipService } from "./kindergartens-tooltip.service";
+import { ShareButtonService } from "../../core/services/share-button.service";
+import { switchMap, take } from "rxjs/operators";
+import MapView from "arcgis-js-api/views/MapView";
+import Map from "arcgis-js-api/Map";
+import Search from "arcgis-js-api/widgets/Search";
+import View from "arcgis-js-api/views/View";
+import { EsriEvent } from "../../core/models/esri-event";
+import { DataStore } from "./kindergartens-interface.model";
 
 export interface ISpatialReference {
   latestWkid: number;
@@ -32,15 +41,14 @@ export interface IGeometry {
 }
 
 @Component({
-  selector: 'maps-v-kindergartens',
-  templateUrl: './kindergartens.component.html',
-  styleUrls: ['./kindergartens.component.scss'],
-  animations: [sidebarAnimation]
+  selector: "maps-v-kindergartens",
+  templateUrl: "./kindergartens.component.html",
+  styleUrls: ["./kindergartens.component.scss"],
+  animations: [sidebarAnimation],
 })
-
 export class KindergartensComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('mainContainer', {static: false}) mainContainer: ElementRef;
-  @ViewChild('kindergartensContent', {static: false}) kindergartensContent;
+  @ViewChild("mainContainer", { static: false }) mainContainer: ElementRef;
+  @ViewChild("kindergartensContent", { static: false }) kindergartensContent;
   // @HostBinding('style.display') display = 'none';
 
   // execution of an Observable,
@@ -61,7 +69,7 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
   shareContainerActive = false;
 
   // animation for sidebar and map components
-  sidebarState = 's-open';
+  sidebarState = "s-open";
 
   // sharing url string
   shareUrl: string;
@@ -88,21 +96,21 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     private kindergartensLayersService: KindergartensLayersService,
     private kindergartensTooltipService: KindergartensTooltipService,
     private renderer2: Renderer2,
-    private shareButtonService: ShareButtonService,
+    private shareButtonService: ShareButtonService
   ) {
     // Detach this view from the change-detection tree
     this.cdr.detach();
   }
 
   toggleSidebar() {
-    this.sidebarState = this.sidebarState === 's-close' ? 's-open' : 's-close';
+    this.sidebarState = this.sidebarState === "s-close" ? "s-open" : "s-close";
 
     // detect changes when closing sidebar group
     this.cdr.detectChanges();
   }
 
   openSidebar() {
-    this.sidebarState = 's-open';
+    this.sidebarState = "s-open";
   }
 
   select(e) {
@@ -112,7 +120,10 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
   // toggle share container
   shareToggle(e) {
     this.shareContainerActive = !this.shareContainerActive;
-    this.shareUrl = this.shareButtonService.shareToggle(e, this.shareContainerActive);
+    this.shareUrl = this.shareButtonService.shareToggle(
+      e,
+      this.shareContainerActive
+    );
   }
 
   setActiveBasemap(view, basemap: string) {
@@ -124,11 +135,16 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     const mainContainerDom = this.viewService.getMapElementRef();
     const rend = this.renderer2;
 
-    this.kindergartensTooltipService.addTooltip(view, mainContainerDom, rend, this.dataStore);
+    this.kindergartensTooltipService.addTooltip(
+      view,
+      mainContainerDom,
+      rend,
+      this.dataStore
+    );
 
     this.cdr.detectChanges();
 
-    this.clickEvent = view.on('click', (event) => {
+    this.clickEvent = view.on("click", (event) => {
       // remove existing graphic
       this.mapService.removeFeatureSelection();
 
@@ -148,57 +164,74 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     // intersect the given screen x, y coordinates
     const screenPoint = {
       x: event.x,
-      y: event.y
+      y: event.y,
     };
 
-    view.hitTest(screenPoint)
-      .then(features => {
-        let fullData = null;
-        const values = Array.from(features.results);
-        let isShown = false;
-        let esriGeometry: IGeometry;
-        values.forEach((value: any) => {
-          if ((values && (value.graphic.layer.id !== 'feature-area'))) {
-            if (!isShown) {
-              isShown = true;
-              const showResult = value.graphic;
-              const mainInfo = this.dataStore && this.dataStore.mainInfo;
+    view.hitTest(screenPoint).then((features) => {
+      let fullData = null;
+      const values = Array.from(features.results);
+      let isShown = false;
+      let esriGeometry: IGeometry;
+      values.forEach((value: any) => {
+        if (values && value.graphic.layer.id !== "feature-area") {
+          if (!isShown) {
+            isShown = true;
+            const showResult = value.graphic;
+            const mainInfo = this.dataStore && this.dataStore.mainInfo;
 
-              mainInfo.forEach(data => {
-                if (data.GARDEN_ID === value.graphic.attributes.Garden_Id) {
-                  fullData = Object.assign({}, data);
-                }
+            mainInfo.forEach((data) => {
+              if (data.GARDEN_ID === value.graphic.attributes.Garden_Id) {
+                console.log("data", data);
+                fullData = Object.assign({}, data);
+              }
+            });
 
-              });
+            this.openSidebar();
+            this.kindergartensContent = fullData;
 
-              this.openSidebar();
-              this.kindergartensContent = fullData;
+            console.log("full data", fullData);
 
-              // add selectionResultsToGraphic
-              // tslint:disable-next-line: max-line-length
-              const groupFeatureSelectionLayer = this.mapService.initFeatureSelectionGraphicLayer('FeatureSelection', showResult.layer.maxScale, showResult.layer.minScale, 'hide');
-              const { geometry, layer, attributes } = showResult;
+            // add selectionResultsToGraphic
+            // tslint:disable-next-line: max-line-length
+            const groupFeatureSelectionLayer =
+              this.mapService.initFeatureSelectionGraphicLayer(
+                "FeatureSelection",
+                showResult.layer.maxScale,
+                showResult.layer.minScale,
+                "hide"
+              );
+            const { geometry, layer, attributes } = showResult;
 
-              // BUG 4.5 not getting geometry
-              geometry ? esriGeometry = geometry : esriGeometry = features.mapPoint;
+            // BUG 4.5 not getting geometry
+            geometry
+              ? (esriGeometry = geometry)
+              : (esriGeometry = features.mapPoint);
 
-              // tslint:disable-next-line: max-line-length
-              const selectionGraphic = this.mapService.initFeatureSelectionGraphic('point', esriGeometry, layer, attributes, '26px', 'dash');
-              groupFeatureSelectionLayer.graphics.add(selectionGraphic);
-              this.map.add(groupFeatureSelectionLayer);
-            }
-
-          } else {
-            if (!isShown) {
-              // TEMP null / 0 trick to initiate component change, as we can add data via sidebar compontent as well
-              this.kindergartensContent === null ? this.kindergartensContent = 0 : this.kindergartensContent = null;
-            }
-
+            // tslint:disable-next-line: max-line-length
+            const selectionGraphic =
+              this.mapService.initFeatureSelectionGraphic(
+                "point",
+                esriGeometry,
+                layer,
+                attributes,
+                "26px",
+                "dash"
+              );
+            groupFeatureSelectionLayer.graphics.add(selectionGraphic);
+            this.map.add(groupFeatureSelectionLayer);
           }
+        } else {
+          if (!isShown) {
+            // TEMP null / 0 trick to initiate component change, as we can add data via sidebar compontent as well
+            this.kindergartensContent === null
+              ? (this.kindergartensContent = 0)
+              : (this.kindergartensContent = null);
+          }
+        }
 
-          this.cdr.detectChanges();
-        });
+        this.cdr.detectChanges();
       });
+    });
   }
 
   ngAfterViewInit() {
@@ -206,18 +239,18 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     this.metaService.setMetaData();
     this.queryUrlSubscription = this.activatedRoute.queryParams.subscribe(
       (queryParamsReturned: Params) => {
-        return this.queryParams = queryParamsReturned;
+        return (this.queryParams = queryParamsReturned);
       }
     );
     this.queryUrlSubscription.unsubscribe();
 
     // this.renderer2.addClass(document.body, 'buldings-theme');
-    this.renderer2.addClass(document.body, 'kindergartens');
+    this.renderer2.addClass(document.body, "kindergartens");
 
     // add snapshot url and pass path name ta Incetable map service
     // FIXME ActivatedRoute issues
     // let snapshotUrl = this.activatedRoute.snapshot.url["0"];
-    const snapshotUrl = { path: 'darzeliai' };
+    const snapshotUrl = { path: "darzeliai" };
 
     // return the map
     this.map = this.mapService.returnMap();
@@ -242,21 +275,25 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
       // add default search widget
       this.search = this.searchService.defaultSearchWidget(view);
       view.ui.add(this.search, {
-        position: 'top-right',
-        index: 2
+        position: "top-right",
+        index: 2,
       });
 
       // init identification of default or sub layers on MapView
       this.identify.identifyLayers(view);
 
       if (snapshotUrl) {
-        this.kindergartensLayersService.addCustomLayers(this.queryParams, snapshotUrl);
+        this.kindergartensLayersService.addCustomLayers(
+          this.queryParams,
+          snapshotUrl
+        );
 
-        this.kindergartensLayersService.dataStore$.pipe(
-          // tap(a =>  console.log(a)),
-          switchMap(a => a),
-          take(1)
-        )
+        this.kindergartensLayersService.dataStore$
+          .pipe(
+            // tap(a =>  console.log(a)),
+            switchMap((a) => a),
+            take(1)
+          )
           .subscribe((dataStore: DataStore) => {
             this.dataStore = dataStore;
 
@@ -296,13 +333,11 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
     this.search.destroy();
 
     // cursor style auto
-    this.renderer2.setProperty(document.body.style, 'cursor', 'auto');
+    this.renderer2.setProperty(document.body.style, "cursor", "auto");
 
-    this.renderer2.removeClass(document.body, 'kindergartens');
+    this.renderer2.removeClass(document.body, "kindergartens");
 
     // remove existing graphic
     this.view.graphics.removeAll();
-
   }
-
 }

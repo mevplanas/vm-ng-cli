@@ -37,7 +37,7 @@ export class DefaultService {
   }
 
   // get service based on theme
-  getDefaultDynamicLayers(urlTheme: string): any[] {
+  getDefaultDynamicLayers(urlTheme: string) {
     const themes: any = this.config.themes;
     for (const theme in themes) {
       // if hasOwnProperty and if not custom theme
@@ -75,17 +75,60 @@ export class DefaultService {
     return layersArr;
   }
 
-  // validate ArcGis date string
-  isValidDate(dateStr, reg) {
-    return dateStr.match(reg) !== null;
+  // Helper function to format dates
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+    const day = ("0" + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
   }
+
+  // validate date string in multiple formats
+  isValidDate(dateStr: string): boolean {
+    const regEx1 = /^\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2} (AM|PM)$/;
+    const regEx2 = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+    return dateStr.match(regEx1) !== null || dateStr.match(regEx2) !== null;
+  }
+
+  // parse date string in multiple formats
+  parseDate(dateStr: string): Date {
+    if (
+      dateStr.match(/^\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}:\d{2} (AM|PM)$/)
+    ) {
+      const [datePart, timePart, period] = dateStr.split(" ");
+      const [month, day, year] = datePart.split("/");
+      let [hours, minutes, seconds] = timePart.split(":").map(Number);
+
+      if (period === "PM" && hours < 12) {
+        hours += 12;
+      } else if (period === "AM" && hours === 12) {
+        hours = 0;
+      }
+
+      return new Date(
+        parseInt(year),
+        parseInt(month) - 1,
+        parseInt(day),
+        hours,
+        minutes,
+        seconds
+      );
+    } else if (dateStr.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/)) {
+      const [month, day, year] = dateStr.split("/");
+      return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    } else {
+      throw new Error("Invalid date format");
+    }
+  }
+
   // check if url is an image
   isImage(url) {
     return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
   }
+
   // check if url is pdf document
   isPdf(url) {
-    return /\.(pdf|)$/.test(url);
+    return /\.(pdf)$/.test(url);
   }
 
   findUrls(text) {
@@ -94,7 +137,7 @@ export class DefaultService {
     const externalIcon =
       window.location.origin + "/assets/img/external-icon.png";
     // find all urls in string
-    var urlRegex =
+    const urlRegex =
       /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     const allUrls = text.replace(urlRegex, (url) => {
       console.log(url);
@@ -117,7 +160,6 @@ export class DefaultService {
   }
 
   getVisibleLayersContent(result): string {
-    const reg = /(\d+)[.](\d+)[.](\d+)\s.*/; // regex: match number with . char, clear everything else
     const feature = result.feature;
     let content = " ";
     const layerName = result.layerName;
@@ -155,18 +197,17 @@ export class DefaultService {
             resultAtr === "Count_"
           )
         ) {
-          // add layers attributes that you do not want to show
-          // AG check for date string
-          if (this.isValidDate(attributes[resultAtr], reg)) {
+          let attributeResult = attributes[resultAtr];
+          // Check for valid date string
+          if (this.isValidDate(attributeResult)) {
+            const date = this.parseDate(attributeResult);
             content +=
               "<p><span>" +
               resultAtr +
               "</br></span>" +
-              attributes[resultAtr].replace(reg, "$1-$2-$3") +
+              this.formatDate(date) +
               "<p>";
           } else {
-            let attributeResult = attributes[resultAtr];
-            // tslint:disable-next-line: max-line-length
             if (attributeResult !== null) {
               // attributes[resultAtr] == null  equals to (attributes[resultAtr]  === undefined || attributes[resultAtr]  === null)
               if (attributeResult === " " || attributeResult === "Null") {
@@ -182,9 +223,6 @@ export class DefaultService {
                 attributeResult
               )}
                 <p>`;
-              // content += `<p ><span >Nuorodos</br></span>
-
-              // <img style="height: 20px" src='${pdfIcon}' alt=""><a href='${attributeResult}' rel="noopener noreferrer" target='_blank'>${resultAtr}</a>       <p>`;
             } else {
               content +=
                 "<p><span>" +

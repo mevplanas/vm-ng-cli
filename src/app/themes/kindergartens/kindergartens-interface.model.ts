@@ -21,6 +21,7 @@ export interface MainInfo {
   ELDERATE3: string;
   ELDERATE4: string;
   SCHOOL_TYPE: string;
+  WEBSITE: string;
 }
 
 export interface Summary {
