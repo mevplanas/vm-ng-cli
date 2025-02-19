@@ -14,19 +14,19 @@ export class BasemapToggleComponent implements OnInit {
 
   basemaps: any[];
 
-  constructor(private basemapsService: BasemapsService) {}
-
-  // Filter basemaps in the component to hide base-orto
-  ngOnInit() {
-    this.basemaps = this.basemapsService
-      .returnBasemaps()
-      .filter((basemap) => basemap.id !== "base-orto");
-
-    this.selectedValue = this.basemapsService.returnActiveBasemap();
-    this.basemapsService.filterBasemap(this.selectedValue, this.view);
+  constructor(private basemapsService: BasemapsService) {
+    this.basemaps = this.basemapsService.returnBasemaps();
   }
 
   toggleBasemap(id: string) {
     this.basemapsService.toggleBasemap(id, this.view);
+  }
+
+  ngOnInit() {
+    this.selectedValue = this.basemapsService.returnActiveBasemap();
+    this.basemapsService.filterBasemap(
+      this.basemapsService.returnActiveBasemap(),
+      this.view
+    );
   }
 }

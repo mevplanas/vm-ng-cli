@@ -181,15 +181,36 @@ export class KindergartensComponent implements AfterViewInit, OnDestroy {
 
             mainInfo.forEach((data) => {
               if (data.GARDEN_ID === value.graphic.attributes.Garden_Id) {
-                console.log("data", data);
                 fullData = Object.assign({}, data);
               }
             });
 
+            const keysToCheck = [
+              "ELDERATE",
+              "ELDERATE2",
+              "ELDERATE3",
+              "ELDERATE4",
+            ];
+
+            // Loop through the keysToCheck array and compare them
+            for (let i = 0; i < keysToCheck.length; i++) {
+              const currentKey = keysToCheck[i];
+              const currentValue = fullData[currentKey];
+
+              // Compare the current key with the rest of the keys in the list
+              for (let j = i + 1; j < keysToCheck.length; j++) {
+                const nextKey = keysToCheck[j];
+                const nextValue = fullData[nextKey];
+
+                // If the values are equal, delete the next key
+                if (currentValue === nextValue) {
+                  delete fullData[nextKey];
+                }
+              }
+            }
+
             this.openSidebar();
             this.kindergartensContent = fullData;
-
-            console.log("full data", fullData);
 
             // add selectionResultsToGraphic
             // tslint:disable-next-line: max-line-length

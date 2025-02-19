@@ -29,11 +29,11 @@ exports.CONFIG = {
       basemapDarkUrl:
         "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/Vilnius_basemap_dark_calibrated/MapServer",
       ortofotoUrl:
-        "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2022_LKS/MapServer",
-      ortofotoDetailed19Url:
-        "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS/MapServer",
+        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2022_LKS/MapServer",
+      // ortofotoDetailed19Url:
+      //   "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS/MapServer",
       ortofotoFull19Url:
-        "https://opencity.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTO_2019_LKS_FULL/MapServer",
+        "https://gis.vplanas.lt/arcgis/rest/services/Baziniai_zemelapiai/ORTOFOTO_2019_LKS_FULL/MapServer",
       imagery2024:
         "https://opencity.vplanas.lt/image/rest/services/P_BO_Ortho/Vilnius_BO_ortofoto/ImageServer",
       // basemapEngineeringUrl:
@@ -477,28 +477,28 @@ exports.CONFIG = {
         },
       },
     },
-    propertyUnits: {
-      production:
-        !environment_1.environment.production ||
-        environment_1.environment.mapsdev,
-      name: "Savivaldybės turtas",
-      // id: "civ-sauga", //theme id class and theme URL query name
-      description: "Savivaldybės turtas",
-      id: "savivaldybes-turtas",
-      imgUrl: "assets/img/projektai.png",
-      imgAlt: "Savivaldybės turtas",
-      zoomLevel: 4,
-      zoomCoords: [583035.2149091947, 6061202.102446364],
-      layers: {
-        propUnitsLayer: {
-          // dynamicService URL, only 1 url per uniquer Layer
-          dynimacLayerUrls:
-            "https://gis.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Savivaldybes_turtas/MapServer",
-          opacity: 1,
-          name: "Savivaldybės turtas",
-        },
-      },
-    },
+    // propertyUnits: {
+    //   production:
+    //     !environment_1.environment.production ||
+    //     environment_1.environment.mapsdev,
+    //   name: "Savivaldybės turtas",
+    //   // id: "civ-sauga", //theme id class and theme URL query name
+    //   description: "Savivaldybės turtas",
+    //   id: "savivaldybes-turtas",
+    //   imgUrl: "assets/img/projektai.png",
+    //   imgAlt: "Savivaldybės turtas",
+    //   zoomLevel: 4,
+    //   zoomCoords: [583035.2149091947, 6061202.102446364],
+    //   layers: {
+    //     propUnitsLayer: {
+    //       // dynamicService URL, only 1 url per uniquer Layer
+    //       dynimacLayerUrls:
+    //         "https://gis.vplanas.lt/arcgis/rest/services/Interaktyvus_zemelapis/Savivaldybes_turtas/MapServer",
+    //       opacity: 1,
+    //       name: "Savivaldybės turtas",
+    //     },
+    //   },
+    // },
     quarterlyRenovation: {
       // url: "https://maps.vilnius.lt/maps_vilnius/?theme=civ-sauga",
       custom: true,
@@ -595,28 +595,28 @@ exports.CONFIG = {
         },
       },
     },
-    waist: {
-      production:
-        !environment_1.environment.production ||
-        environment_1.environment.mapsdev,
-      custom: true,
-      name: "Atliekų tvarkymas",
-      // id: "theme-buildings", //theme id class and theme URL query name
-      // tslint:disable-next-line: max-line-length
-      description:
-        "Atliekų tvarkymo temoje  rasite informaciją apie atliekų išvežimo taškus, grafikus, vėlavimus ir kitą statistinę informaciją",
-      id: "atlieku-tvarkymas",
-      imgUrl: "assets/img/darzeliai.png",
-      imgAlt: "Atliekų tvarkymas",
-      layers: {
-        atliekos: {
-          // dynamicService URL, only 1 url per uniquer Layer
-          dynimacLayerUrls:
-            "https://atviras.vplanas.lt/arcgis/rest/services/Testavimai/Konteineriu_pakelimai/MapServer",
-          name: "Atliekų tvarkymas",
-        },
-      },
-    },
+    // waist: {
+    //   production:
+    //     !environment_1.environment.production ||
+    //     environment_1.environment.mapsdev,
+    //   custom: true,
+    //   name: "Atliekų tvarkymas",
+    //   // id: "theme-buildings", //theme id class and theme URL query name
+    //   // tslint:disable-next-line: max-line-length
+    //   description:
+    //     "Atliekų tvarkymo temoje  rasite informaciją apie atliekų išvežimo taškus, grafikus, vėlavimus ir kitą statistinę informaciją",
+    //   id: "atlieku-tvarkymas",
+    //   imgUrl: "assets/img/darzeliai.png",
+    //   imgAlt: "Atliekų tvarkymas",
+    //   layers: {
+    //     atliekos: {
+    //       // dynamicService URL, only 1 url per uniquer Layer
+    //       dynimacLayerUrls:
+    //         "https://atviras.vplanas.lt/arcgis/rest/services/Testavimai/Konteineriu_pakelimai/MapServer",
+    //       name: "Atliekų tvarkymas",
+    //     },
+    //   },
+    // },
     buildingsAdministration: {
       url: "https://maps.vilnius.lt/maps_vilnius/?theme=theme-buildings",
       external: true,
